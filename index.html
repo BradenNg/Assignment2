@@ -11,44 +11,61 @@
 
         header {
             display: flex;
-            justify-content: space-between; /* Space out logo, nav, and Shop Now button */
-            align-items: center; /* Center-align items vertically */
+            justify-content: space-between;
+            align-items: center;
             padding: 20px 40px;
-            background-color: rgba(255, 255, 255, 0.7); /* Translucent background always visible */
-            backdrop-filter: blur(10px); /* Frosted glass effect */
-            position: sticky; /* Sticks to the top of the page on scroll */
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         header .logo h2 {
-            font-size: 18px;
-            margin: 0;
-            font-weight: 600;
-            color: #000; /* Black text for the logo */
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
         }
 
         header nav {
             display: flex;
-            gap: 30px; /* Spacing between navigation links */
-            flex: 1; /* Allow the nav to take available space */
-            justify-content: center; /* Center-align links horizontally */
+            gap: 50px;
         }
 
         header a {
             text-decoration: none;
             color: #000;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
             transition: color 0.3s ease;
+            padding-top: 20px;
+        }
+
+        header a:hover {
+            color: #FF8A65;
+        }
+
+        .shop-now {
+            border: 2px solid #FF8A65;
+            color: #FF8A65;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .shop-now:hover {
+            background: #FF8A65;
+            color: white;
         }
 
         .login-btn {
             background-color: transparent;
             border: 1px solid #000;
             color: #000;
-            padding: 8px 20px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 20px;
             font-size: 14px;
@@ -63,27 +80,8 @@
         }
 
         header a:hover {
-            color: #4caf50;
+            color: #8D6E63;
         }
-
-        header .shop-now {
-            background-color: transparent;
-            border: 1px solid #8D6E63; /* Green border for the button */
-            color: #cc6749;
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 20px; /* Rounded corners for the button */
-            font-size: 14px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        header .shop-now:hover {
-            background-color: #4caf50; /* Green background on hover */
-            color: #fff; /* White text on hover */
-        }
-
-
 
         .hero {
             position: relative;
@@ -233,15 +231,19 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Categories</a>
-            <a href="#">Create Listing</a>
-            <a href="#">My Account</a>
+            <a href="index.html" id="home-link">
+                <div id="home-animation" style="width: 50px; height: 50px;"></div>
+            </a>
+            <a href="index.html">Home</a>
+            <a href="#">Sell</a>
+            <a href="#">About</a>
             <a href="#">Support</a>
+            <a href="#">Chat</a>
+            <a href="#">Profile</a>
         </nav>
         <div class="nav-buttons">
         <a href="login.html" class="login-btn">Log In</a>
-        <a href="#" class="shop-now">Shop Now</a>
+        <a href="shop.html" class="shop-now">Shop Now</a>
         </div>
     </header>
 

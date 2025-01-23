@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | MokeSell</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #F5F5F5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        header nav {
+            display: flex;
+            gap: 50px;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding-top: 20px;
+        }
+
+        header a:hover {
+            color: #FF8A65;
+        }
+
+        .shop-now {
+            border: 2px solid #FF8A65;
+            color: #FF8A65;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .shop-now:hover {
+            background: #FF8A65;
+            color: white;
+        }
+
+        /* Shop Page Content */
+        .shop-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #8D6E63;
+        }
+
+        .new-in-container {
+            position: relative;
+            width: 1000px;  /* Fixed width */
+            height: 750px; /* Fixed height */
+            margin: 0 auto;
+            border: 2px solid #FF8A65;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .new-in-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .new-in-container img.active {
+            opacity: 1;
+        }
+
+        .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto; /* Adds spacing below the nav bar */
+    max-width: 600px; /* Limit search bar width */
+    padding: 10px;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #FF8A65;
+}
+
+#search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 30px 0 0 30px;
+    font-family: 'Inter', sans-serif;
+}
+
+button {
+    background-color: #FF8A65;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #cc6749;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h2>MokeSell</h2>
+        </div>
+        <nav>
+            <a href="index.html" id="home-link">
+                <div id="home-animation" style="width: 50px; height: 50px;"></div>
+            </a>
+            <a href="index.html">Home</a>
+            <a href="#">Sell</a>
+            <a href="#">About</a>
+            <a href="#">Support</a>
+            <a href="#">Chat</a>
+            <a href="#">Profile</a>
+        </nav>
+
+        <a href="shop.html" class="shop-now">Shop Now</a>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for products...">
+        <button onclick="searchProducts()">Search</button>
+    </div>
+
+    <div class="shop-container">
+        <h1>New In</h1>
+        <div class="new-in-container">
+            <img src="pexels-desertedinurban-4462782.jpg" class="slide active" alt="Shoe 1">
+            <img src="pexels-melvin-buezo-1253763-2529148.jpg" class="slide" alt="Shoe 2">
+            <img src="pexels-obviouslyarthur-1102777.jpg" class="slide" alt="Shoe 3">
+        </div>
+    </div>
+
+    <script>
+        // Image Slideshow Functionality for "New In"
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(showNextSlide, 2000); // Change image every 2 seconds
+
+        document.addEventListener("DOMContentLoaded", () => {
+        lottie.loadAnimation({
+            container: document.getElementById("home-animation"),
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "wired-gradient-63-home-hover-3d-roll.json" // Ensure this JSON is in the correct directory
+        });
+    });
+
+    function searchProducts() {
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const images = document.querySelectorAll('.new-in-container img');
+
+    let found = false;
+    images.forEach(image => {
+        if (image.alt.toLowerCase().includes(input)) {
+            image.style.display = "block";
+            found = true;
+        } else {
+            image.style.display = "none";
+        }
+    });
+
+    if (!found) {
+        alert("No matching products found.");
+    }
+
+    if (input === "") {
+        images.forEach(image => image.style.display = "block");
+    }
+}
+
+    </script>
+
+    
+
+</body>
+</html>
