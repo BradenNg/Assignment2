@@ -1,0 +1,18 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Video starts at the top */
+}
+
+#video-background {
+  position: relative; /* Ensures it respects the normal document flow */
+  width: 100%; /* Full width across the screen */
+  height: 50vh; /* Occupies 50% of the viewport height */
+  object-fit: cover; /* Ensures it scales without distortion */
+}
+
+

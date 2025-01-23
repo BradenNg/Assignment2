@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MokeSell</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('login-background.jpg') no-repeat center center/cover;
+            transition: background 0.3s ease;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 2000px;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 50px, 100px;
+            height: 80vh;
+            margin-left: 400px;
+        }
+
+        .image-container {
+            width: 50%;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-container img.active {
+            opacity: 1;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        .login-container h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 35px;
+            font-weight: 700;
+            margin-top: 100px;
+        }
+
+        .login-container p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 70px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        .login-container input:focus {
+            border-color: #FF8A65;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: #FF8A65;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 50px;
+        }
+
+        .login-container button:hover {
+            background: #cc6749;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            color: #FF8A65; /* White text */
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            margin-top: 20px; /* Adds spacing above the button */
+        }
+
+        /* Hover effect */
+        .signup-btn:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        /* Active click effect */
+        .signup-btn:active {
+            background: #8D6E63; /* Earthy brown accent */
+            transform: scale(0.98); /* Slight click effect */
+        }
+
+
+        .back-home {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #cc6749;
+        }
+
+        /* Loading screen styles with frosted glass effect */
+        .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Frosted glass effect */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loading-screen.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#loading-animation {
+    width: 150px;
+    height: 150px;
+}
+
+.signup-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.signup-text a {
+    color: #8D6E63;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-text a:hover {
+    color: #FFD54F;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="pexels-cottonbro-5730956.jpg" class="slide active" alt="Shoes 1">
+            <img src="pexels-mnzoutfits-1598505.jpg" class="slide" alt="Shoes 2">
+            <img src="pexels-craytive-1478442.jpg" class="slide" alt="Shoes 3">
+        </div>
+
+        <div class="login-container">
+            <h1>Welcome Back</h1>
+            <p>Log in to your MokeSell account</p>
+
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+
+            <p>Don't have an account? <a href="signup.html" class="signup-btn">Sign up here</a></p>
+
+        </div>
+    </div>
+    
+
+    <!-- Frosted Glass Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div id="loading-animation"></div>
+    </div>
+
+    <script>
+
+               // Image slideshow functionality
+               let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(showNextSlide, 2000); // Change image every 2 seconds
+document.addEventListener("DOMContentLoaded", () => {
+  const animationContainer = document.getElementById("loading-animation");
+
+  // Load the Lottie animation
+  lottie.loadAnimation({
+    container: animationContainer, // Target the loading div
+    renderer: "svg",               // Use SVG rendering
+    loop: true,                     // Infinite loop
+    autoplay: true,                  // Start automatically
+    path: "1737521268031.json",  // Correct file name without spaces
+  });
+
+  // Show loading screen on login
+  document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (email === "" || password === "") {
+      alert("Please fill out all fields correctly.");
+      return;
+    }
+
+    // Show frosted glass loading screen with animation
+    document.getElementById("loading-screen").classList.add("active");
+
+    // Redirect after 3 seconds (simulate processing time)
+    setTimeout(() => {
+      window.location.href = "index.html"; // Redirect after "processing"
+    }, 3000);
+  });
+});
+
+    </script>
+
+</body>
+</html>
