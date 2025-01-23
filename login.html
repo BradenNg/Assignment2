@@ -194,6 +194,50 @@
     color: #FFD54F;
 }
 
+.return-home-btn {
+    position: fixed;
+    top: 20px;  /* Positioning to the top */
+    left: 20px; /* Positioning to the left */
+    padding: 10px 25px;  /* Compact size */
+    background: linear-gradient(135deg, #FF8A65, #FFD54F); /* Gradient background */
+    color: #fff;
+    font-size: 16px; /* Smaller font size */
+    font-weight: 600;
+    border: none;
+    border-radius: 30px; /* Rounded button */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease, transform 0.2s ease-in-out;
+    z-index: 1000; /* Ensures it stays above other elements */
+    outline: none;
+}
+
+/* Hover effect */
+.return-home-btn:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    background: linear-gradient(135deg, #FFD54F, #FF8A65);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Active click effect */
+.return-home-btn:active {
+    transform: scale(0.95);
+    background: #8D6E63; /* Earthy brown accent */
+}
+
+/* Quote text styling */
+.quote-text {
+    position: fixed;
+    top: 60px;  /* Positioned below the button */
+    left: 20px;
+    font-size: 12px;
+    color: #8D6E63;
+    font-style: italic;
+    max-width: 250px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
 
     </style>
 </head>
@@ -221,6 +265,9 @@
         </div>
     </div>
     
+    <button id="return-home-btn" class="return-home-btn">← Return to Home</button>
+    <p id="quote-display" class="quote-text"></p>
+    
 
     <!-- Frosted Glass Loading Screen -->
     <div class="loading-screen" id="loading-screen">
@@ -229,50 +276,62 @@
 
     <script>
 
-               // Image slideshow functionality
-               let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+    document.addEventListener("DOMContentLoaded", () => {
+    // Image slideshow functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
 
-        function showNextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(showNextSlide, 2000); // Change image every 2 seconds
-document.addEventListener("DOMContentLoaded", () => {
-  const animationContainer = document.getElementById("loading-animation");
-
-  // Load the Lottie animation
-  lottie.loadAnimation({
-    container: animationContainer, // Target the loading div
-    renderer: "svg",               // Use SVG rendering
-    loop: true,                     // Infinite loop
-    autoplay: true,                  // Start automatically
-    path: "1737521268031.json",  // Correct file name without spaces
-  });
-
-  // Show loading screen on login
-  document.getElementById("login-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    if (email === "" || password === "") {
-      alert("Please fill out all fields correctly.");
-      return;
+    function showNextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
     }
 
-    // Show frosted glass loading screen with animation
-    document.getElementById("loading-screen").classList.add("active");
+    setInterval(showNextSlide, 2000); // Change image every 2 seconds
 
-    // Redirect after 3 seconds (simulate processing time)
-    setTimeout(() => {
-      window.location.href = "index.html"; // Redirect after "processing"
-    }, 3000);
-  });
+    // Load the Lottie animation
+    const animationContainer = document.getElementById("loading-animation");
+    lottie.loadAnimation({
+        container: animationContainer,  // Target the loading div
+        renderer: "svg",               // Use SVG rendering
+        loop: true,                     // Infinite loop
+        autoplay: true,                  // Start automatically
+        path: "1737521268031.json",  // Correct file path
+    });
+
+    // Show loading screen on login submission
+    document.getElementById("login-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (email === "" || password === "") {
+            alert("Please fill out all fields correctly.");
+            return;
+        }
+
+        // Show frosted glass loading screen with animation
+        document.getElementById("loading-screen").classList.add("active");
+
+        // Simulate processing and redirect after 3 seconds
+        setTimeout(() => {
+            window.location.href = "index.html"; // Redirect to home page
+        }, 3000);
+    });
+
+    // Smooth return to home page action
+    const returnHomeBtn = document.getElementById("return-home-btn");
+    returnHomeBtn.addEventListener("click", () => {
+        returnHomeBtn.innerText = "Returning...";
+        setTimeout(() => {
+            window.location.href = "index.html"; // Redirect to home page
+        }, 1000);  // 2 seconds delay for effect
+    });
 });
+
+
+
 
     </script>
 
