@@ -80,7 +80,7 @@
 
         h1 {
             font-size: 36px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: #8D6E63;
         }
 
@@ -93,6 +93,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
         }
 
         .new-in-container img {
@@ -105,18 +106,55 @@
             object-fit: cover;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            margin-bottom: 30px;
         }
 
         .new-in-container img.active {
             opacity: 1;
         }
 
+        .new-shoes-container, .second-hand-shoes-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+            margin-bottom: 60px;
+        }
+
+        .shoe-card {
+            border: 2px solid #FF8A65;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+            flex: 0 0 auto;
+        }
+
+        .shoe-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            width: 200px;
+            height: 150px;
+        }
+
+        .shoe-card h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #8D6E63;
+        }
+
+
         .search-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 30px auto; /* Adds spacing below the nav bar */
-    max-width: 600px; /* Limit search bar width */
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto;
+    max-width: 900px;
     padding: 10px;
     background: #fff;
     border-radius: 30px;
@@ -124,31 +162,38 @@
     border: 2px solid #FF8A65;
 }
 
-#search-input {
-    flex: 1;
+.search-container input, .search-container select {
     border: none;
     outline: none;
     font-size: 16px;
     padding: 12px 20px;
-    border-radius: 30px 0 0 30px;
+    border-radius: 20px;
     font-family: 'Inter', sans-serif;
+    background: #F5F5F5;
 }
 
-button {
+.search-container button {
     background-color: #FF8A65;
     color: white;
     border: none;
     padding: 12px 20px;
-    border-radius: 0 30px 30px 0;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
     transition: background 0.3s ease;
 }
 
-button:hover {
+.search-container button:hover {
     background-color: #cc6749;
 }
+
+.lottie-icon {
+    width: 40px;
+    height: 40px;
+}
+
+
     </style>
 </head>
 <body>
@@ -173,19 +218,67 @@ button:hover {
     </header>
 
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search for products...">
+        <div class="filter-option">
+            <select id="filter-category">
+                <option value="new">New Shoes</option>
+                <option value="second-hand">Second Hand Shoes</option>
+            </select>
+        </div>
+        <div class="lottie-icon" id="location-icon"></div>
+        <input type="text" id="search-input" placeholder="Search by name...">
+        <div class="lottie-icon" id="price-icon"></div>
+        <input type="number" id="min-price" placeholder="Min Price">
+        <input type="number" id="max-price" placeholder="Max Price">
+        <input type="text" id="location" placeholder="Location">
         <button onclick="searchProducts()">Search</button>
     </div>
+    
 
     <div class="shop-container">
         <h1>New In</h1>
         <div class="new-in-container">
             <img src="pexels-desertedinurban-4462782.jpg" class="slide active" alt="Shoe 1">
             <img src="pexels-melvin-buezo-1253763-2529148.jpg" class="slide" alt="Shoe 2">
-            <img src="pexels-obviouslyarthur-1102777.jpg" class="slide" alt="Shoe 3">
+            <img src="pexels-melvin-buezo-1253763-2529159.jpg" class="slide" alt="Shoe 3">
         </div>
+    
+        <h1>New Shoes</h1>
+        <div class="new-shoes-container">
+            <div class="shoe-card">
+                <img src="pexels-mnzoutfits-1598508.jpg" alt="Golden Vans">
+                <h3>Golden Vans</h3>
+            </div>
+            <div class="shoe-card">
+                <img src="pexels-mnzoutfits-1670766.jpg" alt="Sleek White Adidas">
+                <h3>Sleek White Adidas</h3>
+            </div>
+            <div class="shoe-card">
+                <img src="pexels-monicore-134064.jpg" alt="Elegant Beige Heels">
+                <h3>Elegant Beige Heels</h3>
+            </div>
+            <div class="shoe-card">
+                <img src="pexels-mstudio-360817-1240892.jpg" alt="Red Classic Converse">
+                <h3>Red Classic Converse</h3>
+            </div>
+            <div class="shoe-card">
+                <img src="pexels-jddaniel-2385477.jpg" alt="Air Jordan Retro">
+                <p>Air Jordan Retro</p>
+            </div>
+            <div class="shoe-card">
+                <img src="pexels-micaasato-1580267.jpg" alt="Vibrant Pattern Sneakers">
+                <p>Vibrant Pattern Sneakers</p>
+            </div>
+            <div class="shoe-card">
+                <img src="pexels-mnzoutfits-1619652.jpg" alt="Classic Green Adidas">
+                <p>Classic Green Adidas</p>
+            </div>
+        </div>
+    
+        <h1>Second Hand Shoes</h1>
+        <div class="second-hand-shoes-container" id="second-hand-shoes"></div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
     <script>
         // Image Slideshow Functionality for "New In"
         let currentSlide = 0;
@@ -199,38 +292,135 @@ button:hover {
 
         setInterval(showNextSlide, 2000); // Change image every 2 seconds
 
-        document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", function () {
         lottie.loadAnimation({
-            container: document.getElementById("home-animation"),
+            container: document.getElementById("location-icon"),
             renderer: "svg",
             loop: true,
             autoplay: true,
-            path: "wired-gradient-63-home-hover-3d-roll.json" // Ensure this JSON is in the correct directory
+            path: "wired-outline-2697-logo-square-google-maps-hover-pinch.json"
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById("price-icon"),
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "wired-outline-298-coins-hover-jump.json"
         });
     });
 
     function searchProducts() {
-    const input = document.getElementById('search-input').value.toLowerCase();
-    const images = document.querySelectorAll('.new-in-container img');
+        const category = document.getElementById('filter-category').value;
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        const minPrice = document.getElementById('min-price').value;
+        const maxPrice = document.getElementById('max-price').value;
+        const location = document.getElementById('location').value.toLowerCase();
+
+        const allShoes = document.querySelectorAll('.shoe-card');
+
+        allShoes.forEach(shoe => {
+            const shoeName = shoe.querySelector('h3').innerText.toLowerCase();
+            const shoePrice = parseInt(shoe.getAttribute('data-price')) || 0;
+            const shoeLocation = shoe.getAttribute('data-location').toLowerCase();
+
+            if (
+                (searchTerm === "" || shoeName.includes(searchTerm)) &&
+                (minPrice === "" || shoePrice >= parseInt(minPrice)) &&
+                (maxPrice === "" || shoePrice <= parseInt(maxPrice)) &&
+                (location === "" || shoeLocation.includes(location))
+            ) {
+                shoe.style.display = "block";
+            } else {
+                shoe.style.display = "none";
+            }
+        });
+    };
+
+    function filterProducts() {
+    const category = document.getElementById('category-filter').value;
+    const searchText = document.getElementById('search-input').value.toLowerCase();
+    const minPrice = document.getElementById('min-price').value;
+    const maxPrice = document.getElementById('max-price').value;
+    const location = document.getElementById('location-input').value.toLowerCase();
+
+    let products;
+
+    if (category === "new") {
+        products = document.querySelectorAll('.new-shoes-container .shoe-card');
+    } else if (category === "second-hand") {
+        products = document.querySelectorAll('.second-hand-shoes-container .shoe-card');
+    } else {
+        products = document.querySelectorAll('.shoe-card');
+    }
 
     let found = false;
-    images.forEach(image => {
-        if (image.alt.toLowerCase().includes(input)) {
-            image.style.display = "block";
+
+    products.forEach(product => {
+        const name = product.querySelector('h3').innerText.toLowerCase();
+        const price = parseInt(product.getAttribute('data-price')) || 0;
+        const productLocation = product.getAttribute('data-location').toLowerCase();
+
+        const matchesSearch = name.includes(searchText) || searchText === "";
+        const matchesPrice = (minPrice === "" || price >= minPrice) && (maxPrice === "" || price <= maxPrice);
+        const matchesLocation = productLocation.includes(location) || location === "";
+
+        if (matchesSearch && matchesPrice && matchesLocation) {
+            product.style.display = "block";
             found = true;
         } else {
-            image.style.display = "none";
+            product.style.display = "none";
         }
     });
 
     if (!found) {
         alert("No matching products found.");
     }
-
-    if (input === "") {
-        images.forEach(image => image.style.display = "block");
-    }
 }
+
+
+// Firebase setup
+const firebaseConfig = {
+    apiKey: "YOUR_FIREBASE_API_KEY",
+    authDomain: "mokesell-24e42.firebaseapp.com",
+    projectId: "mokesell-24e42",
+    storageBucket: "mokesell-24e42.appspot.com",
+    messagingSenderId: "51017912275",
+    appId: "1:51017912275:web:a49e6821aec58b8b362926",
+    measurementId: "G-NEM9WMWGRB"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// Function to load second-hand shoes from Firebase
+function loadSecondHandShoes() {
+    const shoesContainer = document.getElementById('second-hand-shoes');
+    shoesContainer.innerHTML = '<p>Loading...</p>';
+
+    db.collection("second_hand_shoes").get().then((querySnapshot) => {
+        shoesContainer.innerHTML = '';
+        querySnapshot.forEach((doc) => {
+            const shoe = doc.data();
+            const shoeCard = `
+                <div class="shoe-card">
+                    <img src="${shoe.imageURL}" alt="${shoe.name}">
+                    <h3>${shoe.name}</h3>
+                </div>
+            `;
+            shoesContainer.innerHTML += shoeCard;
+        });
+    }).catch((error) => {
+        shoesContainer.innerHTML = '<p>Error loading shoes.</p>';
+        console.error("Error fetching shoes:", error);
+    });
+}
+
+// Call function on page load
+document.addEventListener("DOMContentLoaded", () => {
+    loadSecondHandShoes();
+});
 
     </script>
 
