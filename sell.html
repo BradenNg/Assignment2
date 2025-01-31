@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MokeSell</title>
+    <title>Sell | MokeSell</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-        font-family: 'Inter', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
+
+        body {
+            background-color: #F5F5F5;
+            color: #333;
+        }
+
+        /* Ensure the body takes up full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Make the main content expand to push the footer down */
+        .main-content {
+            flex: 1; /* This makes the content expand and push the footer down */
+        }
+
+
 
         header {
             display: flex;
@@ -61,79 +86,112 @@
             color: white;
         }
 
-        .login-btn {
-            background-color: transparent;
-            border: 1px solid #000;
-            color: #000;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        /* Hover effect for Login button */
-        .login-btn:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
         header a:hover {
             color: #8D6E63;
         }
 
-        .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
+
+        .sell-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-height: 900px;
+        }
+
+        .sell-container h1 {
+            font-size: 28px;
+            color: #8D6E63;
+            margin-bottom: 20px;
+        }
+
+        .upload-image {
+            width: 180px; /* Larger size */
+            height: 180px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            overflow: hidden;
+            position: relative;
         }
 
-        .video-slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        .upload-image:hover {
+            background: #ccc;
         }
 
-        .video-slideshow video {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .upload-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            border-radius: 50%;
+            display: none; /* Hide image initially */
         }
 
-        .video-slideshow video.active {
-            opacity: 1;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            color: #ffffff;
+        /* Upload text styling */
+        #upload-text {
+            position: absolute;
+            font-size: 14px;
+            color: #555;
             font-weight: bold;
-            margin: 0;
-            line-height: 1.2;
+            text-align: center;
         }
 
-        .hero h2 {
-            font-size: 2em;
-            color: #ffffff;
+        /* Hide text when image is uploaded */
+        .upload-image img.show {
+            display: block;
         }
 
-        .hero p {
-            font-size: 1.5em;
-            color: #ffffff;
-            margin: 20px 0;
+        .upload-image img.show + #upload-text {
+            display: none;
+        }
+
+
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .condition-price {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .condition-price input {
+            width: 48%;
+        }
+
+        
+
+        .sell-now {
+            background: #FF8A65;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s ease;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .sell-now:hover {
+            background: #cc6749;
         }
 
         footer {
@@ -224,8 +282,8 @@
 
     </style>
 </head>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <body>
+
     <header>
         <div class="logo">
             <h2>MokeSell</h2>
@@ -238,28 +296,43 @@
             <a href="sell.html">Sell</a>
             <a href="#">About</a>
             <a href="#">Support</a>
-            <a href="#">Chat</a>
+            <a href="chat.html">Chat</a>
             <a href="#">Profile</a>
         </nav>
         <div class="nav-buttons">
-        <a href="login.html" class="login-btn">Log In</a>
         <a href="shop.html" class="shop-now">Shop Now</a>
         </div>
     </header>
+    <div class="main-content">
+    <div class="sell-container">
+        <h1>List Your Shoes for Sale</h1>
 
-    <div class="hero">
-        <!-- Video slideshow container -->
-        <div class="video-slideshow">
-            <video src="4087310-hd_1920_1080_24fps.mp4" muted class="active"></video>
-            <video src="5665059-hd_1920_1080_25fps.mp4" muted></video>
-            <video src="7866331-uhd_3840_2160_25fps.mp4" muted></video>
+        <div class="upload-image" onclick="document.getElementById('file-input').click()">
+            <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
+            <span id="upload-text">Upload Image</span>
+            <img id="image-preview" src="" alt="Upload Image">
         </div>
         
-        <!-- Hero Text -->
-        <div>
-            <h1>MokeSell</h1>
-            <p>Your Trusted Marketplace for shoes</p>
-        </div>
+        
+
+        <form id="sell-form">
+            <input type="text" id="title" placeholder="Title" required>
+            <textarea id="description" placeholder="Description" rows="5" required></textarea>
+
+            <div class="condition-price">
+                <select id="condition" required>
+                    <option value="" disabled selected>Select Condition</option>
+                    <option value="Well Used">Well Used</option>
+                    <option value="Slightly Used">Slightly Used</option>
+                    <option value="New">New</option>
+                </select>
+                
+                <input type="number" id="price" placeholder="Price ($)" required>
+            </div>
+
+            <button type="submit" class="sell-now">Sell Now</button>
+        </form>
+    </div>
     </div>
 
     <footer>
@@ -290,27 +363,29 @@
     </footer>
 
     <script>
-        const videos = document.querySelectorAll('.video-slideshow video');
-        let currentVideoIndex = 0;
-
-        // Play the first video
-        videos[currentVideoIndex].play();
-
-        videos.forEach((video, index) => {
-            video.addEventListener('ended', () => {
-                // Remove the active class from the current video
-                videos[currentVideoIndex].classList.remove('active');
-
-                // Move to the next video
-                currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-
-                // Add the active class to the next video
-                videos[currentVideoIndex].classList.add('active');
-
-                // Play the next video
-                videos[currentVideoIndex].play();
-            });
+        document.getElementById("sell-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Your shoe listing has been submitted!");
         });
+
+        function previewImage(event) {
+            const imagePreview = document.getElementById('image-preview');
+            const uploadText = document.getElementById('upload-text');
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    imagePreview.src = reader.result;
+                    imagePreview.classList.add("show");
+                    uploadText.style.display = "none"; // Hide text when image is uploaded
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+
     </script>
+
 </body>
 </html>

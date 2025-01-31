@@ -25,44 +25,76 @@
 
         .container {
             display: flex;
-            width: 80%;
-            max-width: 2000px;
+            flex-direction: row; /* Ensures side-by-side layout */
+            width: 90%;
+            max-width: 1200px; /* Reduced from 2000px */
             background: #fff;
             border-radius: 15px;
             overflow: hidden;
-            padding: 50px, 100px;
-            height: 80vh;
-            margin-left: 400px;
+            padding: 40px; /* Adjusted padding */
+            height: auto; /* Allow it to expand naturally */
+            justify-content: center;
         }
 
+        /* Ensure the image container fits within the available space */
         .image-container {
             width: 50%;
+            height: 450px; /* Restrict height */
             position: relative;
+            margin-top: 70px;
+            border-radius: 15px; /* Rounded corners */
+            overflow: hidden; /* Ensures images respect the curve */
         }
 
+        /* Ensure the images scale properly */
         .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: absolute;
-            opacity: 0;
+            border-radius: 15px; /* Matches container */
+            opacity: 0; /* Hide all images */
             transition: opacity 1s ease-in-out;
         }
 
         .image-container img.active {
-            opacity: 1;
+            opacity: 1; /* Show only the active image */
         }
 
+
+        /* Adjust the login container */
         .login-container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 500px;
+            width: 50%;
+            max-width: 500px; /* Restrict size */
+            padding: 30px;
             text-align: center;
-            margin-top: 200px;
+            margin: auto; /* Center it */
         }
+
+        /* Responsive adjustments for smaller laptops */
+        @media (max-width: 1366px) {
+            .container {
+                width: 95%;
+                max-width: 1000px;
+                flex-direction: column; /* Stack items on top of each other */
+                text-align: center;
+                padding: 20px;
+            }
+
+            .image-container {
+                width: 100%;
+                height: 300px; /* Reduce height */
+            }
+
+            .login-container {
+                max-width: 100%;
+                width: 90%;
+                padding: 20px;
+            }
+        }
+
 
         .login-container h1 {
             font-size: 28px;
@@ -152,92 +184,92 @@
 
         /* Loading screen styles with frosted glass effect */
         .loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.3); /* Frosted glass effect */
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3); /* Frosted glass effect */
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
 
-.loading-screen.active {
-    visibility: visible;
-    opacity: 1;
-}
+        .loading-screen.active {
+            visibility: visible;
+            opacity: 1;
+        }
 
-#loading-animation {
-    width: 150px;
-    height: 150px;
-}
+        #loading-animation {
+            width: 150px;
+            height: 150px;
+        }
 
-.signup-text {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #666;
-}
+        .signup-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
 
-.signup-text a {
-    color: #8D6E63;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+        .signup-text a {
+            color: #8D6E63;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-.signup-text a:hover {
-    color: #FFD54F;
-}
+        .signup-text a:hover {
+            color: #FFD54F;
+        }
 
-.return-home-btn {
-    position: fixed;
-    top: 20px;  /* Positioning to the top */
-    left: 20px; /* Positioning to the left */
-    padding: 10px 25px;  /* Compact size */
-    background: linear-gradient(135deg, #FF8A65, #FFD54F); /* Gradient background */
-    color: #fff;
-    font-size: 16px; /* Smaller font size */
-    font-weight: 600;
-    border: none;
-    border-radius: 30px; /* Rounded button */
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease, transform 0.2s ease-in-out;
-    z-index: 1000; /* Ensures it stays above other elements */
-    outline: none;
-}
+        .return-home-btn {
+            position: fixed;
+            top: 20px;  /* Positioning to the top */
+            left: 20px; /* Positioning to the left */
+            padding: 10px 25px;  /* Compact size */
+            background: linear-gradient(135deg, #FF8A65, #FFD54F); /* Gradient background */
+            color: #fff;
+            font-size: 16px; /* Smaller font size */
+            font-weight: 600;
+            border: none;
+            border-radius: 30px; /* Rounded button */
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease, transform 0.2s ease-in-out;
+            z-index: 1000; /* Ensures it stays above other elements */
+            outline: none;
+        }
 
-/* Hover effect */
-.return-home-btn:hover {
-    transform: translateY(-2px); /* Slight lift on hover */
-    background: linear-gradient(135deg, #FFD54F, #FF8A65);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
+        /* Hover effect */
+        .return-home-btn:hover {
+            transform: translateY(-2px); /* Slight lift on hover */
+            background: linear-gradient(135deg, #FFD54F, #FF8A65);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
 
-/* Active click effect */
-.return-home-btn:active {
-    transform: scale(0.95);
-    background: #8D6E63; /* Earthy brown accent */
-}
+        /* Active click effect */
+        .return-home-btn:active {
+            transform: scale(0.95);
+            background: #8D6E63; /* Earthy brown accent */
+        }
 
-/* Quote text styling */
-.quote-text {
-    position: fixed;
-    top: 60px;  /* Positioned below the button */
-    left: 20px;
-    font-size: 12px;
-    color: #8D6E63;
-    font-style: italic;
-    max-width: 250px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1000;
-}
+        /* Quote text styling */
+        .quote-text {
+            position: fixed;
+            top: 60px;  /* Positioned below the button */
+            left: 20px;
+            font-size: 12px;
+            color: #8D6E63;
+            font-style: italic;
+            max-width: 250px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1000;
+        }
 
     </style>
 </head>
@@ -282,10 +314,11 @@
     const slides = document.querySelectorAll('.slide');
 
     function showNextSlide() {
-        slides[currentSlide].classList.remove('active');
+        slides.forEach(slide => slide.classList.remove('active')); // Hide all images
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+        slides[currentSlide].classList.add('active'); // Show next image
     }
+
 
     setInterval(showNextSlide, 2000); // Change image every 2 seconds
 
@@ -316,7 +349,7 @@
 
         // Simulate processing and redirect after 3 seconds
         setTimeout(() => {
-            window.location.href = "index.html"; // Redirect to home page
+            window.location.href = "shop.html"; // Redirect to home page
         }, 3000);
     });
 
