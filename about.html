@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | MokeSell</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #F5F5F5;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header nav {
+            display: flex;
+            gap: 50px;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #FF8A65;
+        }
+
+        .shop-now {
+            border: 2px solid #FF8A65;
+            color: #FF8A65;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .shop-now:hover {
+            background: #FF8A65;
+            color: white;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(to right, #FF8A65, #FF7043);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        /* ABOUT SECTION */
+        .about-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .about-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-box img {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .about-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #FF7043;
+        }
+
+        .about-box p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #8D6E63;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact, .footer-social {
+            text-align: left;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-contact h3, .footer-social h3 {
+            color: #FFD54F;
+        }
+
+        .footer-contact a, .footer-social a {
+            color: #FF8A65;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover, .footer-social a:hover {
+            color: #FFD54F;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h2>MokeSell</h2>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="sell.html">Sell</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
+            <a href="chat.html">Chat</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+        <a href="shop.html" class="shop-now">Shop Now</a>
+    </header>
+
+    <div class="hero">
+        <h1>About MokeSell</h1>
+        <p>Your Trusted Marketplace for Shoes</p>
+    </div>
+
+    <div class="about-container">
+        <div class="about-box">
+            <img src="https://img.icons8.com/ios-filled/100/ff7043/shopping-cart.png" alt="Mission Icon">
+            <h3>Our Mission</h3>
+            <p>To provide a trusted and seamless online marketplace for buying and selling shoes.</p>
+        </div>
+
+        <div class="about-box">
+            <img src="https://img.icons8.com/ios-filled/100/ff7043/team.png" alt="Team Icon">
+            <h3>Who We Are</h3>
+            <p>A team of passionate sneaker lovers and e-commerce experts committed to connecting buyers and sellers.</p>
+        </div>
+
+        <div class="about-box">
+            <img src="https://img.icons8.com/ios-filled/100/ff7043/customer-support.png" alt="Support Icon">
+            <h3>Customer Support</h3>
+            <p>We are here to help you 24/7 with any issues or inquiries you may have.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:mokesellhelp@gmail.com">mokesellhelp@gmail.com</a></p>
+                <p>Phone: <a href="tel:+6512345678">+65 1234 5678</a></p>
+                <p>Address: Clementi Lane, Singapore</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <p>
+                    <a href="https://www.facebook.com">Facebook</a> | 
+                    <a href="https://www.twitter.com">Twitter</a> | 
+                    <a href="https://www.linkedin.com">LinkedIn</a> | 
+                    <a href="https://www.instagram.com">Instagram</a>
+                </p>
+            </div>
+        </div>
+        <p>&copy; 2024 MokeSell. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
