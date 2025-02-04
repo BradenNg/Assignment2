@@ -16,24 +16,20 @@
         body {
             background-color: #F5F5F5;
             color: #333;
-        }
-
-        /* Ensure the body takes up full height */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Make the main content expand to push the footer down */
         .main-content {
-            flex: 1; /* This makes the content expand and push the footer down */
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
         }
 
-
-
+        /* HEADER */
         header {
             display: flex;
             justify-content: space-between;
@@ -86,198 +82,176 @@
             color: white;
         }
 
-        header a:hover {
-            color: #8D6E63;
-        }
-
-
+        /* SELL FORM CONTAINER */
         .sell-container {
-            max-width: 900px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 40px;
+            background: white;
+            padding: 50px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            min-height: 900px;
-        }
-
-        .sell-container h1 {
-            font-size: 28px;
-            color: #8D6E63;
-            margin-bottom: 20px;
-        }
-
-        .upload-image {
-            width: 180px; /* Larger size */
-            height: 180px;
-            background: #ddd;
-            border-radius: 50%;
-            margin: 0 auto 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 1100px;
+            text-align: left;
             display: flex;
-            align-items: center;
+            gap: 40px;
+        }
+
+        /* PHOTO UPLOAD SECTION */
+        .photo-upload {
+            flex: 1;
+            border: 2px dashed #ddd;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            background: #FAFAFA;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            overflow: hidden;
+            align-items: center;
             position: relative;
         }
 
-        .upload-image:hover {
-            background: #ccc;
-        }
-
-        .upload-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            display: none; /* Hide image initially */
-        }
-
-        /* Upload text styling */
-        #upload-text {
-            position: absolute;
-            font-size: 14px;
-            color: #555;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        /* Hide text when image is uploaded */
-        .upload-image img.show {
-            display: block;
-        }
-
-        .upload-image img.show + #upload-text {
+        .photo-upload input {
             display: none;
         }
 
+        .photo-upload label {
+            display: inline-block;
+            padding: 16px 30px;
+            font-size: 16px;
+            background: #FF8A65;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
+        .photo-upload label:hover {
+            background: #cc6749;
+        }
+
+        .preview-images {
+            display: flex;
+            gap: 10px;
+            max-width: 250px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .preview-images img {
+            width: 100%;  /* Make it responsive */
+            max-width: 300px;  /* Increase max size */
+            height: auto;  /* Maintain aspect ratio */
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+
+        /* FORM SECTION */
+        .form-container {
+            flex: 2;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 8px;
+        }
 
         input, textarea, select {
             width: 100%;
             padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
         }
 
-        .condition-price {
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .condition-buttons {
             display: flex;
-            gap: 20px;
-            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .condition-price input {
-            width: 48%;
+        .condition-buttons button {
+            padding: 10px 18px;
+            font-size: 14px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        
+        .condition-buttons button:hover,
+        .condition-buttons button.active {
+            background: #FF8A65;
+            color: white;
+        }
 
+        .condition-buttons button.active,
+        .price-options button.active {
+            background: #FF8A65;
+            color: white;
+            border-color: #FF8A65;
+        }
+
+
+        .price-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .price-options button {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            background: white;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 6px;
+        }
+
+        .price-options button.active {
+            background: #FF8A65;
+            color: white;
+        }
+
+        /* SUBMIT BUTTON */
         .sell-now {
             background: #FF8A65;
             color: white;
             border: none;
-            padding: 15px;
+            padding: 16px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 18px;
             transition: background 0.3s ease;
             width: 100%;
-            margin-top: 50px;
+            margin-top: 20px;
         }
 
         .sell-now:hover {
             background: #cc6749;
         }
 
+        /* FOOTER */
         footer {
-            background: #8D6E63; /* Warm brown background */
-            color: #fff; /* White text */
-            padding: 20px 40px;
-            text-align: left;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
-            width: 100%; /* Full width */
-        }
-
-        /* Footer content container */
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap; /* Responsive wrapping */
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            padding: 10px, 20px;
-        }
-
-        /* Contact Us Section */
-        .footer-contact h3 {
-            margin-bottom: 10px;
-            font-size: 1.8em;
-            color: #FFD54F; /* Accent color */
-            font-weight: 700;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Space between contact items */
-            font-size: 1em; /* Compact text size */
-        }
-
-        .contact-details p {
-            margin: 0;
-        }
-
-        .contact-details a {
-            color: #FF8A65; /* Accent color for links */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: #FFD54F; /* Hover effect */
-        }
-
-        /* Social Media Section */
-        .footer-social h3 {
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            color: #FFD54F;
-            font-weight: 700;
-        }
-
-        .social-links {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 15px; /* Space between links */
-        }
-
-        .social-links li a {
-            text-decoration: none;
-            color: #FF8A65;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .social-links li a:hover {
-            color: #FFD54F; /* Highlight social links on hover */
-        }
-
-        /* Footer bottom section */
-        .footer-bottom {
-            margin-top: 20px;
+            background: #8D6E63;
+            color: white;
+            padding: 20px;
+            font-size: 16px;
             text-align: center;
-            font-size: 0.9em;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 10px;
-            font-weight: 500;
+            width: 100%;
         }
 
     </style>
@@ -289,100 +263,120 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="index.html" id="home-link">
-                <div id="home-animation" style="width: 50px; height: 50px;"></div>
-            </a>
             <a href="index.html">Home</a>
             <a href="sell.html">Sell</a>
-            <a href="#">About</a>
-            <a href="#">Support</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
             <a href="chat.html">Chat</a>
-            <a href="#">Profile</a>
+            <a href="profile.html">Profile</a>
         </nav>
-        <div class="nav-buttons">
         <a href="shop.html" class="shop-now">Shop Now</a>
-        </div>
     </header>
+
     <div class="main-content">
-    <div class="sell-container">
-        <h1>List Your Shoes for Sale</h1>
-
-        <div class="upload-image" onclick="document.getElementById('file-input').click()">
-            <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
-            <span id="upload-text">Upload Image</span>
-            <img id="image-preview" src="" alt="Upload Image">
-        </div>
-        
-        
-
-        <form id="sell-form">
-            <input type="text" id="title" placeholder="Title" required>
-            <textarea id="description" placeholder="Description" rows="5" required></textarea>
-
-            <div class="condition-price">
-                <select id="condition" required>
-                    <option value="" disabled selected>Select Condition</option>
-                    <option value="Well Used">Well Used</option>
-                    <option value="Slightly Used">Slightly Used</option>
-                    <option value="New">New</option>
-                </select>
-                
-                <input type="number" id="price" placeholder="Price ($)" required>
+        <div class="sell-container">
+            <div class="photo-upload">
+                <label for="photo-input">Select Photos</label>
+                <input type="file" id="photo-input" accept="image/*" multiple onchange="previewPhotos(event)">
+                <div class="preview-images"></div>
             </div>
 
-            <button type="submit" class="sell-now">Sell Now</button>
-        </form>
-    </div>
+            <div class="form-container">
+                <div class="form-group">
+                    <label>Listing Title</label>
+                    <input type="text" placeholder="Enter title">
+                </div>
+
+                <div class="form-group">
+                    <label>Condition</label>
+                    <div class="condition-buttons">
+                        <button>Brand New</button>
+                        <button>Like New</button>
+                        <button>Lightly Used</button>
+                        <button>Well Used</button>
+                        <button>Heavily Used</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description of Item</label>
+                    <textarea placeholder="Describe the item..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" placeholder="Price in $">
+                </div>
+
+                <button class="sell-now">List Item</button>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <div class="footer-container">
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <div class="contact-details">
-                    <p>Email: <a href="mailto:mokesellhelp@gmail.com">mokesellhelp@gmail.com</a></p>
-                    <p>Phone: <a href="tel:+6512345678">+65 1234 5678</a></p>
-                    <p>Address: Clementi Lane, Singapore</p>
-                </div>
-            </div>
-    
-            <div class="footer-social">
-                <h3>Follow Us</h3>
-                <ul class="social-links">
-                    <li><a href="https://www.facebook.com">Facebook</a></li>
-                    <li><a href="https://www.twitter.com">Twitter</a></li>
-                    <li><a href="https://www.linkedin.com">LinkedIn</a></li>
-                    <li><a href="https://www.instagram.com">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-    
-        <div class="footer-bottom">
-            <p>&copy; 2024 MokeSell. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 MokeSell. All rights reserved.</p>
     </footer>
 
     <script>
-        document.getElementById("sell-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            alert("Your shoe listing has been submitted!");
+        document.addEventListener("DOMContentLoaded", () => {
+    // Handle Condition Buttons
+    document.querySelectorAll(".condition-buttons button").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll(".condition-buttons button").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+        });
+    });
+
+    // Handle Price Selection Buttons
+    document.querySelectorAll(".price-options button").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll(".price-options button").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+        });
+    });
+
+    // Handle Photo Upload Preview
+    function previewPhotos(event) {
+        const previewContainer = document.querySelector(".preview-images");
+        previewContainer.innerHTML = "";
+        [...event.target.files].forEach(file => {
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(file);
+            img.style.width = "150px";  // Make images larger
+            img.style.height = "150px";
+            previewContainer.appendChild(img);
+        });
+    }
+    document.getElementById("photo-input").addEventListener("change", previewPhotos);
+
+    // Handle Form Submission
+    document.querySelector(".sell-now").addEventListener("click", () => {
+        const title = document.querySelector('input[placeholder="Enter title"]').value;
+        const description = document.querySelector('textarea[placeholder="Describe the item..."]').value;
+        const price = document.querySelector('input[placeholder="Price in $"]').value;
+        const condition = document.querySelector(".condition-buttons button.active")?.innerText || "Not selected";
+
+        if (!title || !price) {
+            alert("Title and Price are required!");
+            return;
+        }
+
+        // Get uploaded images
+        const images = [];
+        document.querySelectorAll(".preview-images img").forEach(img => {
+            images.push(img.src);
         });
 
-        function previewImage(event) {
-            const imagePreview = document.getElementById('image-preview');
-            const uploadText = document.getElementById('upload-text');
-            const file = event.target.files[0];
+        // Save item to localStorage
+        const listing = { title, description, price, condition, images };
+        let listings = JSON.parse(localStorage.getItem("listings")) || [];
+        listings.push(listing);
+        localStorage.setItem("listings", JSON.stringify(listings));
 
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function () {
-                    imagePreview.src = reader.result;
-                    imagePreview.classList.add("show");
-                    uploadText.style.display = "none"; // Hide text when image is uploaded
-                };
-                reader.readAsDataURL(file);
-            }
-        }
+        alert("Your item has been listed!");
+        window.location.href = "shop.html"; 
+    });
+});
 
 
     </script>
