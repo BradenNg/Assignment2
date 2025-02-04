@@ -66,3 +66,31 @@ fetch("https://restcountries.com/v3.1/all")
     });
 })
 .catch(error => console.error("Error loading countries:", error));
+
+document.addEventListener('DOMContentLoaded', function() {
+    const product = JSON.parse(localStorage.getItem('selectedProduct'));
+    if (product) {
+        document.getElementById('productName').value = product.name;
+        document.getElementById('productPrice').value = `$${product.price}`;
+        document.getElementById('sellerName').value = product.seller;
+        document.getElementById('productImage').src = product.image;
+    }
+});
+
+// Adding functionality to the Buy Now buttons on the shop page
+const buyNowButtons = document.querySelectorAll('.buy-now');
+
+buyNowButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const productCard = button.closest('.product-card'); // Assuming each product is inside a div with class 'product-card'
+        const product = {
+            name: productCard.querySelector('.product-name').innerText,
+            price: productCard.querySelector('.product-price').innerText.replace('$', ''),
+            seller: productCard.querySelector('.seller-name').innerText,
+            image: productCard.querySelector('img').src
+        };
+
+        localStorage.setItem('selectedProduct', JSON.stringify(product));
+        window.location.href = 'payment.html'; // Redirect to payment page
+    });
+});
