@@ -18,18 +18,24 @@
             color: #333;
         }
 
-        /* HEADER STYLING (Same as Other Pages) */
+        /* HEADER */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
         }
 
         header nav {
@@ -43,6 +49,7 @@
             font-size: 16px;
             font-weight: 500;
             transition: color 0.3s ease;
+            padding-top: 20px;
         }
 
         header a:hover {
@@ -63,11 +70,10 @@
             background: #FF8A65;
             color: white;
         }
-
         /* CHAT CONTAINER */
         .chat-container {
             display: flex;
-            height: 85vh; /* Adjusted for screen fit */
+            height: 85vh;
             max-width: 1400px;
             margin: 20px auto;
             background: white;
@@ -76,7 +82,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* CHAT LIST (LEFT SIDE) */
+        /* CHAT LIST */
         .chat-list {
             width: 30%;
             background: #F7F7F7;
@@ -114,7 +120,7 @@
             color: #666;
         }
 
-        /* CHAT WINDOW (RIGHT SIDE) */
+        /* CHAT WINDOW */
         .chat-window {
             width: 70%;
             background: #E8F5E9;
@@ -132,7 +138,7 @@
             opacity: 0.3;
         }
 
-        /* ACTIVE CHAT VIEW */
+        /* ACTIVE CHAT */
         .active-chat {
             display: none;
             flex-direction: column;
@@ -156,9 +162,7 @@
             height: calc(100vh - 150px);
         }
 
-
-        /* Chat message styling */
-        /* Style for all chat messages */
+        /* MESSAGE STYLES */
         .message {
             padding: 10px 15px;
             margin: 10px;
@@ -168,54 +172,90 @@
             display: inline-block;
         }
 
-        /* Seller's messages (Left Side) */
         .received {
-            background: #d3e3fc; /* Light blue for contrast */
+            background: #d3e3fc;
             color: #333;
             align-self: flex-start;
         }
 
-        /* User's messages (Right Side) */
         .sent {
-            background: #FFCCBC; /* Light orange for contrast */
+            background: #FFCCBC;
             color: #333;
             align-self: flex-end;
             text-align: right;
             margin-left: auto;
         }
 
-
-
+        /* Style for the message input container */
         .message-input {
             display: flex;
-            padding: 10px;
+            padding: 12px;
             background: white;
             border-top: 1px solid #ddd;
+            gap: 10px; /* Adds spacing between buttons */
+            align-items: center;
         }
 
+        /* Input field */
         .message-input input {
             flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             font-size: 16px;
+            outline: none;
+            transition: border 0.3s ease-in-out;
         }
 
+        .message-input input:focus {
+            border: 1px solid #FF8A65;
+        }
+
+        /* General button styling */
+        /* Updated Buttons to Match Theme */
         .message-input button {
-            padding: 10px 20px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Make Offer Button - Light Brown */
+        .message-input .offer-btn {
+            background: #8D6E63; /* Warm brown */
+            color: white;
+        }
+
+        .message-input .offer-btn:hover {
+            background: #6D4C41; /* Darker brown */
+        }
+
+        /* Leave Review Button - Muted Orange */
+        .message-input .review-btn {
+            background: #D7A18C; /* Softer orange */
+            color: white;
+        }
+
+        .message-input .review-btn:hover {
+            background: #B87C66; /* Darker muted orange */
+        }
+
+        /* Send Button - Keep Main Theme */
+        .message-input .send-btn {
             background: #FF8A65;
             color: white;
-            border: none;
-            margin-left: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
         }
 
-        /* FOOTER */
+        .message-input .send-btn:hover {
+            background: #E57373;
+        }
+
         footer {
-            background: #8D6E63; /* Warm brown background */
-            color: #fff; /* White text */
+            background: #ffffff; /* Warm brown background */
+            color: #000000; /* White text */
             padding: 20px 40px;
             text-align: left;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
@@ -294,11 +334,10 @@
             margin-top: 20px;
             text-align: center;
             font-size: 0.9em;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
             padding-top: 10px;
             font-weight: 500;
         }
-
     </style>
 </head>
 <body>
@@ -308,49 +347,56 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="index.html">Home</a>
+            <a href="index.html" id="home-link">
+                <div id="home-animation" style="width: 50px; height: 50px;"></div>
+            </a>
             <a href="sell.html">Sell</a>
             <a href="about.html">About</a>
             <a href="support.html">Support</a>
             <a href="chat.html">Chat</a>
             <a href="profile.html">Profile</a>
         </nav>
+        <div class="nav-buttons">
         <a href="shop.html" class="shop-now">Shop Now</a>
+        </div>
     </header>
 
     <div class="chat-container">
-        <!-- Chat List (Left Side) -->
         <div class="chat-list">
             <h3>Chats</h3>
-            <div class="chat-item" onclick="openChat('John Doe')">
+            <div class="chat-item" onclick="openChat('John Doe', ['Hey, is this available?', 'Yes, still available!'])">
                 <strong>John Doe</strong>
                 <span>Hey, is this available?</span>
             </div>
-            <div class="chat-item" onclick="openChat('Jane Smith')">
+            <div class="chat-item" onclick="openChat('Jane Smith', ['Thanks for the update!', 'No problem, let me know if you need anything!'])">
                 <strong>Jane Smith</strong>
                 <span>Thanks for the update!</span>
             </div>
+            <div class="chat-item" onclick="openChat('Michael Lee', ['Are you still selling the item?', 'Yes, I am.'])">
+                <strong>Michael Lee</strong>
+                <span>Are you still selling the item?</span>
+            </div>
+            <div class="chat-item" onclick="openChat('Emily Carter', ['Is there a discount available?', 'I can offer a 10% discount.'])">
+                <strong>Emily Carter</strong>
+                <span>Is there a discount available?</span>
+            </div>
         </div>
 
-        <!-- Chat Window (Right Side) -->
         <div class="chat-window">
             <img src="chat-placeholder.png" alt="Chat Icon">
             <p>Select a chat to start messaging</p>
         </div>
 
-        <!-- Active Chat View -->
         <div class="active-chat">
-            <div class="chat-header" id="chat-header">Chat with</div>
-            <div class="chat-messages" id="chat-messages">
-                <div class="message received">Hello! Is this still for sale?</div>
-                <div class="message sent">Yes, it is!</div>
-            </div>
-            
-            
+            <div class="chat-header" id="chat-header"></div>
+            <div class="chat-messages" id="chat-messages"></div>
             <div class="message-input">
+                <button class="offer-btn" onclick="sendOffer()">Make Offer</button>
+                <button class="review-btn" onclick="leaveReview()">Leave Review</button>
                 <input type="text" id="message-input" placeholder="Type a message...">
-                <button onclick="sendMessage()">Send</button>
+                <button class="send-btn" onclick="sendMessage()">Send</button>
             </div>
+            
         </div>
     </div>
 
@@ -382,22 +428,74 @@
     </footer>
 
     <script>
-        function openChat(name) {
-            document.querySelector(".chat-window").style.display = "none";
-            document.querySelector(".active-chat").style.display = "flex";
-            document.getElementById("chat-header").innerText = "Chat with " + name;
-        }
+        let activeChatUser = ""; // Store the currently active chat user
 
-        function sendMessage() {
-            const input = document.getElementById("message-input");
-            const messages = document.getElementById("chat-messages");
+function openChat(name, messages) {
+    document.querySelector(".chat-window").style.display = "none";
+    document.querySelector(".active-chat").style.display = "flex";
+    document.getElementById("chat-header").innerText = "Chat with " + name;
 
-            if (input.value.trim() !== "") {
-                messages.innerHTML += `<div class="message sent">${input.value}</div>`;
-                input.value = "";
-                messages.scrollTop = messages.scrollHeight;
-            }
-        }
+    const chatMessages = document.getElementById("chat-messages");
+    chatMessages.innerHTML = ""; // Clear previous messages
+
+    activeChatUser = name; // Set active chat user
+
+    messages.forEach((msg, index) => {
+        // Messages at even indexes are "received" (left, blue), odd ones are "sent" (right, orange)
+        const messageClass = index % 2 === 0 ? "received" : "sent";
+        chatMessages.innerHTML += `<div class="message ${messageClass}">${msg}</div>`;
+    });
+
+    chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
+}
+
+function sendMessage() {
+    const input = document.getElementById("message-input");
+    const chatMessages = document.getElementById("chat-messages");
+
+    if (input.value.trim() !== "") {
+        chatMessages.innerHTML += `<div class="message sent">${input.value}</div>`;
+        input.value = "";
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+    }
+}
+
+document.getElementById("message-input").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") { 
+        event.preventDefault(); // Prevents new line in input
+        sendMessage(); // Calls the sendMessage function
+    }
+});
+
+function sendOffer() {
+    if (!activeChatUser) {
+        alert("Select a chat before making an offer.");
+        return;
+    }
+
+    const offerPrice = prompt("Enter your counter-offer price:");
+    if (offerPrice && !isNaN(offerPrice)) {
+        const chatMessages = document.getElementById("chat-messages");
+        chatMessages.innerHTML += `<div class="message sent">Counter-offer: $${offerPrice}</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+    }
+}
+
+function leaveReview() {
+    if (!activeChatUser) {
+        alert("Select a chat before leaving a review.");
+        return;
+    }
+
+    const rating = prompt("Rate the seller (1-5 stars):");
+    if (rating >= 1 && rating <= 5) {
+        alert(`Thank you for your ${rating}-star rating for ${activeChatUser}!`);
+    } else {
+        alert("Invalid rating. Please enter a number between 1 and 5.");
+    }
+}
+
+
     </script>
 
 </body>

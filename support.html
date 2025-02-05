@@ -14,8 +14,24 @@
         }
 
         body {
-            background-color: #F5F5F5;
-            color: #333;
+            background: linear-gradient(to bottom, #fefefe, #f5f5f5);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 20px; /* Increase to add more spacing */
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
         /* HEADER */
@@ -24,12 +40,18 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
         }
 
         header nav {
@@ -43,6 +65,7 @@
             font-size: 16px;
             font-weight: 500;
             transition: color 0.3s ease;
+            padding-top: 20px;
         }
 
         header a:hover {
@@ -75,34 +98,99 @@
         /* Pushes content to expand and footer stays at bottom */
         .main-content {
             flex: 1;
+            display: flex;
+            justify-content: center;  /* Centers horizontally */
+            align-items: center;  /* Centers vertically */
+            padding: 80px 20px;
         }
+
 
         /* Make the support form container longer */
         .support-container {
             max-width: 800px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 40px;
+            background: white;
+            padding: 50px; /* Increase padding */
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
             text-align: center;
-            min-height: 550px;  /* Increase height */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: auto;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
+            gap: 25px; /* Add spacing between children */
         }
 
+        .form-group {
+            margin-bottom: 25px; /* Add spacing between form groups */
+        }
 
         .support-container h1 {
             font-size: 28px;
             color: #8D6E63;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
+
+        .support-container p {
+            margin-bottom: 15px; /* More space below description text */
+        }
+
+        .support-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Category Buttons */
+        .category-options {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        .category-btn {
+            background: #f5f5f5;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #FF8A65;
+            color: white;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 15px;
+            color: green;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
 
         input, textarea {
             width: 100%;
             padding: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 16px;
@@ -136,14 +224,50 @@
             background: #cc6749;
         }
 
+        /* Style file input container */
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 2px dashed #FF8A65;
+            border-radius: 8px;
+            background: #FFF3E0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .file-upload:hover {
+            background: #FFE0B2;
+        }
+
+        /* Hide default file input */
+        .file-upload input {
+            display: none;
+        }
+
+        /* Style text inside */
+        .file-upload label {
+            font-size: 16px;
+            color: #FF7043;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 20px;
+            display: center;
+        }
+
+
         /* FOOTER */
         footer {
-            background: #8D6E63;
-            color: #fff;
+            background: #ffffff; /* Warm brown background */
+            color: #000000; /* White text */
             padding: 20px 40px;
             text-align: left;
-            width: 100%;
-            margin-top: auto;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            width: 100%; /* Full width */
         }
 
         /* Footer content container */
@@ -218,7 +342,7 @@
             margin-top: 20px;
             text-align: center;
             font-size: 0.9em;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
             padding-top: 10px;
             font-weight: 500;
         }
@@ -226,37 +350,84 @@
     </style>
 </head>
 <body>
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="114055-700074063.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
     <div class="wrapper">
-    <header>
-        <div class="logo">
-            <h2>MokeSell</h2>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="sell.html">Sell</a>
-            <a href="about.html">About</a>
-            <a href="support.html">Support</a>
-            <a href="chat.html">Chat</a>
-            <a href="profile.html">Profile</a>
-        </nav>
-        <a href="shop.html" class="shop-now">Shop Now</a>
-    </header>
+        <header>
+            <div class="logo">
+                <h2>MokeSell</h2>
+            </div>
+            <nav>
+                <a href="index.html" id="home-link">
+                    <div id="home-animation" style="width: 50px; height: 50px;"></div>
+                </a>
+                <a href="sell.html">Sell</a>
+                <a href="about.html">About</a>
+                <a href="support.html">Support</a>
+                <a href="chat.html">Chat</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+            <div class="nav-buttons">
+            <a href="shop.html" class="shop-now">Shop Now</a>
+            </div>
+        </header>
 
-    <div class="support-container">
-        <h1>Submit a Support Request</h1>
-        <form id="support-form">
-            <input type="text" id="title" placeholder="Title of issue" required>
+        <div class="support-container">
+            <h1>Submit a Support Request</h1>
+            <p>Need help? Fill out the form below, and our team will get back to you.</p>
+        
+            <!-- Search for FAQs -->
             
-            <textarea id="description" placeholder="Describe the issue..." maxlength="500" required></textarea>
-            <div class="char-counter"><span id="char-count">0</span>/500</div>
-            
-            <input type="email" id="email" placeholder="Your email" required>
-            
-            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
-            
-            <button type="submit" class="send-btn">Send</button>
-        </form>
-    </div>
+        
+            <form id="support-form">
+                <div class="form-group">
+                    <label>Issue Category</label>
+                    <div class="category-options">
+                        <button class="category-btn" data-category="account">
+                            <img src="icons8-account-100.png" alt="Account"> Account Issues
+                        </button>
+                        <button class="category-btn" data-category="payment">
+                            <img src="icons8-payment-100.png" alt="Payment"> Payment Problems
+                        </button>
+                        <button class="category-btn" data-category="order">
+                            <img src="icons8-logistics-64.png" alt="Order"> Order Tracking
+                        </button>
+                        <button class="category-btn" data-category="other">
+                            <img src="icons8-other-100.png" alt="Other"> Other
+                        </button>
+                    </div>
+                    <input type="hidden" id="category" value="account">
+                </div>
+        
+                <label>Issue Title</label>
+                <input type="text" id="title" placeholder="Briefly describe the issue" required>
+        
+                <label>Description</label>
+                <textarea id="description" placeholder="Provide details of the issue..." maxlength="500" required></textarea>
+                <div class="char-counter"><span id="char-count">0</span>/500</div>
+        
+                <!-- File Upload -->
+                <div class="file-upload">
+                    <input type="file" id="file-upload" accept="image/*" onchange="previewFile(event)">
+                    <label for="file-upload">📎 Attach Screenshot (optional)</label>
+                    <img id="image-preview" style="display: none; width: 80px; height: auto; margin-top: 10px; border-radius: 5px;">
+                </div>
+                
+                
+                
+        
+                <button type="submit" class="send-btn">Send Request</button>
+            </form>
+        
+            <div class="success-message" id="success-message">
+                ✅ Your request has been submitted. We’ll get back to you shortly!
+            </div>
+        </div>
+        
+        
 
     <footer>
         <div class="footer-container">
@@ -288,25 +459,52 @@
 
     <script>
         document.getElementById("support-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            const title = document.getElementById("title").value;
-            const description = document.getElementById("description").value;
-            const email = document.getElementById("email").value;
+        event.preventDefault();
+        
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
 
-            if (!title || !description || !email) {
-                alert("Please fill out all fields!");
-                return;
-            }
+        if (!title || !description) {
+            alert("Please fill out all fields!");
+            return;
+        }
 
-            alert("Thank you for your feedback! Our team will contact you soon.");
-            this.reset();
-            document.getElementById("char-count").innerText = "0";
+        // Show success message
+        document.getElementById("success-message").style.display = "block";
+
+        // Reset form
+        this.reset();
+        document.getElementById("char-count").innerText = "0";
+    });
+
+    // Character counter for description field
+    document.getElementById("description").addEventListener("input", function() {
+        document.getElementById("char-count").innerText = this.value.length;
+    });
+
+    // Handle Category Selection
+    document.querySelectorAll(".category-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+            document.getElementById("category").value = button.dataset.category;
         });
+    });
 
-        document.getElementById("description").addEventListener("input", function() {
-            document.getElementById("char-count").innerText = this.value.length;
-        });
+    function previewFile(event) {
+    const file = event.target.files[0]; // Get the uploaded file
+    if (file) {
+        const reader = new FileReader(); // Create a FileReader to read the image
+        reader.onload = function(e) {
+            const preview = document.getElementById("image-preview");
+            preview.src = e.target.result; // Set image source to uploaded file
+            preview.style.display = "block"; // Show the image
+        };
+        reader.readAsDataURL(file); // Convert file to base64 URL
+    }
+}
+
+
     </script>
 
 </body>

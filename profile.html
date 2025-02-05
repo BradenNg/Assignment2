@@ -21,6 +21,16 @@
             min-height: 100vh;
         }
 
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
         .main-content {
             flex: 1;
             display: flex;
@@ -136,6 +146,7 @@
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
+            color: #ffff
         }
 
         .section-box {
@@ -147,7 +158,7 @@
 
         .section-box p {
             font-size: 1em;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 15px; /* Increased gap between reviews */
             padding-bottom: 10px; /* Added padding for extra spacing */
             border-bottom: 1px solid #ddd; /* Light separator for readability */
@@ -178,10 +189,33 @@
             font-size: 14px;
         }
 
+        .loyalty-points {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            max-width: 300px;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #FF8A65;
+            transition: width 0.5s ease-in-out;
+        }
+
+
         /* FOOTER */
         footer {
-            background: #8D6E63; /* Warm brown background */
-            color: #fff; /* White text */
+            background: #ffffff; /* Warm brown background */
+            color: #000000; /* White text */
             padding: 20px 40px;
             text-align: left;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
@@ -260,13 +294,18 @@
             margin-top: 20px;
             text-align: center;
             font-size: 0.9em;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
             padding-top: 10px;
             font-weight: 500;
         }
     </style>
 </head>
 <body>
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="209022_small.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <header>
         <div class="logo">
@@ -276,7 +315,6 @@
             <a href="index.html" id="home-link">
                 <div id="home-animation" style="width: 50px; height: 50px;"></div>
             </a>
-            <a href="index.html">Home</a>
             <a href="sell.html">Sell</a>
             <a href="about.html">About</a>
             <a href="support.html">Support</a>
@@ -290,6 +328,13 @@
 
     <div class="main-content">
         <div class="profile-header">
+            <div class="loyalty-points">
+                <h3>Loyalty Points: <span id="points">0</span></h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <p>Earn <b>500 points</b> to unlock a reward!</p>
+            </div>
             <img src="latest.png" alt="Profile Picture">
             <h2>Seong Gi-hun</h2>
             <p>SeongGi-hun@mokesell.com</p>
@@ -326,6 +371,22 @@
             </div>
         </div>
         
+
+        <div class="section-container">
+            <div class="section-title">Followed Sellers</div>
+            <div class="section-box" id="followed-sellers">
+                <p>No followed sellers yet.</p>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <div class="section-title">Recent Chats</div>
+            <div class="section-box" id="recent-chats">
+                <p>No recent chats.</p>
+            </div>
+        </div>
+        
+        
     </div>
 
     <footer>
@@ -355,5 +416,47 @@
         </div>
     </footer>
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Sample data (Replace with database/API later)
+            let followedSellers = JSON.parse(localStorage.getItem("followedSellers")) || [
+                { name: "Jordan Kicks", link: "shop.html" },
+                { name: "Sneaker Hub", link: "shop.html" }
+            ];
+            let loyaltyPoints = parseInt(localStorage.getItem("loyaltyPoints")) || 230;
+            let recentChats = JSON.parse(localStorage.getItem("recentChats")) || [
+                { name: "Seller1", link: "chat.html" },
+                { name: "Seller2", link: "chat.html" }
+            ];
+            let supportTickets = JSON.parse(localStorage.getItem("supportTickets")) || [
+                { title: "Order Delay", status: "Pending", date: "2024-02-04" },
+                { title: "Payment Issue", status: "Resolved", date: "2024-01-30" }
+            ];
+        
+            // Load Followed Sellers
+            const sellersContainer = document.getElementById("followed-sellers");
+            sellersContainer.innerHTML = followedSellers.length
+                ? followedSellers.map(seller => `<p><a href="${seller.link}">${seller.name}</a></p>`).join("")
+                : "<p>No followed sellers yet.</p>";
+        
+            // Load Loyalty Points
+            document.getElementById("points").textContent = loyaltyPoints;
+            document.getElementById("progress-bar").style.width = `${(loyaltyPoints / 500) * 100}%`;
+        
+            // Load Recent Chats
+            const chatContainer = document.getElementById("recent-chats");
+            chatContainer.innerHTML = recentChats.length
+                ? recentChats.map(chat => `<p><a href="${chat.link}">${chat.name}</a></p>`).join("")
+                : "<p>No recent chats.</p>";
+        
+            // Load Support Tickets
+            const ticketsContainer = document.getElementById("support-tickets");
+            ticketsContainer.innerHTML = supportTickets.length
+                ? supportTickets.map(ticket => `<p>${ticket.title} - <b>${ticket.status}</b> (${ticket.date})</p>`).join("")
+                : "<p>No support tickets submitted.</p>";
+        });
+        </script>
+        
 </body>
 </html>

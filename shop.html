@@ -13,9 +13,14 @@
             font-family: 'Inter', sans-serif;
         }
 
-        body {
-            background-color: #F5F5F5;
-            color: #333;
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
         /* Header */
@@ -97,242 +102,237 @@
         }
 
         .new-in-container {
-    position: relative;
-    width: 550px;  /* Slightly smaller for better fit */
-    height: 450px; /* Adjust height */
-    margin: 30px auto;
-    border: 2px solid #FF8A65;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    margin-bottom: 40px;
-    background: white;
-}
+            position: relative;
+            width: 550px;  /* Slightly smaller for better fit */
+            height: 450px; /* Adjust height */
+            margin: 30px auto;
+            border: 2px solid #FF8A65;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            background: white;
+        }
 
-.new-in-container img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
+        .new-in-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
 
-.new-in-container img.active {
-    opacity: 1;
-}
+        .new-in-container img.active {
+            opacity: 1;
+        }
 
-/* Shoe Cards Section */
-/* Shoe Containers */
-.new-shoes-container, .second-hand-shoes-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Max 5 shoes per row */
-    gap: 80px; /* Keep good spacing */
-    padding: 20px;
-    justify-content: center; /* Ensures items are centered */
-    align-items: center;
-}
+        /* Shoe Cards Section */
+        /* Shoe Containers */
+        .new-shoes-container, .second-hand-shoes-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* Max 5 shoes per row */
+            gap: 80px; /* Keep good spacing */
+            padding: 20px;
+            justify-content: center; /* Ensures items are centered */
+            align-items: center;
+        }
 
-/* Center last row if it has fewer than 5 items */
-@media (min-width: 768px) {
-    .new-shoes-container::after,
-    .second-hand-shoes-container::after {
-        content: "";
-        display: block;
-        width: 100%;
-        grid-column: span 5; /* Ensures full width for alignment */
-    }
-}
+        /* Center last row if it has fewer than 5 items */
+        @media (min-width: 768px) {
+            .new-shoes-container::after,
+            .second-hand-shoes-container::after {
+                content: "";
+                display: block;
+                width: 100%;
+                grid-column: span 5; /* Ensures full width for alignment */
+            }
+        }
 
+        /* Second-Hand Shoes Styling */
+        .second-hand-shoes-container .shoe-card {
+            border: 2px solid #8D6E63; /* Contrast border color */
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            width: 260px;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            flex: 0 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
 
+        .second-hand-shoes-container .shoe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
 
+        /* Shoe Images */
+        .second-hand-shoes-container .shoe-card img {
+            width: 100%;
+            height: 200px; 
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
 
+        /* Hover effect on image */
+        .second-hand-shoes-container .shoe-card:hover img {
+            transform: scale(1.05);
+        }
 
+        /* Shoe Title */
+        .second-hand-shoes-container .shoe-card h3 {
+            font-size: 18px;
+            color: #8D6E63; /* Darker brown for second-hand theme */
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-/* Second-Hand Shoes Styling */
-.second-hand-shoes-container .shoe-card {
-    border: 2px solid #8D6E63; /* Contrast border color */
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    width: 260px;
-    padding: 20px;
-    text-align: center;
-    background: #fff;
-    flex: 0 0 auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-}
+        /* Seller Info */
+        .second-hand-shoes-container .seller {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
 
-.second-hand-shoes-container .shoe-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
+        .second-hand-shoes-container .seller span {
+            font-weight: bold;
+            color: #8D6E63; /* Darker contrast */
+        }
 
-/* Shoe Images */
-.second-hand-shoes-container .shoe-card img {
-    width: 100%;
-    height: 200px; 
-    border-radius: 12px;
-    object-fit: cover;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease-in-out;
-}
+        /* Price Tag */
+        .second-hand-shoes-container .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #8D6E63;
+            margin-bottom: 15px;
+        }
 
-/* Hover effect on image */
-.second-hand-shoes-container .shoe-card:hover img {
-    transform: scale(1.05);
-}
+        /* Buy Now Button */
+        .second-hand-shoes-container .buy-now {
+            background: #FFD54F; /* Lighter contrast color */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
 
-/* Shoe Title */
-.second-hand-shoes-container .shoe-card h3 {
-    font-size: 18px;
-    color: #8D6E63; /* Darker brown for second-hand theme */
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Seller Info */
-.second-hand-shoes-container .seller {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-}
-
-.second-hand-shoes-container .seller span {
-    font-weight: bold;
-    color: #8D6E63; /* Darker contrast */
-}
-
-/* Price Tag */
-.second-hand-shoes-container .price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #8D6E63;
-    margin-bottom: 15px;
-}
-
-/* Buy Now Button */
-.second-hand-shoes-container .buy-now {
-    background: #FFD54F; /* Lighter contrast color */
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-    width: 100%;
-}
-
-.second-hand-shoes-container .buy-now:hover {
-    background: #E0B02B;
-    transform: scale(1.05);
-}
+        .second-hand-shoes-container .buy-now:hover {
+            background: #E0B02B;
+            transform: scale(1.05);
+        }
 
 
-/* Shoe Cards */
-.shoe-card {
-    border: 2px solid #FF8A65;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    width: 260px;
-    padding: 20px;
-    text-align: center;
-    background: #fff;
-    flex: 0 0 auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-}
+        /* Shoe Cards */
+        .shoe-card {
+            border: 2px solid #FF8A65;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            width: 260px;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            flex: 0 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
 
-.shoe-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
+        .shoe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
 
-/* Shoe Images */
-.shoe-card img {
-    width: 100%;
-    height: 200px; /* Make images uniform */
-    border-radius: 12px;
-    object-fit: cover;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease-in-out;
-}
+        /* Shoe Images */
+        .shoe-card img {
+            width: 100%;
+            height: 200px; /* Make images uniform */
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
 
-/* Hover effect on image */
-.shoe-card:hover img {
-    transform: scale(1.05);
-}
+        /* Hover effect on image */
+        .shoe-card:hover img {
+            transform: scale(1.05);
+        }
 
-/* Shoe Title */
-.shoe-card h3 {
-    font-size: 18px;
-    color: #8D6E63;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+        /* Shoe Title */
+        .shoe-card h3 {
+            font-size: 18px;
+            color: #8D6E63;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-/* Seller Info */
-.seller {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
-}
+        /* Seller Info */
+        .seller {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
 
-.seller span {
-    font-weight: bold;
-    color: #FF8A65;
-}
+        .seller span {
+            font-weight: bold;
+            color: #FF8A65;
+        }
 
-/* Price Tag */
-.price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #FF8A65;
-    margin-bottom: 15px;
-}
+        /* Price Tag */
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FF8A65;
+            margin-bottom: 15px;
+        }
 
-/* Buy Now Button */
-.buy-now {
-    background: #FF8A65;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-    width: 100%;
-}
+        /* Buy Now Button */
+        .buy-now {
+            background: #FF8A65;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
 
-.buy-now:hover {
-    background: #cc6749;
-    transform: scale(1.05);
-}
+        .buy-now:hover {
+            background: #cc6749;
+            transform: scale(1.05);
+        }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .new-in-container {
-        width: 90%;
-        height: 400px;
-    }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .new-in-container {
+                width: 90%;
+                height: 400px;
+            }
 
-    .shoe-card {
-        width: 90%;
-        max-width: 300px;
-    }
-}
+            .shoe-card {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
 
-@media (max-width: 480px) {
-    .shoe-card {
-        width: 100%;
-    }
-}
+        @media (max-width: 480px) {
+            .shoe-card {
+                width: 100%;
+            }
+        }
 
 
         .search-container {
@@ -387,6 +387,11 @@
 </head>
 <body>
 
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="114056-700074067.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <header>
         <div class="logo">
             <h2>MokeSell</h2>
@@ -395,12 +400,11 @@
             <a href="index.html" id="home-link">
                 <div id="home-animation" style="width: 50px; height: 50px;"></div>
             </a>
-            <a href="index.html">Home</a>
             <a href="sell.html">Sell</a>
-            <a href="#">About</a>
-            <a href="#">Support</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
             <a href="chat.html">Chat</a>
-            <a href="#">Profile</a>
+            <a href="profile.html">Profile</a>
         </nav>
 
         <a href="shop.html" class="shop-now">Shop Now</a>
