@@ -97,30 +97,61 @@
 
         /* Pushes content to expand and footer stays at bottom */
         .main-content {
-            flex: 1;
+            flex: 1; /* Takes remaining space, pushing the footer down */
             display: flex;
-            justify-content: center;  /* Centers horizontally */
-            align-items: center;  /* Centers vertically */
-            padding: 80px 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px; /* Adjust padding if needed */
         }
 
 
         /* Make the support form container longer */
         .support-container {
-            max-width: 800px;
+            max-width: 600px;
             background: white;
-            padding: 50px; /* Increase padding */
+            padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin: auto;
+            margin: auto; /* Ensures it's centered */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 25px; /* Add spacing between children */
+            gap: 20px;
         }
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) { /* Laptops & tablets */
+            .support-container {
+                max-width: 500px;
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) { /* Tablets */
+            .support-container {
+                max-width: 90%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) { /* Mobile */
+            .support-container {
+                max-width: 95%;
+                padding: 15px;
+            }
+
+            .category-options {
+                flex-direction: column; /* Stack buttons on mobile */
+                gap: 10px;
+            }
+
+            .category-btn {
+                width: 100%;
+            }
+        }
+
 
         .form-group {
             margin-bottom: 25px; /* Add spacing between form groups */
@@ -189,12 +220,20 @@
 
         input, textarea {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
+            padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 6px;
+            font-size: 14px;
         }
+
+        .send-btn {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            width: 100%;
+        }
+
 
         textarea {
             resize: vertical;
@@ -262,12 +301,13 @@
 
         /* FOOTER */
         footer {
-            background: #ffffff; /* Warm brown background */
-            color: #000000; /* White text */
+            background: #ffffff;
+            color: #000000;
             padding: 20px 40px;
             text-align: left;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
-            width: 100%; /* Full width */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            position: relative; /* Ensure it doesn't overlap */
         }
 
         /* Footer content container */
@@ -361,14 +401,14 @@
                 <h2>MokeSell</h2>
             </div>
             <nav>
-                <a href="index.html" id="home-link">
+                <a href="#" id="home-link">
                     <div id="home-animation" style="width: 50px; height: 50px;"></div>
                 </a>
                 <a href="sell.html">Sell</a>
-                <a href="about.html">About</a>
-                <a href="support.html">Support</a>
                 <a href="chat.html">Chat</a>
                 <a href="profile.html">Profile</a>
+                <a href="about.html">About</a>
+                <a href="support.html">Support</a>
             </nav>
             <div class="nav-buttons">
             <a href="shop.html" class="shop-now">Shop Now</a>

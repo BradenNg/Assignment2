@@ -86,7 +86,7 @@
         h1 {
             font-size: 36px;
             margin-bottom: 30px;
-            color: #8D6E63;
+            color: #ffffff;
         }
 
         .new-in-container {
@@ -99,19 +99,6 @@
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px; /* Reduce bottom margin */
-        }
-
-        .new-in-container {
-            position: relative;
-            width: 550px;  /* Slightly smaller for better fit */
-            height: 450px; /* Adjust height */
-            margin: 30px auto;
-            border: 2px solid #FF8A65;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            margin-bottom: 40px;
-            background: white;
         }
 
         .new-in-container img {
@@ -128,18 +115,24 @@
 
         .new-in-container img.active {
             opacity: 1;
+            z-index: 1;
+        }
+
+
+        .new-in-container img.active {
+            opacity: 1;
         }
 
         /* Shoe Cards Section */
         /* Shoe Containers */
         .new-shoes-container, .second-hand-shoes-container {
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* Max 5 shoes per row */
-            gap: 80px; /* Keep good spacing */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust columns dynamically */
+            gap: 30px; /* Reduce gap for better spacing */
             padding: 20px;
-            justify-content: center; /* Ensures items are centered */
-            align-items: center;
+            justify-content: center;
         }
+
 
         /* Center last row if it has fewer than 5 items */
         @media (min-width: 768px) {
@@ -382,13 +375,66 @@
             height: 40px;
         }
 
+        @media (max-width: 768px) {
+            header nav {
+                flex-wrap: wrap;
+                gap: 20px; /* Reduce spacing */
+            }
+
+            .shop-now {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            header nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px; /* Reduce title size */
+            }
+
+            .buy-now {
+                font-size: 14px; /* Make buttons smaller */
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+                width: 90%;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .search-container select, 
+            .search-container input {
+                width: 100%;
+            }
+        }
+
+
+
+
 
     </style>
 </head>
 <body>
 
     <video autoplay loop muted playsinline id="bg-video">
-        <source src="114056-700074067.mp4" type="video/mp4">
+        <source src="145040-785786195.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -397,14 +443,14 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="index.html" id="home-link">
+            <a href="#" id="home-link">
                 <div id="home-animation" style="width: 50px; height: 50px;"></div>
             </a>
             <a href="sell.html">Sell</a>
-            <a href="about.html">About</a>
-            <a href="support.html">Support</a>
             <a href="chat.html">Chat</a>
             <a href="profile.html">Profile</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
         </nav>
 
         <a href="shop.html" class="shop-now">Shop Now</a>
@@ -427,25 +473,7 @@
             <option value="500+">$500+</option>
         </select>
     
-        <!-- Min Price Dropdown -->
-        <select id="min-price">
-            <option value="">Min Price</option>
-            <option value="0">$0</option>
-            <option value="50">$50</option>
-            <option value="100">$100</option>
-            <option value="200">$200</option>
-            <option value="500">$500</option>
-        </select>
-    
-        <!-- Max Price Dropdown -->
-        <select id="max-price">
-            <option value="">Max Price</option>
-            <option value="50">$50</option>
-            <option value="100">$100</option>
-            <option value="200">$200</option>
-            <option value="500">$500</option>
-            <option value="1000">$1000+</option>
-        </select>
+        <input type="text" id="search-name" placeholder="Search Shoe Name">
     
         <!-- Location Input -->
         <input type="text" id="location" placeholder="Location">
@@ -466,7 +494,7 @@
     
         <h1>New Shoes</h1>
         <div class="new-shoes-container">
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="new" data-price="0">
                 <img src="pexels-mnzoutfits-1598508.jpg" alt="Golden Vans">
                 <h3>Golden Vans</h3>
                 <p class="seller">Listed by: <span>John Doe</span></p>
@@ -474,7 +502,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
         
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="new" data-price="90">
                 <img src="pexels-mnzoutfits-1670766.jpg" alt="Sleek White Adidas">
                 <h3>Sleek White Adidas</h3>
                 <p class="seller">Listed by: <span>Jane Smith</span></p>
@@ -482,7 +510,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
         
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="new" data-price="150">
                 <img src="pexels-monicore-134064.jpg" alt="Elegant Beige Heels">
                 <h3>Elegant Beige Heels</h3>
                 <p class="seller">Listed by: <span>Michael Lee</span></p>
@@ -490,7 +518,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
         
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="new" data-price="80">
                 <img src="pexels-mstudio-360817-1240892.jpg" alt="Red Classic Converse">
                 <h3>Red Classic Converse</h3>
                 <p class="seller">Listed by: <span>Emily Carter</span></p>
@@ -498,7 +526,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
         
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="new" data-price="70">
                 <img src="pexels-jddaniel-2385477.jpg" alt="Air Jordan Retro">
                 <h3>Air Jordan Retro</h3>
                 <p class="seller">Listed by: <span>Mike Johnson</span></p>
@@ -506,7 +534,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
         
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="new" data-price="65">
                 <img src="pexels-micaasato-1580267.jpg" alt="Vibrant Pattern Sneakers">
                 <h3>Vibrant Pattern Sneakers</h3>
                 <p class="seller">Listed by: <span>Anna Kim</span></p>
@@ -514,18 +542,43 @@
                 <button class="buy-now">Buy Now</button>
             </div>
         
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="new" data-price="95">
                 <img src="pexels-mnzoutfits-1619652.jpg" alt="Classic Green Adidas">
                 <h3>Classic Green Adidas</h3>
                 <p class="seller">Listed by: <span>David Wong</span></p>
                 <p class="price">$95</p>
                 <button class="buy-now">Buy Now</button>
             </div>
+
+            <div class="shoe-card" data-category="new" data-price="110">
+                <img src="adidas_header.jpg" alt="Recycled Adidas">
+                <h3>Recycled Adidas</h3>
+                <p class="seller">Listed by: <span>Lisa Green</span></p>
+                <p class="price">$110</p>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            
+            <div class="shoe-card" data-category="new" data-price="130">
+                <img src="photo-1542291026-7eec264c27ff.jpg" alt="Nike Flyknit">
+                <h3>Nike Flyknit</h3>
+                <p class="seller">Listed by: <span>Tom Black</span></p>
+                <p class="price">$130</p>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            
+            <div class="shoe-card" data-category="new" data-price="125">
+                <img src="runningshoes-2048px-09522.jpg" alt="Altra Runners">
+                <h3>Altra Runners</h3>
+                <p class="seller">Listed by: <span>Emma White</span></p>
+                <p class="price">$125</p>
+                <button class="buy-now">Buy Now</button>
+            </div>
+            
         </div>
         
         <h1>Second-Hand Shoes</h1>
         <div class="second-hand-shoes-container">
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="second-hand" data-price="40" data-location="punggol">
                 <img src="pexels-chuck-3261069.jpg" alt="Vintage Converse">
                 <h3>Vintage Converse</h3>
                 <p class="seller">Seller: <span>Alex Johnson</span></p>
@@ -533,7 +586,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
 
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="second-hand" data-price="50" data-location="sengkang">
                 <img src="pexels-goumbik-292999.jpg" alt="Classic Leather Shoes">
                 <h3>Classic Leather Shoes</h3>
                 <p class="seller">Seller: <span>Maria Lopez</span></p>
@@ -541,7 +594,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
 
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="second-hand" data-price="15" data-location="buangkok">
                 <img src="pexels-joao-vitor-heinrichs-862489-1756086.jpg" alt="Beach Flip-Flops">
                 <h3>Beach Flip-Flops</h3>
                 <p class="seller">Seller: <span>James Carter</span></p>
@@ -549,7 +602,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
 
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="second-hand" data-price="60" data-location="hougang">
                 <img src="pexels-mnzoutfits-1599005.jpg" alt="Retro Adidas Sneakers">
                 <h3>Retro Adidas Sneakers</h3>
                 <p class="seller">Seller: <span>Sarah Williams</span></p>
@@ -557,7 +610,7 @@
                 <button class="buy-now">Buy Now</button>
             </div>
 
-            <div class="shoe-card">
+            <div class="shoe-card" data-category="second-hand" data-price="80" data-location="kovan">
                 <img src="pexels-pixabay-40662.jpg" alt="Rugged Hiking Boots">
                 <h3>Rugged Hiking Boots</h3>
                 <p class="seller">Seller: <span>Mark Brown</span></p>
@@ -570,17 +623,21 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
     <script>
-        // Image Slideshow Functionality for "New In"
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
+        document.addEventListener("DOMContentLoaded", function () {
+    let slides = document.querySelectorAll('.new-in-container img');
+    let currentSlide = 0;
 
-        function showNextSlide() {
+    if (slides.length > 0) {
+        slides[currentSlide].classList.add('active');
+
+        setInterval(() => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }
+        }, 2000); // Change every 2 seconds
+    }
+});
 
-        setInterval(showNextSlide, 2000); // Change image every 2 seconds
 
         document.addEventListener("DOMContentLoaded", function () {
         lottie.loadAnimation({
@@ -601,36 +658,45 @@
     });
 
     function searchProducts() {
-    const category = document.getElementById('filter-category').value;
+    const category = document.getElementById('filter-category').value.toLowerCase();
     const priceRange = document.getElementById('price-range').value;
-    const minPrice = parseInt(document.getElementById('min-price').value) || 0;
-    const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
+    const searchName = document.getElementById('search-name').value.toLowerCase();
     const location = document.getElementById('location').value.toLowerCase();
 
     const allShoes = document.querySelectorAll('.shoe-card');
 
     allShoes.forEach(shoe => {
+        const shoeCategory = shoe.getAttribute('data-category').toLowerCase();
         const shoeName = shoe.querySelector('h3').innerText.toLowerCase();
         const shoePrice = parseInt(shoe.getAttribute('data-price')) || 0;
-        const shoeLocation = shoe.getAttribute('data-location').toLowerCase();
+        const shoeLocation = shoe.getAttribute('data-location') ? shoe.getAttribute('data-location').toLowerCase() : "";
 
-        let matchesPrice = shoePrice >= minPrice && shoePrice <= maxPrice;
-
+        let matchesCategory = (category === "all" || shoeCategory === category);
+        let matchesName = searchName === "" || shoeName.includes(searchName);
+        
+        // Handle price range dropdown separately
+        let matchesPrice = true;
         if (priceRange) {
             const [rangeMin, rangeMax] = priceRange.split('-');
-            matchesPrice = shoePrice >= parseInt(rangeMin) && (rangeMax === '+' || shoePrice <= parseInt(rangeMax));
+            matchesPrice = shoePrice >= parseInt(rangeMin) && (rangeMax === "+" || shoePrice <= parseInt(rangeMax));
         }
 
-        if (
-            matchesPrice &&
-            (location === "" || shoeLocation.includes(location))
-        ) {
+        // Only filter by location if it's a second-hand shoe
+        let matchesLocation = true;  
+        if (shoeCategory === "second-hand" && location !== "") {
+            matchesLocation = shoeLocation.includes(location);
+        }
+
+        // Show or hide shoe based on all conditions
+        if (matchesCategory && matchesName && matchesPrice && matchesLocation) {
             shoe.style.display = "block";
         } else {
             shoe.style.display = "none";
         }
     });
-};
+}
+
+
 
 
     function filterProducts() {
