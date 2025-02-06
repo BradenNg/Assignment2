@@ -6,55 +6,77 @@
     <title>Payment | MokeSell</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Apply the same font as the other pages */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f5f5f5;
             margin: 0;
             padding: 20px;
+            color: #333;
         }
 
+        /* Container */
         .container {
             max-width: 800px;
             margin: auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Headings */
         h1, h2 {
-            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
             color: #8D6E63;
+            text-align: center;
         }
-
         .form-group {
             margin-bottom: 15px;
         }
 
         label {
-            display: block;
             font-weight: 600;
+            font-size: 16px;
             margin-bottom: 5px;
+            display: block;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
         }
 
         .order-summary {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
+            background: #FFF3E0; /* Light orange background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        
+        /* Order Summary Title */
+        .order-summary h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF8A65; /* Change text color to orange */
+            text-align: center;
+        }
+
+
 
         .order-item {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .order-item img {
@@ -65,6 +87,7 @@
             border-radius: 5px;
         }
 
+       /* Payment Button */
         .pay-now-btn {
             background-color: #FF8A65;
             color: white;
@@ -73,6 +96,7 @@
             width: 100%;
             border-radius: 10px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
         }
 
@@ -80,22 +104,151 @@
             background-color: #cc6749;
         }
 
-        .total-price {
-            font-weight: bold;
-            font-size: 18px;
-            color: #8D6E63;
+        /* Total Price */
+        .total-price-box {
             text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
         }
+
+        .shoe-card {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .shoe-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .shoe-card::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(255, 138, 101, 0.1);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .shoe-card:hover::before {
+        opacity: 1;
+    }
+
+    .shoe-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .shoe-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .shoe-card h3 {
+        margin: 15px 0 10px;
+        color: #8D6E63;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #FF8A65;
+        font-size: 16px;
+    }
+
+    .buy-now {
+        background-color: #FF8A65;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        margin-top: auto;
+    }
+
+    .buy-now:hover {
+        background-color: #cc6749;
+        transform: scale(1.05);
+    }
+
+    .order-summary{
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .order-items-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .order-item {
+        display: flex;
+        align-items: center;
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .order-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .order-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 8px;
+    }
+
+    .order-details {
+        flex: 1;
+    }
+
+    .total-price-box {
+        text-align: right;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+       
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Payment Details</h1>
 
-        <div class="order-summary" id="orderSummary">
+        <div class="order-summary">
             <h2>Order Summary</h2>
-            <p>No items in your cart.</p>
+            <div id="order-items-container"></div>
+            <div class="total-price-box">
+                <p><strong>Total Price: </strong> <span id="total-price">$0.00</span></p>
+            </div>
         </div>
+        
 
         <div class="form-group">
             <label for="paymentMethod">Payment Method</label>
@@ -126,46 +279,48 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const orderSummary = document.getElementById('orderSummary');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const orderItemsContainer = document.getElementById('order-items-container');
+    const totalPriceElement = document.getElementById('total-price');
 
-            if (cart.length > 0) {
-                orderSummary.innerHTML = '<h2>Order Summary</h2>';
-                let total = 0;
+    let total = 0;
 
-                cart.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.classList.add('order-item');
-                    itemElement.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}">
-                        <div>
-                            <p><strong>${item.name}</strong></p>
-                            <p>Quantity: ${item.quantity}</p>
-                            <p>Price: $${item.price}</p>
-                        </div>
-                    `;
+    if (cart.length > 0) {
+        orderItemsContainer.innerHTML = ''; // Clear previous content
 
-                    orderSummary.appendChild(itemElement);
-                    total += item.price * item.quantity;
-                });
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('order-item');
 
-                const totalElement = document.createElement('p');
-                totalElement.classList.add('total-price');
-                totalElement.textContent = `Total Price: $${total.toFixed(2)}`;
-                orderSummary.appendChild(totalElement);
-            }
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="order-details">
+                    <p><strong>${item.name}</strong></p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+            `;
 
-            document.getElementById('payNowBtn').addEventListener('click', function () {
-                alert('Payment successful! Thank you for your purchase.');
-                localStorage.removeItem('cart');
-                window.location.href = 'index.html'; // Redirect to homepage after payment
-            });
+            orderItemsContainer.appendChild(itemElement);
+            total += item.price * item.quantity;
         });
 
-        // Redirect from cart to payment
-        if (window.location.search.includes('checkout=true')) {
-            window.scrollTo(0, document.body.scrollHeight);
+        totalPriceElement.textContent = `$${total.toFixed(2)}`;
+    } else {
+        orderItemsContainer.innerHTML = '<p>No items in your cart.</p>';
+    }
+
+    // Handle payment button click
+    document.getElementById('payNowBtn').addEventListener('click', function () {
+        if (cart.length === 0) {
+            alert("Your cart is empty! Add items before proceeding.");
+            return;
         }
+        alert('Payment successful! Thank you for your purchase.');
+        localStorage.removeItem('cart'); // Clear cart after successful payment
+        window.location.href = 'index.html'; // Redirect to homepage after payment
+    });
+});
     </script>
 </body>
 </html>
