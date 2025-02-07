@@ -5,6 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | MokeSell</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Firebase SDKs -->
+    <script type="module" defer>
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
+            authDomain: "mokesellofficial.firebaseapp.com",
+            projectId: "mokesellofficial",
+            storageBucket: "mokesellofficial.firebasestorage.app",
+            messagingSenderId: "614622657784",
+            appId: "1:614622657784:web:30fab8c771c01b47254f0d"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Handle signup form submission
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("signup-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Get user input values
+                const name = document.getElementById("full-name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value.trim();
+
+                // Validate fields
+                if (name === "" || email === "" || password.length < 6) {
+                    alert("Please fill out all fields correctly. Password must be at least 6 characters.");
+                    return;
+                }
+
+                // Create user in Firebase Auth
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        console.log("User Registered:", userCredential.user);
+                        alert("Account created successfully!");
+                        window.location.href = "shop.html"; // Redirect to shop page after successful signup
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error.message);
+                        alert(error.message); // Show Firebase error message
+                    });
+            });
+
+            // Load country list from API
+            fetch("https://restcountries.com/v3.1/all")
+                .then(response => response.json())
+                .then(data => {
+                    const countrySelect = document.getElementById("country");
+                    data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+                    data.forEach(country => {
+                        const option = document.createElement("option");
+                        option.value = country.name.common;
+                        option.textContent = country.name.common;
+                        countrySelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error("Error loading countries:", error));
+
+            // Return to home button functionality
+            const returnHomeBtn = document.getElementById("return-home-btn");
+            returnHomeBtn.addEventListener("click", () => {
+                returnHomeBtn.innerText = "Returning...";
+                setTimeout(() => {
+                    window.location.href = "index.html"; // Redirect to home page
+                }, 1000);
+            });
+        });
+    </script>
+
     <style>
         :root {
             --primary-color: #8D6E63;
@@ -32,22 +107,21 @@
 
         .container {
             display: flex;
-            flex-direction: row; /* Side-by-side layout */
+            flex-direction: row;
             width: 90%;
-            max-width: 1200px; /* Match login page */
+            max-width: 1200px;
             background: #fff;
             border-radius: 15px;
             overflow: hidden;
             padding: 40px;
-            height: auto; /* Allow natural expansion */
+            height: auto;
             justify-content: center;
             margin-top: 50px;
         }
 
-
         .image-container {
             width: 50%;
-            height: 450px; /* Same height as login */
+            height: 450px;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
@@ -61,24 +135,22 @@
             position: absolute;
             top: 0;
             left: 0;
-            opacity: 0; /* Hide all images by default */
+            opacity: 0;
             transition: opacity 1s ease-in-out;
         }
 
         .image-container img.active {
-            opacity: 1; /* Only show the active image */
+            opacity: 1;
         }
-
 
         .signup-container {
             width: 50%;
-            max-width: 500px; /* Matches login page */
+            max-width: 500px;
             padding: 30px;
             text-align: center;
             margin: auto;
             margin-top: 50px;
         }
-
 
         .signup-container h1 {
             font-size: 32px;
@@ -86,8 +158,7 @@
             margin-bottom: 20px;
         }
 
-        .signup-container input, 
-        .signup-container select {
+        .signup-container input, .signup-container select {
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
@@ -98,8 +169,7 @@
             transition: border 0.3s ease;
         }
 
-        .signup-container input:focus, 
-        .signup-container select:focus {
+        .signup-container input:focus, .signup-container select:focus {
             border-color: var(--primary-color);
         }
 
@@ -117,95 +187,42 @@
         }
 
         .signup-container button:hover {
-            background: var(--secondary-color);
-        }
-
-        .signup-container p {
-            font-size: 16px;
-            color: var(--text-color);
-            margin-top: 10px;
-        }
-
-        .signup-container p a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .signup-container p a:hover {
-            color: var(--accent-color);
+            background: var(--accent-color);
         }
 
         .return-home-btn {
             position: fixed;
-            top: 20px;  /* Positioning to the top */
-            left: 20px; /* Positioning to the left */
-            padding: 10px 25px;  /* Compact size */
-            background: linear-gradient(135deg, #FF8A65, #FFD54F); /* Gradient background */
+            top: 20px;
+            left: 20px;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #FF8A65, #FFD54F);
             color: #fff;
-            font-size: 16px; /* Smaller font size */
+            font-size: 16px;
             font-weight: 600;
             border: none;
-            border-radius: 30px; /* Rounded button */
+            border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease, transform 0.2s ease-in-out;
-            z-index: 1000; /* Ensures it stays above other elements */
+            z-index: 1000;
             outline: none;
         }
 
-        /* Hover effect */
         .return-home-btn:hover {
-            transform: translateY(-2px); /* Slight lift on hover */
+            transform: translateY(-2px);
             background: linear-gradient(135deg, #FFD54F, #FF8A65);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Active click effect */
         .return-home-btn:active {
             transform: scale(0.95);
-            background: #8D6E63; /* Earthy brown accent */
+            background: #8D6E63;
         }
-
-        /* Quote text styling */
-        .quote-text {
-            position: fixed;
-            top: 60px;  /* Positioned below the button */
-            left: 20px;
-            font-size: 12px;
-            color: #8D6E63;
-            font-style: italic;
-            max-width: 250px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            z-index: 1000;
-        }
-
-        @media (max-width: 1366px) {
-            .container {
-                width: 95%;
-                max-width: 1000px;
-                flex-direction: column; /* Stack items */
-                text-align: center;
-                padding: 20px;
-            }
-
-            .image-container {
-                width: 100%;
-                height: 300px; /* Reduce height */
-            }
-
-            .signup-container {
-                max-width: 100%;
-                width: 90%;
-                padding: 20px;
-            }
-        }
-
-
     </style>
 </head>
 <body>
+
+    <button id="return-home-btn" class="return-home-btn">← Return to Home</button>
 
     <div class="container">
         <div class="image-container">
@@ -216,85 +233,15 @@
 
         <div class="signup-container">
             <h1>Create Your Account</h1>
-
             <form id="signup-form">
                 <input type="text" id="full-name" placeholder="Full Name" required>
                 <input type="email" id="email" placeholder="Email Address" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <select id="country" required>
-                    <option value="">Select Country</option>
-                </select>
+                <input type="password" id="password" placeholder="Password (min. 6 chars)" required>
+                <select id="country" required><option value="">Select Country</option></select>
                 <button type="submit">Sign Up</button>
             </form>
-
-            <p>Already have an account? <a href="login.html">Log in here</a></p>
         </div>
-
-        <button id="return-home-btn" class="return-home-btn">← Return to Home</button>
-        <p id="quote-display" class="quote-text"></p>
-
-        </div>
-
-    <script>
-        // Image slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        document.addEventListener("DOMContentLoaded", () => {
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.image-container img');
-
-            function showNextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length; // Loop back to first image
-                slides[currentSlide].classList.add('active');
-            }
-
-            setInterval(showNextSlide, 3000); // Change image every 3 seconds
-        });
-
-
-        // Load country list from API
-        fetch("https://restcountries.com/v3.1/all")
-            .then(response => response.json())
-            .then(data => {
-                const countrySelect = document.getElementById("country");
-                data.sort((a, b) => a.name.common.localeCompare(b.name.common));
-                data.forEach(country => {
-                    const option = document.createElement("option");
-                    option.value = country.name.common;
-                    option.textContent = country.name.common;
-                    countrySelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error("Error loading countries:", error));
-
-        // Form validation
-        document.getElementById("signup-form").addEventListener("submit", (e) => {
-            e.preventDefault();
-            const name = document.getElementById("full-name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const password = document.getElementById("password").value.trim();
-
-            if (name === "" || email === "" || password.length < 6) {
-                alert("Please fill out all fields correctly.");
-                return;
-            }
-
-            alert("Account created successfully!");
-            window.location.href = "shop.html";
-        });
-
-        // Smooth return to home page action
-    const returnHomeBtn = document.getElementById("return-home-btn");
-    returnHomeBtn.addEventListener("click", () => {
-        returnHomeBtn.innerText = "Returning...";
-        setTimeout(() => {
-            window.location.href = "index.html"; // Redirect to home page
-        }, 1000);  // 2 seconds delay for effect
-    });
-
-    </script>
+    </div>
 
 </body>
 </html>

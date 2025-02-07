@@ -76,6 +76,26 @@
             color: white;
         }
 
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            font-size: 22px;
+            text-decoration: none;
+            color: #FF8A65;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 138, 101, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255, 138, 101, 0.3);
+        }
+
         /* Shop Page Content */
         .shop-container {
             max-width: 1200px;
@@ -452,8 +472,12 @@
             <a href="about.html">About</a>
             <a href="support.html">Support</a>
         </nav>
-
-        <a href="shop.html" class="shop-now">Shop Now</a>
+        <div class="nav-buttons">
+            <a href="shop.html" class="shop-now">Shop Now</a>
+            <a href="cart.html" class="cart-icon">
+                🛒
+            </a>
+        </div>
     </header>
 
     <div class="search-container">
@@ -551,7 +575,7 @@
             </div>
 
             <div class="shoe-card" data-category="new" data-price="110">
-                <img src="adidas_header.jpg" alt="Recycled Adidas">
+                <img src="adidas_header.jpeg" alt="Recycled Adidas">
                 <h3>Recycled Adidas</h3>
                 <p class="seller">Listed by: <span>Lisa Green</span></p>
                 <p class="price">$110</p>
@@ -741,43 +765,6 @@
 }
 
 
-// Firebase setup
-const firebaseConfig = {
-    apiKey: "YOUR_FIREBASE_API_KEY",
-    authDomain: "mokesell-24e42.firebaseapp.com",
-    projectId: "mokesell-24e42",
-    storageBucket: "mokesell-24e42.appspot.com",
-    messagingSenderId: "51017912275",
-    appId: "1:51017912275:web:a49e6821aec58b8b362926",
-    measurementId: "G-NEM9WMWGRB"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-// Function to load second-hand shoes from Firebase
-function loadSecondHandShoes() {
-    const shoesContainer = document.getElementById('second-hand-shoes');
-    shoesContainer.innerHTML = '<p>Loading...</p>';
-
-    db.collection("second_hand_shoes").get().then((querySnapshot) => {
-        shoesContainer.innerHTML = '';
-        querySnapshot.forEach((doc) => {
-            const shoe = doc.data();
-            const shoeCard = `
-                <div class="shoe-card">
-                    <img src="${shoe.imageURL}" alt="${shoe.name}">
-                    <h3>${shoe.name}</h3>
-                </div>
-            `;
-            shoesContainer.innerHTML += shoeCard;
-        });
-    }).catch((error) => {
-        shoesContainer.innerHTML = '<p>Error loading shoes.</p>';
-        console.error("Error fetching shoes:", error);
-    });
-}
 
 // Call function on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -828,9 +815,53 @@ document.querySelectorAll('.shoe-card').forEach(card => {
     });
 });
 
+// Firestore Reference
+const db = firebase.firestore();
+
+// Load Listings from Firestore
+async function loadListings() {
+    const listingsContainer = document.querySelector(".second-hand-shoes-container");
+    listingsContainer.innerHTML = '<p>Loading...</p>';
+
+    try {
+        const querySnapshot = await db.collection("listings").orderBy("createdAt", "desc").get();
+        listingsContainer.innerHTML = ""; // Clear existing items
+
+        querySnapshot.forEach((doc) => {
+            const listing = doc.data();
+            const shoeCard = `
+                <div class="shoe-card">
+                    <img src="${listing.images.length > 0 ? listing.images[0] : 'placeholder.jpg'}" alt="${listing.title}">
+                    <h3>${listing.title}</h3>
+                    <p class="seller">Condition: <span>${listing.condition}</span></p>
+                    <p class="price">$${listing.price}</p>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            `;
+            listingsContainer.innerHTML += shoeCard;
+        });
+    } catch (error) {
+        listingsContainer.innerHTML = '<p>Error loading listings.</p>';
+        console.error("Error fetching listings:", error);
+    }
+}
+
+// Call function on page load
+document.addEventListener("DOMContentLoaded", () => {
+    loadListings();
+});
+
+
 </script>
 
-    
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js"></script>
+
+<!-- Your Firebase Config -->
+<script src="firebase-config.js"></script>
 
 </body>
 </html>

@@ -70,43 +70,69 @@
             background: #FF8A65;
             color: white;
         }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            font-size: 22px;
+            text-decoration: none;
+            color: #FF8A65;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 138, 101, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255, 138, 101, 0.3);
+        }
         /* CHAT CONTAINER */
         .chat-container {
             display: flex;
             height: 85vh;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 20px auto;
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
-        /* CHAT LIST */
+        /* Chat List (Left Panel) */
         .chat-list {
             width: 30%;
-            background: #F7F7F7;
-            border-right: 1px solid #ddd;
+            background: #FF8A65;
+            padding: 15px;
             overflow-y: auto;
         }
 
         .chat-list h3 {
             text-align: center;
             padding: 15px;
-            background: #FF8A65;
+            background: #805125;
             color: white;
-            margin: 0;
+            border-radius: 8px;
         }
 
+        /* Individual Chat Items */
         .chat-item {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
+            padding: 12px;
+            background: rgba(245, 241, 241, 0.692);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            color: white;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            margin-top:10px;
         }
 
         .chat-item:hover {
-            background: #FFCCBC;
+            background: rgba(255, 255, 255, 0.4);
         }
 
         .chat-item strong {
@@ -123,7 +149,7 @@
         /* CHAT WINDOW */
         .chat-window {
             width: 70%;
-            background: #E8F5E9;
+            background: #F5F5F5;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -146,34 +172,36 @@
             height: 100%;
         }
 
+        /* Chat Header */
         .chat-header {
             padding: 15px;
             background: #FF8A65;
             color: white;
             text-align: center;
             font-size: 18px;
+            font-weight: bold;
         }
 
+        /* Chat Messages Container */
         .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
-            padding: 20px;
-            overflow-y: auto;
-            height: calc(100vh - 150px);
         }
 
-        /* MESSAGE STYLES */
+        /* Chat Bubble Styles */
         .message {
-            padding: 10px 15px;
-            margin: 10px;
-            border-radius: 10px;
+            padding: 12px 16px;
+            margin: 8px;
+            border-radius: 12px;
             max-width: 60%;
             word-wrap: break-word;
-            display: inline-block;
         }
 
         .received {
-            background: #d3e3fc;
+            background: #D3E3FC;
             color: #333;
             align-self: flex-start;
         }
@@ -183,20 +211,19 @@
             color: #333;
             align-self: flex-end;
             text-align: right;
-            margin-left: auto;
         }
 
-        /* Style for the message input container */
+        /* Message Input Section */
         .message-input {
             display: flex;
             padding: 12px;
             background: white;
             border-top: 1px solid #ddd;
-            gap: 10px; /* Adds spacing between buttons */
             align-items: center;
+            gap: 10px;
         }
 
-        /* Input field */
+        /* Input Field */
         .message-input input {
             flex: 1;
             padding: 12px;
@@ -211,8 +238,7 @@
             border: 1px solid #FF8A65;
         }
 
-        /* General button styling */
-        /* Updated Buttons to Match Theme */
+        /* Button Styles */
         .message-input button {
             padding: 10px 16px;
             font-size: 14px;
@@ -224,32 +250,32 @@
         }
 
         /* Make Offer Button - Light Brown */
-        .message-input .offer-btn {
-            background: #8D6E63; /* Warm brown */
+        .offer-btn {
+            background: #8D6E63;
             color: white;
         }
 
-        .message-input .offer-btn:hover {
-            background: #6D4C41; /* Darker brown */
+        .offer-btn:hover {
+            background: #6D4C41;
         }
 
-        /* Leave Review Button - Muted Orange */
-        .message-input .review-btn {
-            background: #D7A18C; /* Softer orange */
+        /* Review Button */
+        .review-btn {
+            background: #D7A18C;
             color: white;
         }
 
-        .message-input .review-btn:hover {
-            background: #B87C66; /* Darker muted orange */
+        .review-btn:hover {
+            background: #B87C66;
         }
 
-        /* Send Button - Keep Main Theme */
-        .message-input .send-btn {
+        /* Send Button */
+        .send-btn {
             background: #FF8A65;
             color: white;
         }
 
-        .message-input .send-btn:hover {
+        .send-btn:hover {
             background: #E57373;
         }
 
@@ -347,17 +373,20 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="index.html" id="home-link">
+            <a href="#" id="home-link">
                 <div id="home-animation" style="width: 50px; height: 50px;"></div>
             </a>
             <a href="sell.html">Sell</a>
-            <a href="about.html">About</a>
-            <a href="support.html">Support</a>
             <a href="chat.html">Chat</a>
             <a href="profile.html">Profile</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
         </nav>
         <div class="nav-buttons">
-        <a href="shop.html" class="shop-now">Shop Now</a>
+            <a href="shop.html" class="shop-now">Shop Now</a>
+            <a href="cart.html" class="cart-icon">
+                🛒
+            </a>
         </div>
     </header>
 
@@ -383,7 +412,6 @@
         </div>
 
         <div class="chat-window">
-            <img src="chat-placeholder.png" alt="Chat Icon">
             <p>Select a chat to start messaging</p>
         </div>
 
@@ -441,7 +469,7 @@ function openChat(name, messages) {
     activeChatUser = name; // Set active chat user
 
     messages.forEach((msg, index) => {
-        // Messages at even indexes are "received" (left, blue), odd ones are "sent" (right, orange)
+        // Alternate messages (received/sent) for a natural chat look
         const messageClass = index % 2 === 0 ? "received" : "sent";
         chatMessages.innerHTML += `<div class="message ${messageClass}">${msg}</div>`;
     });
@@ -460,10 +488,11 @@ function sendMessage() {
     }
 }
 
+// Send message on Enter key press
 document.getElementById("message-input").addEventListener("keypress", function (event) {
     if (event.key === "Enter") { 
         event.preventDefault(); // Prevents new line in input
-        sendMessage(); // Calls the sendMessage function
+        sendMessage();
     }
 });
 
@@ -494,6 +523,7 @@ function leaveReview() {
         alert("Invalid rating. Please enter a number between 1 and 5.");
     }
 }
+
 
 
     </script>

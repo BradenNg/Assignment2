@@ -102,6 +102,26 @@
             color: white;
         }
 
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            font-size: 22px;
+            text-decoration: none;
+            color: #FF8A65;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 138, 101, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255, 138, 101, 0.3);
+        }
+
         /* SELL FORM CONTAINER */
         .sell-container {
             background: rgba(255, 255, 255, 0.85); /* Soft white with transparency */
@@ -414,17 +434,20 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="index.html" id="home-link">
+            <a href="#" id="home-link">
                 <div id="home-animation" style="width: 50px; height: 50px;"></div>
             </a>
             <a href="sell.html">Sell</a>
-            <a href="about.html">About</a>
-            <a href="support.html">Support</a>
             <a href="chat.html">Chat</a>
             <a href="profile.html">Profile</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
         </nav>
         <div class="nav-buttons">
-        <a href="shop.html" class="shop-now">Shop Now</a>
+            <a href="shop.html" class="shop-now">Shop Now</a>
+            <a href="cart.html" class="cart-icon">
+                🛒
+            </a>
         </div>
     </header>
 
@@ -495,33 +518,73 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    function updateBackground() {
-        let hour = new Date().getHours();
-        let body = document.body;
-        
-        if (hour >= 6 && hour < 12) {
-            // Morning (Sunrise Colors)
-            body.style.background = "linear-gradient(-45deg, #FFD54F, #FF8A65, #FAFAFA)";
-        } else if (hour >= 12 && hour < 18) {
-            // Afternoon (Bright Day Colors)
-            body.style.background = "linear-gradient(-45deg, #FF8A65, #F5F5F5, #FFD54F)";
-        } else {
-            // Evening/Night (Cooler tones)
-            body.style.background = "linear-gradient(-45deg, #8D6E63, #FF8A65, #FFD54F)";
-        }
-        body.style.backgroundSize = "300% 300%";
-        body.style.animation = "gradientAnimation 15s ease infinite";
-    }
+    <!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
-    updateBackground(); // Call function when page loads
+// ✅ Firebase Config
+const firebaseConfig = {
+    apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
+    authDomain: "mokesellofficial.firebaseapp.com",
+    projectId: "mokesellofficial",
+    storageBucket: "mokesellofficial.appspot.com",
+    messagingSenderId: "614622657784",
+    appId: "1:614622657784:web:30fab8c771c01b47254f0d"
+};
+
+// ✅ Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+console.log("🔥 Firebase initialized!");
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const priceInput = document.querySelector('input[placeholder="Price in $"]');
+    const conditionButtons = document.querySelectorAll(".condition-buttons button");
+
+    const priceSuggestions = {
+        "Brand New": "$100 - $200",
+        "Like New": "$80 - $150",
+        "Lightly Used": "$50 - $100",
+        "Well Used": "$30 - $70",
+        "Heavily Used": "$10 - $50"
+    };
+
+    conditionButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Remove active class from all buttons
+            document.querySelectorAll(".condition-buttons button").forEach(btn => btn.classList.remove("active"));
+            
+            // Add active class to the clicked button
+            button.classList.add("active");
+
+            // Update the price input placeholder based on selected condition
+            priceInput.placeholder = `Suggested Price: ${priceSuggestions[button.innerText]}`;
+        });
+    });
 });
 
-        
-        
-        document.addEventListener("DOMContentLoaded", () => {
-    // Handle Condition Buttons
+// ✅ Wait for DOM to Load
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("✅ DOM Loaded. Setting up event listeners...");
+
+    const sellButton = document.querySelector(".sell-now");
+    const photoInput = document.getElementById("photo-input");
+    const previewContainer = document.querySelector(".preview-images");
+
+    if (!sellButton) {
+        console.error("❌ ERROR: .sell-now button NOT found!");
+        return;
+    }
+
+    console.log("✅ Button found! Adding event listener...");
+
+    // ✅ Handle Condition Button Clicks
     document.querySelectorAll(".condition-buttons button").forEach(button => {
         button.addEventListener("click", () => {
             document.querySelectorAll(".condition-buttons button").forEach(btn => btn.classList.remove("active"));
@@ -529,70 +592,15 @@
         });
     });
 
-    // Handle Price Selection Buttons
-    document.querySelectorAll(".price-options button").forEach(button => {
-        button.addEventListener("click", () => {
-            document.querySelectorAll(".price-options button").forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
-        });
-    });
-
-    // Handle Photo Upload Preview
+    // ✅ Handle Photo Upload Preview
     function previewPhotos(event) {
-        const previewContainer = document.querySelector(".preview-images");
-        previewContainer.innerHTML = "";
+        previewContainer.innerHTML = ""; // Clear previous images
         [...event.target.files].forEach(file => {
-            const img = document.createElement("img");
-            img.src = URL.createObjectURL(file);
-            img.style.width = "150px";  // Make images larger
-            img.style.height = "150px";
-            previewContainer.appendChild(img);
-        });
-    }
-    document.getElementById("photo-input").addEventListener("change", previewPhotos);
-
-    // Handle Form Submission
-    document.querySelector(".sell-now").addEventListener("click", () => {
-        const title = document.querySelector('input[placeholder="Enter title"]').value;
-        const description = document.querySelector('textarea[placeholder="Describe the item..."]').value;
-        const price = document.querySelector('input[placeholder="Price in $"]').value;
-        const condition = document.querySelector(".condition-buttons button.active")?.innerText || "Not selected";
-
-        if (!title || !price) {
-            alert("Title and Price are required!");
-            return;
-        }
-
-        // Get uploaded images
-        const images = [];
-        document.querySelectorAll(".preview-images img").forEach(img => {
-            images.push(img.src);
-        });
-
-        // Save item to localStorage
-        const listing = { title, description, price, condition, images };
-        let listings = JSON.parse(localStorage.getItem("listings")) || [];
-        listings.push(listing);
-        localStorage.setItem("listings", JSON.stringify(listings));
-
-        alert("Your item has been listed!");
-        window.location.href = "shop.html"; 
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const photoInput = document.getElementById("photo-input");
-    const previewContainer = document.querySelector(".preview-images");
-    const dropZone = document.querySelector(".photo-upload");
-
-    function previewPhotos(files) {
-        previewContainer.innerHTML = ""; 
-        [...files].forEach(file => {
             const reader = new FileReader();
             reader.onload = (e) => {
                 const imgWrapper = document.createElement("div");
                 imgWrapper.classList.add("image-preview");
-                
+
                 const img = document.createElement("img");
                 img.src = e.target.result;
                 img.style.width = "100px";
@@ -613,63 +621,74 @@ document.addEventListener("DOMContentLoaded", () => {
             reader.readAsDataURL(file);
         });
     }
-
-    // Handle file input change
-    photoInput.addEventListener("change", (event) => {
-        previewPhotos(event.target.files);
-    });
-
-    // Drag & Drop Feature
-    dropZone.addEventListener("dragover", (event) => {
-        event.preventDefault();
-        dropZone.style.background = "#FFE0B2";
-    });
-
-    dropZone.addEventListener("dragleave", () => {
-        dropZone.style.background = "#FFF3E0";
-    });
-
-    dropZone.addEventListener("drop", (event) => {
-        event.preventDefault();
-        dropZone.style.background = "#FFF3E0";
-        photoInput.files = event.dataTransfer.files;
-        previewPhotos(event.dataTransfer.files);
-    });
+    photoInput.addEventListener("change", previewPhotos);
 });
 
-const priceInput = document.querySelector('input[placeholder="Price in $"]');
-const conditionButtons = document.querySelectorAll(".condition-buttons button");
+document.addEventListener("DOMContentLoaded", () => {
+    const sellButton = document.querySelector(".sell-now");
 
-const priceSuggestions = {
-    "Brand New": "$100 - $200",
-    "Like New": "$80 - $150",
-    "Lightly Used": "$50 - $100",
-    "Well Used": "$30 - $70",
-    "Heavily Used": "$10 - $50"
-};
+    if (!sellButton) {
+        console.error("❌ ERROR: .sell-now button not found!");
+        return;
+    }
 
-conditionButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        document.querySelectorAll(".condition-buttons button").forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-        priceInput.placeholder = `Suggested Price: ${priceSuggestions[button.innerText]}`;
+    sellButton.addEventListener("click", async (event) => {
+        event.preventDefault(); // ✅ Prevent unintended form submission
+        console.log("🛒 Sell button clicked!");
+
+        // Get form values
+        const title = document.querySelector('input[placeholder="Enter title"]').value.trim();
+        const description = document.querySelector('textarea[placeholder="Describe the item..."]').value.trim();
+        const price = document.querySelector('input[placeholder="Price in $"]').value.trim();
+        const conditionButton = document.querySelector(".condition-buttons button.active");
+        const condition = conditionButton ? conditionButton.innerText : "";
+        const photoInput = document.getElementById("photo-input");
+        const files = photoInput.files;
+
+        console.log("📋 Form Data:", { title, description, price, condition, files });
+
+        // ✅ Validation: Ensure all fields are filled
+        if (!title || !description || !price || !condition || files.length === 0) {
+            alert("❌ Please fill in all fields and upload at least one image before listing!");
+            console.error("❌ ERROR: Missing form fields.");
+            return; // ✅ Stop execution if validation fails
+        }
+
+        console.log("✅ All fields are filled. Proceeding with Firestore & Storage...");
+
+        try {
+            // ✅ Upload Images to Firebase Storage
+            const imageUrls = [];
+            for (const file of files) {
+                const storageRef = ref(storage, `listings/${file.name}`); // ✅ Fixed: Correct storage ref usage
+                const snapshot = await uploadBytes(storageRef, file);
+                const downloadURL = await getDownloadURL(snapshot.ref); // ✅ Get the image URL properly
+                imageUrls.push(downloadURL);
+            }
+
+            console.log("📷 Images uploaded:", imageUrls);
+
+            // ✅ Save listing to Firestore
+            const docRef = await addDoc(collection(db, "listings"), {
+                title: title,
+                description: description,
+                price: price,
+                condition: condition,
+                images: imageUrls, // ✅ Store image URLs
+                timestamp: serverTimestamp()
+            });
+
+            console.log("✅ Listing saved with ID:", docRef.id);
+
+            // ✅ Alert Success Message & Redirect
+            alert("🎉 Your item has been listed successfully!");
+            window.location.href = "shop.html"; // ✅ Redirect to `shop.html`
+        } catch (error) {
+            console.error("🔥 ERROR saving listing to Firestore:", error);
+            alert("⚠️ Failed to list item. Please try again.");
+        }
     });
 });
-
-document.querySelector(".sell-now").addEventListener("click", () => {
-    const successMessage = document.createElement("div");
-    successMessage.classList.add("success-popup");
-    successMessage.innerHTML = "✅ Your item has been listed!";
-    
-    document.body.appendChild(successMessage);
-
-    setTimeout(() => {
-        successMessage.remove();
-        window.location.href = "shop.html";
-    }, 2000);
-});
-
-
 
     </script>
 

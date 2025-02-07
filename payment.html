@@ -5,242 +5,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment | MokeSell</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+
     <style>
-        /* Apply the same font as the other pages */
+        /* General Styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f5f5;
+            background: linear-gradient(to right, #FF8A65, #FFD54F);
             margin: 0;
-            padding: 20px;
+            padding: 30px;
             color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        /* Container */
+        /* Payment Container */
         .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1000px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+            margin-top: -90px;
         }
 
-        /* Headings */
-        h1, h2 {
-            font-size: 24px;
+        /* Header */
+        h1 {
+            font-size: 26px;
             font-weight: 700;
             color: #8D6E63;
             text-align: center;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
 
-        label {
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
-        }
-
+        /* Order Summary */
         .order-summary {
-            background: #FFF3E0; /* Light orange background */
+            background: #FFF3E0;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
-        
-        /* Order Summary Title */
+
         .order-summary h2 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
-            color: #FF8A65; /* Change text color to orange */
+            color: #FF7043;
             text-align: center;
+            margin-bottom: 50px;
         }
 
-
+        /* Order Items */
+        .order-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
 
         .order-item {
             display: flex;
             align-items: center;
-            background: white;
-            padding: 15px;
+            background: #fff;
+            padding: 12px;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 20px;
+        }
+
+        .order-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
         }
 
         .order-item img {
             width: 60px;
             height: 60px;
             object-fit: cover;
-            margin-right: 10px;
-            border-radius: 5px;
-        }
-
-       /* Payment Button */
-        .pay-now-btn {
-            background-color: #FF8A65;
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
             border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
+            margin-right: 15px;
         }
 
-        .pay-now-btn:hover {
-            background-color: #cc6749;
+        .order-details p {
+            margin: 0;
+            font-size: 14px;
         }
 
-        /* Total Price */
         .total-price-box {
             text-align: right;
             font-size: 18px;
             font-weight: bold;
             margin-top: 15px;
+            color: #8D6E63;
         }
 
-        .shoe-card {
-        background-color: #fff;
-        padding: 15px;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
+        /* Form Inputs */
+        .form-group {
+            margin-top: 20px;
+        }
 
-    .shoe-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
+        label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #8D6E63;
+            display: block;
+            margin-bottom: 8px;
+        }
 
-    .shoe-card::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: rgba(255, 138, 101, 0.1);
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
+        /* Ensure input fields don't extend beyond the container */
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease-in-out;
+            box-sizing: border-box; /* Prevents input from overflowing */
+        }
 
-    .shoe-card:hover::before {
-        opacity: 1;
-    }
 
-    .shoe-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 10px;
-        transition: transform 0.3s ease-in-out;
-    }
+        input:focus, select:focus, textarea:focus {
+            border-color: #FF8A65;
+            box-shadow: 0 0 8px rgba(255, 138, 101, 0.3);
+            outline: none;
+        }
+                /* Pay Now Button */
+                textarea {
+            resize: none;
+            height: 100px;
+        }
 
-    .shoe-card:hover img {
-        transform: scale(1.05);
-    }
+        /* Payment Button */
+        .pay-now-btn {
+            background: linear-gradient(135deg, #FF8A65, #FFD54F);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
 
-    .shoe-card h3 {
-        margin: 15px 0 10px;
-        color: #8D6E63;
-        font-size: 18px;
-        text-align: center;
-    }
+        .pay-now-btn:hover {
+            background: linear-gradient(135deg, #FFD54F, #FF8A65);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
 
-    .price {
-        font-weight: bold;
-        color: #FF8A65;
-        font-size: 16px;
-    }
+        .pay-now-btn:active {
+            transform: scale(0.98);
+        }
 
-    .buy-now {
-        background-color: #FF8A65;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
-        margin-top: auto;
-    }
+        .return-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #FF8A65, #FFD54F);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 1000; /* Ensures it stays above other elements */
+        }
 
-    .buy-now:hover {
-        background-color: #cc6749;
-        transform: scale(1.05);
-    }
+        .return-btn:hover {
+            background: linear-gradient(135deg, #FFD54F, #FF8A65);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
 
-    .order-summary{
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+        .return-btn:active {
+            transform: scale(0.95);
+            background: #8D6E63;
+        }
 
-    .order-items-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
 
-    .order-item {
-        display: flex;
-        align-items: center;
-        background: white;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
 
-    .order-item:hover {
-        transform: scale(1.02);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
 
-    .order-item img {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        margin-right: 15px;
-        border-radius: 8px;
-    }
-
-    .order-details {
-        flex: 1;
-    }
-
-    .total-price-box {
-        text-align: right;
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 15px;
-    }
-       
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
+
+    <button class="return-btn" onclick="history.back()">← Return</button>
+
+
     <div class="container">
         <h1>Payment Details</h1>
 
+        <!-- Order Summary -->
         <div class="order-summary">
             <h2>Order Summary</h2>
             <div id="order-items-container"></div>
@@ -248,8 +225,8 @@
                 <p><strong>Total Price: </strong> <span id="total-price">$0.00</span></p>
             </div>
         </div>
-        
 
+        <!-- Payment Form -->
         <div class="form-group">
             <label for="paymentMethod">Payment Method</label>
             <select id="paymentMethod">
@@ -275,52 +252,93 @@
         </div>
 
         <button class="pay-now-btn" id="payNowBtn">Pay Now</button>
+
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const orderItemsContainer = document.getElementById('order-items-container');
-    const totalPriceElement = document.getElementById('total-price');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderItemsContainer = document.getElementById('order-items-container');
+            const totalPriceElement = document.getElementById('total-price');
 
-    let total = 0;
+            let total = 0;
 
-    if (cart.length > 0) {
-        orderItemsContainer.innerHTML = ''; // Clear previous content
+            if (cart.length > 0) {
+                orderItemsContainer.innerHTML = ''; 
 
-        cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('order-item');
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('order-item');
 
-            itemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <div class="order-details">
-                    <p><strong>${item.name}</strong></p>
-                    <p>Quantity: ${item.quantity}</p>
-                    <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
-                </div>
-            `;
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="order-details">
+                            <p><strong>${item.name}</strong></p>
+                            <p>Quantity: ${item.quantity}</p>
+                            <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
+                        </div>
+                    `;
 
-            orderItemsContainer.appendChild(itemElement);
-            total += item.price * item.quantity;
+                    orderItemsContainer.appendChild(itemElement);
+                    total += item.price * item.quantity;
+                });
+
+                totalPriceElement.textContent = `$${total.toFixed(2)}`;
+            } else {
+                orderItemsContainer.innerHTML = '<p>No items in your cart.</p>';
+            }
+
+            document.getElementById('payNowBtn').addEventListener('click', function () {
+                if (cart.length === 0) {
+                    alert("Your cart is empty! Add items before proceeding.");
+                    return;
+                }
+                alert('Payment successful! Thank you for your purchase.');
+                localStorage.removeItem('cart');
+                window.location.href = 'index.html'; 
+            });
         });
 
-        totalPriceElement.textContent = `$${total.toFixed(2)}`;
-    } else {
-        orderItemsContainer.innerHTML = '<p>No items in your cart.</p>';
-    }
+        document.getElementById("return-btn").addEventListener("click", () => {
+            window.history.back(cart.html);
+        });
 
-    // Handle payment button click
-    document.getElementById('payNowBtn').addEventListener('click', function () {
-        if (cart.length === 0) {
-            alert("Your cart is empty! Add items before proceeding.");
-            return;
+        document.addEventListener("DOMContentLoaded", () => {
+    const stripe = Stripe("your-publishable-key-here"); // 🔥 Replace with your Stripe **Publishable Key**
+    
+    document.getElementById("payNowBtn").addEventListener("click", async () => {
+        try {
+            // 1️⃣ Create a Checkout Session (Handled on Backend)
+            const response = await fetch("/create-checkout-session", { method: "POST" });
+            const session = await response.json();
+
+            // 2️⃣ Redirect to Stripe Checkout
+            const result = await stripe.redirectToCheckout({ sessionId: session.id });
+            if (result.error) {
+                alert(result.error.message);
+            }
+        } catch (error) {
+            console.error("❌ Error during Stripe checkout:", error);
+            alert("⚠️ Payment failed! Please try again.");
         }
-        alert('Payment successful! Thank you for your purchase.');
-        localStorage.removeItem('cart'); // Clear cart after successful payment
-        window.location.href = 'index.html'; // Redirect to homepage after payment
     });
 });
+
+const stripeLinks = {
+        "Vintage Converse": "https://buy.stripe.com/test_abc123",
+        "Elegant Beige Heels": "https://buy.stripe.com/test_def456",
+        "Beach Flip-Flops": "https://buy.stripe.com/test_ghi789",
+        "Red Classic Converse": "https://buy.stripe.com/test_jkl101"
+    };
+
+    // Get the selected item (Retrieve from localStorage or URL parameters)
+    const selectedItem = localStorage.getItem("selectedItem"); // Assuming the item is stored in localStorage
+
+    document.getElementById("payNowBtn").addEventListener("click", function () {
+        window.location.href = "https://buy.stripe.com/test_bIYfZV9RZ1cVg6YfYY"; // Redirect to Stripe Checkout
+    });
+
+
     </script>
 </body>
 </html>

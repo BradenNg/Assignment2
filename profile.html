@@ -92,6 +92,26 @@
             color: white;
         }
 
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            font-size: 22px;
+            text-decoration: none;
+            color: #FF8A65;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 138, 101, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255, 138, 101, 0.3);
+        }
+
         /* PROFILE HEADER */
         .profile-header {
             background: white;
@@ -312,17 +332,20 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="index.html" id="home-link">
+            <a href="#" id="home-link">
                 <div id="home-animation" style="width: 50px; height: 50px;"></div>
             </a>
             <a href="sell.html">Sell</a>
-            <a href="about.html">About</a>
-            <a href="support.html">Support</a>
             <a href="chat.html">Chat</a>
             <a href="profile.html">Profile</a>
+            <a href="about.html">About</a>
+            <a href="support.html">Support</a>
         </nav>
         <div class="nav-buttons">
-        <a href="shop.html" class="shop-now">Shop Now</a>
+            <a href="shop.html" class="shop-now">Shop Now</a>
+            <a href="cart.html" class="cart-icon">
+                🛒
+            </a>
         </div>
     </header>
 
@@ -362,12 +385,12 @@
         <div class="section-container">
             <div class="section-title">Recent Reviews</div>
             <div class="section-box">
-                <p>⭐⭐⭐⭐⭐ "Great seller! Fast shipping and quality sneakers." - Mike T.</p>
-                <p>⭐⭐⭐⭐ "Shoes were exactly as described. Thanks!" - Sarah L.</p>
-                <p>⭐⭐⭐⭐⭐ "Excellent communication. Will buy again!" - Jason R.</p>
-                <p>⭐⭐⭐ "Decent experience, but shipping took longer than expected." - Mark D.</p>
-                <p>⭐⭐⭐⭐⭐ "Love the shoes! Perfect fit." - Olivia P.</p>
-                <p>⭐⭐⭐⭐ "Smooth transaction. Thanks!" - Emily K.</p>
+                <p>⭐⭐⭐⭐⭐ Great seller! Fast shipping and quality sneakers. - Mike T.</p>
+                <p>⭐⭐⭐⭐ Shoes were exactly as described. Thanks! - Sarah L.</p>
+                <p>⭐⭐⭐⭐⭐ Excellent communication. Will buy again! - Jason R.</p>
+                <p>⭐⭐⭐ Decent experience, but shipping took longer than expected. - Mark D.</p>
+                <p>⭐⭐⭐⭐⭐ Love the shoes! Perfect fit. - Olivia P.</p>
+                <p>⭐⭐⭐⭐ Smooth transaction. Thanks! - Emily K.</p>
             </div>
         </div>
         
@@ -457,6 +480,14 @@
                 : "<p>No support tickets submitted.</p>";
         });
         </script>
-        
+        <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js"></script>
+
+<!-- Your Firebase Config -->
+<script src="firebase-config.js"></script>
+
 </body>
 </html>

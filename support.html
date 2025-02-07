@@ -87,6 +87,25 @@
             color: white;
         }
 
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-icon {
+            font-size: 22px;
+            text-decoration: none;
+            color: #FF8A65;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(255, 138, 101, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255, 138, 101, 0.3);
+        }
         /* SUPPORT FORM */
         /* Make the whole page take up at least full height */
         .wrapper {
@@ -411,7 +430,10 @@
                 <a href="support.html">Support</a>
             </nav>
             <div class="nav-buttons">
-            <a href="shop.html" class="shop-now">Shop Now</a>
+                <a href="shop.html" class="shop-now">Shop Now</a>
+                <a href="cart.html" class="cart-icon">
+                    🛒
+                </a>
             </div>
         </header>
 

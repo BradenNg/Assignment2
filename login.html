@@ -6,6 +6,89 @@
     <title>Login | MokeSell</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script type="module" defer>
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
+            authDomain: "mokesellofficial.firebaseapp.com",
+            projectId: "mokesellofficial",
+            storageBucket: "mokesellofficial.firebasestorage.app",
+            messagingSenderId: "614622657784",
+            appId: "1:614622657784:web:30fab8c771c01b47254f0d"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Handle login submission
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("login-form").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent form from submitting normally
+
+                // Get user input values
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                // Ensure the user entered both fields
+                if (!email || !password) {
+                    alert("Please enter both email and password.");
+                    return;
+                }
+
+                // Authenticate user with Firebase
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        console.log("User Logged In:", userCredential.user);
+                        alert("Login successful!");
+                        window.location.href = "shop.html"; // Redirect to shop page after successful login
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error.message);
+                        alert(error.message); // Show Firebase error message
+                    });
+            });
+        });
+
+            const returnHomeBtn = document.getElementById("return-home-btn");
+        returnHomeBtn.addEventListener("click", () => {
+            returnHomeBtn.innerText = "Returning...";
+            setTimeout(() => {
+                window.location.href = "index.html"; // Redirect to home page
+            }, 1000);  // 2 seconds delay for effect
+        });
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            // Image slideshow functionality
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+
+            function showNextSlide() {
+                slides.forEach(slide => slide.classList.remove('active')); // Hide all images
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active'); // Show next image
+            }
+
+
+            setInterval(showNextSlide, 2000); // Change image every 2 seconds
+
+            // Load the Lottie animation
+            const animationContainer = document.getElementById("loading-animation");
+            lottie.loadAnimation({
+                container: animationContainer,  // Target the loading div
+                renderer: "svg",               // Use SVG rendering
+                loop: true,                     // Infinite loop
+                autoplay: true,                  // Start automatically
+                path: "1737521268031.json",  // Correct file path
+            })});
+
+    
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -25,28 +108,26 @@
 
         .container {
             display: flex;
-            flex-direction: row; /* Ensures side-by-side layout */
+            flex-direction: row;
             width: 90%;
-            max-width: 1200px; /* Reduced from 2000px */
+            max-width: 1200px;
             background: #fff;
             border-radius: 15px;
             overflow: hidden;
-            padding: 40px; /* Adjusted padding */
-            height: auto; /* Allow it to expand naturally */
+            padding: 40px;
+            height: auto;
             justify-content: center;
         }
 
-        /* Ensure the image container fits within the available space */
         .image-container {
             width: 50%;
-            height: 450px; /* Restrict height */
+            height: 450px;
             position: relative;
             margin-top: 70px;
-            border-radius: 15px; /* Rounded corners */
-            overflow: hidden; /* Ensures images respect the curve */
+            border-radius: 15px;
+            overflow: hidden;
         }
 
-        /* Ensure the images scale properly */
         .image-container img {
             position: absolute;
             top: 0;
@@ -54,47 +135,22 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 15px; /* Matches container */
-            opacity: 0; /* Hide all images */
+            border-radius: 15px;
+            opacity: 0;
             transition: opacity 1s ease-in-out;
         }
 
         .image-container img.active {
-            opacity: 1; /* Show only the active image */
+            opacity: 1;
         }
 
-
-        /* Adjust the login container */
         .login-container {
             width: 50%;
-            max-width: 500px; /* Restrict size */
+            max-width: 500px;
             padding: 30px;
             text-align: center;
-            margin: auto; /* Center it */
+            margin: auto;
         }
-
-        /* Responsive adjustments for smaller laptops */
-        @media (max-width: 1366px) {
-            .container {
-                width: 95%;
-                max-width: 1000px;
-                flex-direction: column; /* Stack items on top of each other */
-                text-align: center;
-                padding: 20px;
-            }
-
-            .image-container {
-                width: 100%;
-                height: 300px; /* Reduce height */
-            }
-
-            .login-container {
-                max-width: 100%;
-                width: 90%;
-                padding: 20px;
-            }
-        }
-
 
         .login-container h1 {
             font-size: 28px;
@@ -146,26 +202,23 @@
             width: 100%;
             padding: 15px;
             border: none;
-            color: #FF8A65; /* White text */
+            color: #FF8A65;
             font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
             transition: background 0.3s ease, transform 0.2s ease;
-            margin-top: 20px; /* Adds spacing above the button */
+            margin-top: 20px;
         }
 
-        /* Hover effect */
         .signup-btn:hover {
-            transform: scale(1.05); /* Slightly enlarge on hover */
+            transform: scale(1.05);
         }
 
-        /* Active click effect */
         .signup-btn:active {
-            background: #8D6E63; /* Earthy brown accent */
-            transform: scale(0.98); /* Slight click effect */
+            background: #8D6E63;
+            transform: scale(0.98);
         }
-
 
         .back-home {
             display: block;
@@ -182,98 +235,39 @@
             color: #cc6749;
         }
 
-        /* Loading screen styles with frosted glass effect */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.3); /* Frosted glass effect */
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .loading-screen.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        #loading-animation {
-            width: 150px;
-            height: 150px;
-        }
-
-        .signup-text {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .signup-text a {
-            color: #8D6E63;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .signup-text a:hover {
-            color: #FFD54F;
-        }
-
         .return-home-btn {
             position: fixed;
-            top: 20px;  /* Positioning to the top */
-            left: 20px; /* Positioning to the left */
-            padding: 10px 25px;  /* Compact size */
-            background: linear-gradient(135deg, #FF8A65, #FFD54F); /* Gradient background */
+            top: 20px;
+            left: 20px;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #FF8A65, #FFD54F);
             color: #fff;
-            font-size: 16px; /* Smaller font size */
+            font-size: 16px;
             font-weight: 600;
             border: none;
-            border-radius: 30px; /* Rounded button */
+            border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease, transform 0.2s ease-in-out;
-            z-index: 1000; /* Ensures it stays above other elements */
+            z-index: 1000;
             outline: none;
         }
 
-        /* Hover effect */
         .return-home-btn:hover {
-            transform: translateY(-2px); /* Slight lift on hover */
+            transform: translateY(-2px);
             background: linear-gradient(135deg, #FFD54F, #FF8A65);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Active click effect */
         .return-home-btn:active {
             transform: scale(0.95);
-            background: #8D6E63; /* Earthy brown accent */
+            background: #8D6E63;
         }
-
-        /* Quote text styling */
-        .quote-text {
-            position: fixed;
-            top: 60px;  /* Positioned below the button */
-            left: 20px;
-            font-size: 12px;
-            color: #8D6E63;
-            font-style: italic;
-            max-width: 250px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            z-index: 1000;
-        }
-
     </style>
 </head>
 <body>
+    <button id="return-home-btn" class="return-home-btn">← Return to Home</button>
+    <p id="quote-display" class="quote-text"></p>
 
     <div class="container">
         <div class="image-container">
@@ -289,84 +283,12 @@
             <form id="login-form">
                 <input type="email" id="email" placeholder="Email" required>
                 <input type="password" id="password" placeholder="Password" required>
-                <button type="submit">Log In</button>
+                <button type="submit">Login</button>
             </form>
 
             <p>Don't have an account? <a href="signup.html" class="signup-btn">Sign up here</a></p>
-
         </div>
     </div>
-    
-    <button id="return-home-btn" class="return-home-btn">← Return to Home</button>
-    <p id="quote-display" class="quote-text"></p>
-    
-
-    <!-- Frosted Glass Loading Screen -->
-    <div class="loading-screen" id="loading-screen">
-        <div id="loading-animation"></div>
-    </div>
-
-    <script>
-
-    document.addEventListener("DOMContentLoaded", () => {
-    // Image slideshow functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function showNextSlide() {
-        slides.forEach(slide => slide.classList.remove('active')); // Hide all images
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active'); // Show next image
-    }
-
-
-    setInterval(showNextSlide, 2000); // Change image every 2 seconds
-
-    // Load the Lottie animation
-    const animationContainer = document.getElementById("loading-animation");
-    lottie.loadAnimation({
-        container: animationContainer,  // Target the loading div
-        renderer: "svg",               // Use SVG rendering
-        loop: true,                     // Infinite loop
-        autoplay: true,                  // Start automatically
-        path: "1737521268031.json",  // Correct file path
-    });
-
-    // Show loading screen on login submission
-    document.getElementById("login-form").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        if (email === "" || password === "") {
-            alert("Please fill out all fields correctly.");
-            return;
-        }
-
-        // Show frosted glass loading screen with animation
-        document.getElementById("loading-screen").classList.add("active");
-
-        // Simulate processing and redirect after 3 seconds
-        setTimeout(() => {
-            window.location.href = "shop.html"; // Redirect to home page
-        }, 3000);
-    });
-
-    // Smooth return to home page action
-    const returnHomeBtn = document.getElementById("return-home-btn");
-    returnHomeBtn.addEventListener("click", () => {
-        returnHomeBtn.innerText = "Returning...";
-        setTimeout(() => {
-            window.location.href = "index.html"; // Redirect to home page
-        }, 1000);  // 2 seconds delay for effect
-    });
-});
-
-
-
-
-    </script>
 
 </body>
 </html>
