@@ -14,15 +14,25 @@
         }
 
         html, body {
-            height: 100%;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background: linear-gradient(to bottom, #fefefe, #f5f5f5);
         }
 
         body {
-            background: linear-gradient(to bottom, #fefefe, #f5f5f5);
-            padding: 0;
-            margin: 0;
+            background: linear-gradient(135deg, #FF9A8B, #FF6A88, #FF99AC, #FFB5A7);
+            background-size: 400% 400%;
+            animation: gradientMove 8s infinite alternate ease-in-out;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
         }
 
         .wrapper {
@@ -30,10 +40,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Center everything */
-            min-height: 100vh; /* Make sure it covers full height */
-            
+            padding: 40px 20px;
         }
+
         /* HEADER */
         header {
             display: flex;
@@ -107,32 +116,10 @@
             background: rgba(255, 138, 101, 0.3);
         }
 
-        .return-btn {
-            position: absolute;
-            top: 150px;
-            left: 20px;
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-            text-decoration: none;
-            background: linear-gradient(135deg, #FF8A65, #FF7043);
-            padding: 10px 15px;
-            border-radius: 8px;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(255, 138, 101, 0.3);
-        }
-
-        .return-btn:hover {
-            background: linear-gradient(135deg, #FF7043, #FF5722);
-            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.5);
-            transform: scale(1.05);
-            color: #fff; /* Ensures text remains visible */
-        }
-
         /* PRODUCT CONTAINER */
         .container {
+            width: 100%;
             max-width: 1100px;
-            margin: 50px auto;
             background: white;
             padding: 40px;
             border-radius: 15px;
@@ -140,7 +127,7 @@
             display: flex;
             gap: 40px;
             align-items: center;
-            margin-top: 190px;
+            margin: 50px 0;
         }
 
         .product-gallery {
@@ -213,14 +200,14 @@
         .reviews-section {
             width: 100%;
             max-width: 1100px;
-            margin: 20px auto; /* Reduce the margin so it doesn't get pushed down */
-            padding: 20px;
+            padding: 30px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            align-items: center; /* Ensures the review content is centered */
+            align-items: center;
+            margin-bottom: 100px;
         }
 
         .reviews-section h2 {
@@ -230,7 +217,7 @@
         }
 
         .review {
-            width: 90%; /* Prevents reviews from stretching too wide */
+            width: 90%;
             background: #FAFAFA;
             padding: 15px;
             border-radius: 10px;
@@ -247,93 +234,6 @@
             font-size: 16px;
         }
 
-        /* FOOTER */
-        footer {
-            background: #ffffff; /* Warm brown background */
-            color: #000000; /* White text */
-            padding: 20px 40px;
-            text-align: left;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
-            width: 100%; /* Full width */
-        }
-
-        /* Footer content container */
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap; /* Responsive wrapping */
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            padding: 10px, 20px;
-        }
-
-        /* Contact Us Section */
-        .footer-contact h3 {
-            margin-bottom: 10px;
-            font-size: 1.8em;
-            color: #FFD54F; /* Accent color */
-            font-weight: 700;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Space between contact items */
-            font-size: 1em; /* Compact text size */
-        }
-
-        .contact-details p {
-            margin: 0;
-        }
-
-        .contact-details a {
-            color: #FF8A65; /* Accent color for links */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: #FFD54F; /* Hover effect */
-        }
-
-        /* Social Media Section */
-        .footer-social h3 {
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            color: #FFD54F;
-            font-weight: 700;
-        }
-
-        .social-links {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 15px; /* Space between links */
-        }
-
-        .social-links li a {
-            text-decoration: none;
-            color: #FF8A65;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .social-links li a:hover {
-            color: #FFD54F; /* Highlight social links on hover */
-        }
-
-        /* Footer bottom section */
-        .footer-bottom {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            border-top: 1px solid rgba(0, 0, 0, 0.2);
-            padding-top: 10px;
-            font-weight: 500;
-        }
-
         /* RESPONSIVENESS */
         @media (max-width: 768px) {
             .container {
@@ -346,22 +246,12 @@
             }
 
             .reviews-section {
-                padding: 15px;
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div id="loading-screen">
-        <lottie-player 
-            src="https://lottie.host/81f1c4e4-36f5-4a52-bbe8-d018cf96dc63/QjcmNTeXBU.json" 
-            background="transparent"  
-            speed="1"  
-            style="width: 150px; height: 150px;"  
-            autoplay>
-        </lottie-player>
-    </div>
-    
     <header>
         <div class="logo">
             <h2>MokeSell</h2>
@@ -384,49 +274,33 @@
         </div>
     </header>
 
-    <div class="container">
-        <div class="product-gallery">
-            <img id="mainImage" src="" alt="Product Image">
-            <div class="thumbnails" id="thumbnails"></div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="product-gallery">
+                <img id="mainImage" src="" alt="Product Image">
+                <div class="thumbnails" id="thumbnails"></div>
+            </div>
+            <div class="product-details">
+                <h1 id="productName">Product Name</h1>
+                <p class="price" id="productPrice">$0.00</p>
+                <p id="productDescription">Product description goes here.</p>
+                <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+            </div>
         </div>
-        <div class="product-details">
-            <h1 id="productName">Product Name</h1>
-            <p class="price" id="productPrice">$0.00</p>
-            <p id="productDescription">Product description goes here.</p>
-            <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+
+        <div class="reviews-section">
+            <h2>Reviews</h2>
+            <div class="review"><strong>Helen M.</strong> <span class="stars">★★★★★</span> Excellent product!</div>
+            <div class="review"><strong>Ann D.</strong> <span class="stars">★★★★☆</span> Good shoes.</div>
+            <div class="review"><strong>Andrew T.</strong> <span class="stars">★★★☆☆</span> Seller was friendly.</div>
+            <div class="review"><strong>Braden N.</strong> <span class="stars">★★★★☆</span> Quick and helpful seller!</div>
+            <div class="review"><strong>Coen N.</strong> <span class="stars">★★★☆☆</span>Fast and affordable prices.</div>
         </div>
     </div>
-
-    <div class="reviews-section">
-        <h2>Reviews</h2>
-        <div class="review">
-            <strong>Helen M.</strong> <span class="stars">★★★★★</span>
-            <p>Excellent running shoes. It turns very sharply on the foot.</p>
-        </div>
-        <div class="review">
-            <strong>Ann D.</strong> <span class="stars">★★★★☆</span>
-            <p>Good shoes.</p>
-        </div>
-        <div class="review">
-            <strong>Andrew G.</strong> <span class="stars">★★★☆☆</span>
-            <p>Seller was friendly.</p>
-        </div>
-        <div class="review">
-            <strong>Braden N.</strong> <span class="stars">★★★☆☆</span>
-            <p>Responsive seller!</p>
-        </div>
-        <div class="review">
-            <strong>Coen N.</strong> <span class="stars">★★★★☆</span>
-            <p>Quick and easy buy!</p>
-        </div>
-    </div>
-
-    
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const product = JSON.parse(localStorage.getItem('selectedProduct'));
-
             if (product) {
                 document.getElementById('mainImage').src = product.image;
                 document.getElementById('productName').innerText = product.name;
@@ -444,10 +318,11 @@
         document.getElementById('productPrice').innerText = `$${product.price}`;
         document.getElementById('productDescription').innerText = product.description || 'No description available.';
 
-        // Add event listener to the "Add to Cart" button
+        // Add event listener to "Add to Cart" button
         document.getElementById('addToCartBtn').addEventListener('click', function () {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
+
+            // Check if product already exists in cart
             const existingItem = cart.find(item => item.name === product.name);
             if (existingItem) {
                 existingItem.quantity += 1;
@@ -455,38 +330,14 @@
                 cart.push({ ...product, quantity: 1 });
             }
 
+            // Save updated cart back to localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Redirect to cart.html
+            // Redirect to cart page
             window.location.href = 'cart.html';
         });
     }
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Hide the loading screen after 1.5 seconds
-    setTimeout(() => {
-        document.getElementById("loading-screen").style.opacity = "0";
-        setTimeout(() => {
-            document.getElementById("loading-screen").style.display = "none";
-        }, 500);
-    }, 1500);
-
-    // Add event listener to all links to show loading screen
-    document.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", function (e) {
-            if (this.getAttribute("href") !== "#") {
-                e.preventDefault();
-                document.getElementById("loading-screen").style.display = "flex";
-                document.getElementById("loading-screen").style.opacity = "1";
-                setTimeout(() => {
-                    window.location.href = this.getAttribute("href");
-                }, 1000);
-            }
-        });
-    });
-});
-
 
     </script>
 </body>
