@@ -219,113 +219,96 @@
             background: #8D6E63;
         }
 
-        /* General Mobile Optimization */
-@media (max-width: 1024px) {
+/* 📌 For tablets (width up to 768px) */
+@media (max-width: 768px) {
+    /* Center content and make the container stack */
     .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 30px 20px;
+        width: 95%;
+        padding: 30px;
     }
 
+    /* Adjust image container */
     .image-container {
         width: 100%;
-        height: 350px; /* Adjusted for better fit */
+        height: 350px; /* Reduce height for tablets */
+        margin-bottom: 20px;
     }
 
+    /* Adjust signup form */
     .signup-container {
         width: 100%;
         max-width: 500px;
-    }
-}
-
-/* Adjustments for Tablets (768px and below) */
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-        flex-direction: column;
+        text-align: center;
         padding: 20px;
     }
 
-    .image-container {
-        width: 100%;
-        height: 300px; /* Reduce image size */
-    }
-
     .signup-container h1 {
-        font-size: 28px; /* Slightly smaller heading */
+        font-size: 28px; /* Reduce title size */
     }
 
-    .signup-container input, 
+    .signup-container input,
     .signup-container select {
+        padding: 12px; /* Reduce padding for compact form */
         font-size: 14px;
-        padding: 12px;
     }
 
     .signup-container button {
+        padding: 12px;
         font-size: 16px;
-        padding: 12px;
     }
 }
 
-/* Mobile-Friendly Layout (480px and below) */
+/* 📌 For mobile devices (width up to 480px) */
 @media (max-width: 480px) {
+    /* Ensure container stacks properly */
     .container {
-        padding: 15px;
-        width: 100%;
-        margin-top: 30px;
-    }
-
-    .image-container {
-        height: 250px;
-    }
-
-    .signup-container {
+        flex-direction: column;
         width: 100%;
         padding: 20px;
     }
 
-    .signup-container h1 {
-        font-size: 24px;
+    /* Adjust image container */
+    .image-container {
+        width: 100%;
+        height: 250px; /* Further reduce height for mobile */
+        margin-bottom: 20px;
     }
 
-    .signup-container input, 
-    .signup-container select {
-        font-size: 13px;
-        padding: 10px;
-    }
-
-    .signup-container button {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .return-home-btn {
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-}
-
-/* Grid Adjustments for Small Screens */
-@media (max-width: 600px) {
+    /* Adjust signup form */
     .signup-container {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
         padding: 15px;
     }
 
-    .signup-container input, 
+    .signup-container h1 {
+        font-size: 24px; /* Reduce title size */
+    }
+
+    .signup-container input,
     .signup-container select {
-        font-size: 12px;
-        padding: 8px;
+        padding: 10px;
+        font-size: 14px;
     }
 
     .signup-container button {
-        font-size: 14px;
         padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Adjust return home button */
+    .return-home-btn {
+        top: 10px;
+        left: 10px;
+        padding: 8px 20px;
+        font-size: 14px;
     }
 }
 
-
-        
     </style>
 </head>
 <body>

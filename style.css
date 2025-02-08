@@ -14,5 +14,3 @@ body, html {
   height: 50vh; /* Occupies 50% of the viewport height */
   object-fit: cover; /* Ensures it scales without distortion */
 }
-
-

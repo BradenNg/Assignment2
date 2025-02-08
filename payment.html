@@ -208,13 +208,17 @@
             }
         }
 
-        /* 📌 For tablets (width up to 1024px) */
-@media (max-width: 1024px) {
+ /* 📌 For tablets (width up to 768px) */
+@media (max-width: 768px) {
+    /* Ensure the container remains centered and adapts */
     .container {
         width: 95%;
+        max-width: 600px; /* Prevents excessive stretching */
         padding: 20px;
+        margin-top: -50px;
     }
 
+    /* Adjust order summary */
     .order-summary {
         padding: 15px;
     }
@@ -223,20 +227,28 @@
         font-size: 20px;
     }
 
+    /* Ensure order items stack properly */
+    .order-items-container {
+        gap: 10px;
+    }
+
     .order-item {
         flex-direction: column;
+        align-items: center;
         text-align: center;
-        padding: 10px;
     }
 
     .order-item img {
-        width: 80px;
-        height: 80px;
         margin-bottom: 10px;
     }
 
-    .form-group label {
-        font-size: 15px;
+    .total-price-box {
+        font-size: 16px;
+    }
+
+    /* Adjust input fields */
+    .form-group {
+        margin-top: 15px;
     }
 
     input, select, textarea {
@@ -244,115 +256,83 @@
         padding: 10px;
     }
 
+    /* Adjust Pay Now Button */
     .pay-now-btn {
         font-size: 16px;
         padding: 12px;
     }
-
-    .return-btn {
-        font-size: 14px;
-        padding: 8px 18px;
-    }
 }
 
-/* 📌 For smaller tablets & large phones (width up to 768px) */
-@media (max-width: 768px) {
-    body {
-        padding: 20px;
-    }
-
+/* 📌 For mobile devices (width up to 480px) */
+@media (max-width: 480px) {
+    /* Ensure container remains compact */
     .container {
         width: 100%;
+        max-width: 400px;
         padding: 15px;
+        margin-top: -40px;
     }
 
+    /* Adjust order summary */
     .order-summary {
-        width: 100%;
-        padding: 10px;
+        padding: 12px;
     }
 
     .order-summary h2 {
         font-size: 18px;
     }
 
+    /* Ensure order items stack */
+    .order-items-container {
+        gap: 8px;
+    }
+
     .order-item {
-        padding: 8px;
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
 
     .order-item img {
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 8px;
     }
 
-    .form-group label {
+    .order-details p {
+        font-size: 13px;
+    }
+
+    .total-price-box {
         font-size: 14px;
     }
 
-    input, select, textarea {
-        font-size: 13px;
-        padding: 8px;
-    }
-
-    .pay-now-btn {
-        font-size: 15px;
-        padding: 10px;
-    }
-
-    .return-btn {
-        font-size: 13px;
-        padding: 7px 16px;
-    }
-}
-
-/* 📌 For mobile devices (width up to 480px) */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    .order-summary h2 {
-        font-size: 16px;
-    }
-
-    .order-item {
-        padding: 6px;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .order-item img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .form-group label {
-        font-size: 13px;
+    /* Adjust input fields */
+    .form-group {
+        margin-top: 10px;
     }
 
     input, select, textarea {
-        font-size: 12px;
-        padding: 7px;
+        font-size: 14px;
+        padding: 10px;
     }
 
+    textarea {
+        height: 80px;
+    }
+
+    /* Adjust Pay Now Button */
     .pay-now-btn {
         font-size: 14px;
-        padding: 8px;
+        padding: 10px;
     }
 
+    /* Adjust Return Button */
     .return-btn {
-        font-size: 12px;
-        padding: 6px 14px;
+        top: 10px;
+        left: 10px;
+        padding: 8px 20px;
+        font-size: 14px;
     }
 }
 

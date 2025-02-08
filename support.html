@@ -377,380 +377,193 @@
             font-weight: 500;
         }
 
-        /* ✅ Tablets (max-width: 1024px) */
-/* ✅ Tablets & Smaller Screens (max-width: 1024px) */
-@media (max-width: 1024px) {
+  /* 📌 For tablets (width up to 768px) */
+@media (max-width: 768px) {
+    /* 🟠 HEADER ADJUSTMENTS */
     header {
-        height: 50px;
-        padding: 10px 20px;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+        padding: 15px 20px;
     }
 
     header nav {
-        gap: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
     }
 
-    .support-container {
-        max-width: 85%;
-        padding: 25px;
-    }
-}
-
-/* ✅ Small Tablets & Large Phones (max-width: 768px) */
-@media (max-width: 768px) {
-    header {
-        height: auto;
-        flex-direction: column;
-        text-align: center;
+    .shop-now {
         padding: 8px 15px;
-    }
-
-    header nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .shop-now, .cart-icon {
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-
-    .main-content {
-        padding-top: 60px;
-    }
-
-    .support-container {
-        max-width: 90%;
-        padding: 20px;
-    }
-
-    .category-options {
-        flex-direction: column;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* ✅ Mobile Phones (max-width: 480px) */
-@media (max-width: 480px) {
-    header {
-        height: 50px;
-        padding: 5px 10px;
-    }
-
-    header nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .logo h2 {
-        font-size: 16px;
-    }
-
-    .shop-now, .cart-icon {
-        font-size: 10px;
-        padding: 4px 8px;
-    }
-
-    .main-content {
-        padding-top: 70px;
-    }
-
-    .support-container {
-        width: 100%;
-        max-width: 95%;
-        padding: 12px;
-    }
-
-    h1, h2 {
-        font-size: 1.4em;
-    }
-
-    p {
-        font-size: 0.9em;
-    }
-
-    footer {
-        padding: 10px;
-    }
-}
-
-/* ✅ Mobile Phones (max-width: 768px) */
-@media (max-width: 768px) {
-    /* Fix header size */
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-        padding: 10px 15px;
-    }
-
-    /* Reduce MokeSell logo spacing */
-    header .logo h2 {
-        font-size: 22px;
-        margin-bottom: 0; /* Remove extra space */
-        padding-bottom: 5px; /* Keep slight spacing */
-    }
-
-    /* Fix navigation alignment */
-    header nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px; /* Reduce space between nav links */
-        padding-top: 0; /* Remove unnecessary padding */
-    }
-
-    /* Reduce spacing between nav links */
-    header nav a {
         font-size: 14px;
-        padding: 5px 10px;
-        margin: 0; /* Remove margin causing the large gap */
-    }
-
-    /* Fix button alignment */
-    .nav-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    .shop-now {
-        font-size: 12px;
-        padding: 6px 12px;
     }
 
     .cart-icon {
-        font-size: 16px;
-        padding: 6px;
-    }
-}
-
-
-/* ✅ Extra Small Screens (max-width: 480px) */
-@media (max-width: 480px) {
-    header {
-        padding: 8px 10px;
+        width: 35px;
+        height: 35px;
     }
 
-    header .logo h2 {
-        font-size: 18px;
+    .cart-icon img {
+        width: 20px;
+        height: 20px;
     }
 
-    header nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .nav-buttons {
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .shop-now, .cart-icon {
-        font-size: 10px;
-        padding: 4px 8px;
-    }
-
-    /* ✅ Tablets & Smaller Screens (max-width: 1024px) */
-@media (max-width: 1024px) {
-    header {
-        padding: 10px 20px;
-    }
-
-    header nav {
-        gap: 20px;
-    }
-
+    /* 🟠 SUPPORT FORM: Make it responsive */
     .support-container {
-        max-width: 85%;
+        width: 90%;
+        max-width: 600px; /* Prevents excessive stretching */
         padding: 25px;
-    }
-}
-
-/* ✅ Small Tablets & Large Phones (max-width: 768px) */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px 15px;
+        margin-top: 30px;
     }
 
-    header nav {
-        flex-direction: column;
-        align-items: center;
+    .support-container h1 {
+        font-size: 24px; /* Reduce heading size */
+    }
+
+    .support-container p {
+        font-size: 14px;
+    }
+
+    /* 🟠 CATEGORY BUTTONS */
+    .category-options {
+        flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
         gap: 10px;
     }
 
-    .shop-now, .cart-icon {
-        font-size: 12px;
-        padding: 6px 12px;
+    .category-btn {
+        padding: 12px;
+        font-size: 13px;
     }
 
-    .main-content {
-        padding-top: 60px;
-    }
-
-    .support-container {
-        max-width: 90%;
-        padding: 20px;
-    }
-
-    .category-options {
-        flex-direction: column;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* ✅ Mobile Phones (max-width: 480px) */
-@media (max-width: 480px) {
-    header {
-        padding: 8px 10px;
-    }
-
-    header .logo h2 {
-        font-size: 18px;
-    }
-
-    header nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .nav-buttons {
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .shop-now, .cart-icon {
-        font-size: 10px;
-        padding: 4px 8px;
-    }
-
-    .main-content {
-        padding-top: 70px;
-    }
-
-    .support-container {
-        width: 100%;
-        max-width: 95%;
+    /* 🟠 FORM INPUTS */
+    input, textarea {
+        font-size: 14px;
         padding: 12px;
     }
 
-    h1, h2 {
-        font-size: 1.4em;
+    textarea {
+        min-height: 100px;
     }
 
-    p {
-        font-size: 0.9em;
+    .char-counter {
+        font-size: 12px;
     }
 
-    .category-options {
-        flex-direction: column;
+    .send-btn {
+        font-size: 16px;
+        padding: 12px;
     }
 
+    /* 🟠 FILE UPLOAD */
     .file-upload {
-        width: 100%;
-        text-align: center;
+        padding: 12px;
     }
 
-    footer {
-        padding: 10px;
+    .file-upload label {
+        font-size: 14px;
     }
 }
 
-/* ✅ Adjustments for Navigation & Buttons */
-@media (max-width: 768px) {
+/* 📌 For mobile devices (width up to 480px) */
+@media (max-width: 480px) {
+    /* 🟠 HEADER ADJUSTMENTS */
     header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 10px 15px;
+        padding: 10px;
     }
 
     header .logo h2 {
-        font-size: 22px;
-        margin-bottom: 0;
-        padding-bottom: 5px;
+        font-size: 20px;
     }
 
     header nav {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        padding-top: 0;
-    }
-
-    header nav a {
-        font-size: 14px;
-        padding: 5px 10px;
-        margin: 0;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     .nav-buttons {
         display: flex;
-        flex-direction: row;
         justify-content: center;
         gap: 10px;
-        margin-top: 10px;
     }
 
-    .shop-now {
+    .shop-now, .cart-icon {
         font-size: 12px;
         padding: 6px 12px;
     }
 
-    .cart-icon {
-        font-size: 16px;
-        padding: 6px;
-    }
-}
-
-/* ✅ Extra Small Screens (max-width: 480px) */
-@media (max-width: 480px) {
-    header {
-        padding: 8px 10px;
+    /* 🟠 SUPPORT FORM */
+    .support-container {
+        width: 95%;
+        max-width: 400px;
+        padding: 20px;
+        margin-top: 20px;
     }
 
-    header .logo h2 {
-        font-size: 18px;
+    .support-container h1 {
+        font-size: 20px; /* Reduce heading size */
     }
 
-    header nav {
+    .support-container p {
+        font-size: 13px;
+    }
+
+    /* 🟠 CATEGORY BUTTONS */
+    .category-options {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 8px;
+    }
+
+    .category-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    /* 🟠 FORM INPUTS */
+    input, textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    textarea {
+        min-height: 80px;
+    }
+
+    .char-counter {
+        font-size: 12px;
+    }
+
+    .send-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* 🟠 FILE UPLOAD */
+    .file-upload {
+        padding: 10px;
+    }
+
+    .file-upload label {
+        font-size: 12px;
+    }
+
+    /* 🟠 FOOTER: Stack Items */
+    .footer-container {
         flex-direction: column;
-        align-items: center;
-        gap: 5px;
+        text-align: center;
+        gap: 15px;
     }
 
-    .nav-buttons {
-        flex-direction: row;
-        justify-content: center;
+    .footer-contact, .footer-social {
+        text-align: center;
     }
-
-    .shop-now, .cart-icon {
-        font-size: 10px;
-        padding: 4px 8px;
-    }
-}
-
 }
 
     </style>
@@ -767,9 +580,6 @@
                 <h2>MokeSell</h2>
             </div>
             <nav>
-                <a href="#" id="home-link">
-                    <div id="home-animation" style="width: 50px; height: 50px;"></div>
-                </a>
                 <a href="sell.html">Sell</a>
                 <a href="chat.html">Chat</a>
                 <a href="profile.html">Profile</a>

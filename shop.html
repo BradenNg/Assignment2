@@ -395,58 +395,127 @@
             height: 40px;
         }
 
-        @media (max-width: 768px) {
-            header nav {
-                flex-wrap: wrap;
-                gap: 20px; /* Reduce spacing */
-            }
+/* 📌 For mobile devices (width up to 480px) */
+@media (max-width: 480px) {
+    /* Center Header */
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
 
-            .shop-now {
-                padding: 8px 15px;
-                font-size: 14px;
-            }
-        }
+    header .logo h2 {
+        font-size: 20px;
+    }
 
-        @media (max-width: 480px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+    header nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 
-            header nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
+    .nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 28px; /* Reduce title size */
-            }
+    .shop-now, .cart-icon {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
 
-            .buy-now {
-                font-size: 14px; /* Make buttons smaller */
-                padding: 10px 15px;
-            }
-        }
+    .shoes-container {
+        display: flex;
+        flex-direction: column; /* Stack items */
+        align-items: center; /* Center items horizontally */
+        justify-content: center; /* Center items vertically if needed */
+        width: 100%; /* Ensure it takes full width */
+        gap: 15px; /* Add spacing between items */
+    }
 
-        @media (max-width: 768px) {
-            .search-container {
-                flex-direction: column;
-                width: 90%;
-                gap: 10px;
-                padding: 15px;
-            }
+    /* Ensure shoe cards do not stretch */
+    .shoe-card {
+        width: 90%; /* Keeps cards centered and prevents full width */
+        max-width: 350px; /* Prevents them from being too wide */
+        margin: 0 auto; /* Ensures horizontal centering */
+        text-align: center; /* Centers text inside */
+    }
 
-            .search-container select, 
-            .search-container input {
-                width: 100%;
-            }
+    /* Make sure images are cropped properly */
+    .shoe-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover; /* Ensures image fills the box */
+        object-position: center; /* Centers the cut */
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto;
+    }
 
-            
-        }
+    /* Adjust Buy Now button */
+    .buy-now {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
 
+    /* Ensure search bar container stacks inputs vertically */
+    .search-container {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        justify-content: center;
+        width: 90%; /* Reduce width for better spacing */
+        max-width: 100%;
+        gap: 8px; /* Reduce space between inputs */
+        padding: 12px;
+        border: 2px solid #FF8A65;
+        border-radius: 25px;
+        background: white;
+    }
+
+    /* Ensure all inputs & select fields are the same width */
+    .search-container select,
+    .search-container input {
+        width: 100%; /* Make each input take full width */
+        height: 45px; /* Uniform height for better usability */
+        border: none;
+        border-radius: 20px;
+        padding: 10px;
+        font-size: 16px;
+        background: #F5F5F5;
+        outline: none;
+        text-align: center;
+    }
+
+    /* Ensure placeholder text is centered */
+    .search-container input::placeholder {
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+    }
+
+    /* Style the search button */
+    .search-container .search-btn {
+        width: 100%; /* Full width for consistency */
+        background: #FF8A65;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-align: center;
+    }
+
+    .search-container .search-btn:hover {
+        background: #E57373;
+    }
+}
 
 
 
@@ -465,9 +534,6 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="#" id="home-link">
-                <div id="home-animation" style="width: 50px; height: 50px;"></div>
-            </a>
             <a href="sell.html">Sell</a>
             <a href="chat.html">Chat</a>
             <a href="profile.html">Profile</a>

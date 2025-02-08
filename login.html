@@ -264,23 +264,33 @@
             background: #8D6E63;
         }
         
-        /* 📌 For tablets (width up to 1024px) */
-@media (max-width: 1024px) {
+/* 📌 For tablets (width up to 768px) */
+@media (max-width: 768px) {
+    /* 🟠 CENTER CONTAINER AND STACK ELEMENTS */
     .container {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        width: 90%;
+        max-width: 600px;
         padding: 30px;
+        align-items: center;
     }
 
+    /* 🟠 IMAGE CONTAINER: Reduce size */
     .image-container {
         width: 100%;
         height: 300px;
-        margin-top: 0;
+        margin-top: 30px;
     }
 
+    .image-container img {
+        max-height: 100%;
+    }
+
+    /* 🟠 LOGIN FORM: Adjust width */
     .login-container {
         width: 100%;
+        max-width: 500px;
+        text-align: center;
         padding: 20px;
     }
 
@@ -297,91 +307,43 @@
         padding: 12px;
     }
 
-    .login-container button {
+    .login-container button,
+    .signup-btn {
         font-size: 16px;
         padding: 12px;
     }
 
-    .return-home-btn {
-        top: 10px;
-        left: 10px;
+    .back-home {
         font-size: 14px;
-        padding: 8px 20px;
-    }
-}
-
-/* 📌 For smaller tablets & large phones (width up to 768px) */
-@media (max-width: 768px) {
-    body {
-        background-size: cover;
-    }
-
-    .container {
-        width: 95%;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .image-container {
-        width: 100%;
-        height: 250px;
-    }
-
-    .login-container {
-        width: 100%;
-        padding: 15px;
-    }
-
-    .login-container h1 {
-        font-size: 22px;
-    }
-
-    .login-container p {
-        font-size: 13px;
-    }
-
-    .login-container input {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .login-container button {
-        font-size: 15px;
-        padding: 12px;
-    }
-
-    .signup-btn {
-        font-size: 15px;
-    }
-
-    .return-home-btn {
-        font-size: 13px;
-        padding: 7px 18px;
     }
 }
 
 /* 📌 For mobile devices (width up to 480px) */
 @media (max-width: 480px) {
-    body {
-        padding: 0;
-    }
-
+    /* 🟠 CENTER CONTENT */
     .container {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
+        width: 95%;
+        max-width: 400px;
+        padding: 20px;
     }
 
+    /* 🟠 IMAGE CONTAINER: Reduce further */
     .image-container {
         width: 100%;
-        height: 200px;
+        height: 250px;
+        margin-top: 20px;
     }
 
+    .image-container img {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* 🟠 LOGIN FORM: Adjust padding and font size */
     .login-container {
         width: 100%;
-        padding: 10px;
+        max-width: 400px;
+        padding: 15px;
     }
 
     .login-container h1 {
@@ -389,29 +351,32 @@
     }
 
     .login-container p {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .login-container input {
-        font-size: 13px;
-        padding: 10px;
-    }
-
-    .login-container button {
         font-size: 14px;
         padding: 10px;
     }
 
+    .login-container button,
     .signup-btn {
         font-size: 14px;
+        padding: 10px;
     }
 
-    .return-home-btn {
+    .back-home {
         font-size: 12px;
-        padding: 6px 16px;
+    }
+
+    /* 🟠 ADJUST RETURN HOME BUTTON */
+    .return-home-btn {
+        top: 10px;
+        left: 10px;
+        padding: 8px 20px;
+        font-size: 14px;
     }
 }
-
     </style>
 </head>
 <body>

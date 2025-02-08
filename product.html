@@ -234,17 +234,54 @@
             font-size: 16px;
         }
 
-        /* 📌 For tablets (width up to 1024px) */
-@media (max-width: 1024px) {
-    .container {
+ /* 📌 For tablets (width up to 768px) */
+@media (max-width: 768px) {
+    /* 🟠 HEADER ADJUSTMENTS */
+    header {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 30px;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    header nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .shop-now {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .cart-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .cart-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* 🟠 PRODUCT CONTAINER: Stack items */
+    .container {
+        flex-direction: column;
+        width: 90%;
+        max-width: 600px; /* Prevents excessive stretching */
+        padding: 25px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .product-gallery {
+        width: 100%;
     }
 
     .product-gallery img {
-        max-width: 350px;
+        max-width: 300px; /* Adjust image size */
     }
 
     .thumbnails img {
@@ -253,7 +290,8 @@
     }
 
     .product-details {
-        padding: 20px;
+        width: 100%;
+        text-align: center;
     }
 
     .product-details h1 {
@@ -269,70 +307,69 @@
         padding: 10px;
     }
 
+    /* 🟠 REVIEWS SECTION */
     .reviews-section {
+        width: 90%;
+        max-width: 600px;
         padding: 20px;
     }
 
-    .review {
-        font-size: 14px;
-    }
-}
-
-/* 📌 For smaller tablets & large phones (width up to 768px) */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-        gap: 20px;
-    }
-
-    .product-gallery img {
-        max-width: 300px;
-    }
-
-    .thumbnails {
-        gap: 8px;
-    }
-
-    .thumbnails img {
-        width: 45px;
-        height: 45px;
-    }
-
-    .product-details h1 {
-        font-size: 22px;
-    }
-
-    .price {
-        font-size: 18px;
-    }
-
-    .add-to-cart-btn {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .reviews-section {
-        padding: 15px;
+    .reviews-section h2 {
+        font-size: 20px;
     }
 
     .review {
-        font-size: 13px;
+        width: 100%;
+    }
+
+    .stars {
+        font-size: 14px;
     }
 }
 
 /* 📌 For mobile devices (width up to 480px) */
 @media (max-width: 480px) {
-    .container {
-        padding: 15px;
+    /* 🟠 HEADER ADJUSTMENTS */
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    header .logo h2 {
+        font-size: 20px;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 10px;
     }
 
-    .product-gallery img {
-        max-width: 250px;
+    .nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
 
-    .thumbnails {
-        gap: 6px;
+    .shop-now, .cart-icon {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    /* 🟠 PRODUCT CONTAINER */
+    .container {
+        width: 95%;
+        max-width: 400px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .product-gallery img {
+        max-width: 250px; /* Reduce image size */
     }
 
     .thumbnails img {
@@ -345,25 +382,34 @@
     }
 
     .price {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .add-to-cart-btn {
-        font-size: 13px;
-        padding: 7px;
+        font-size: 12px;
+        padding: 8px;
     }
 
+    /* 🟠 REVIEWS SECTION */
     .reviews-section {
-        padding: 10px;
+        width: 95%;
+        max-width: 400px;
+        padding: 15px;
+    }
+
+    .reviews-section h2 {
+        font-size: 18px;
     }
 
     .review {
+        font-size: 14px;
+    }
+
+    .stars {
         font-size: 12px;
     }
 }
 
-
-        
     </style>
 </head>
 <body>
@@ -372,9 +418,6 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="#" id="home-link">
-                <div id="home-animation" style="width: 50px; height: 50px;"></div>
-            </a>
             <a href="sell.html">Sell</a>
             <a href="chat.html">Chat</a>
             <a href="profile.html">Profile</a>
