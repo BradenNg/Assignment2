@@ -56,6 +56,8 @@ MokeSell aims to provide:
 🌟 **Gradient, Lava Background & Modern UI** – Aesthetic layout for a great user experience.  
 🌟 **Hover & Click Effects** – Interactive buttons & smooth animations.  
 
+---
+
 ## 🛠️ Technologies Used  
 ### **Frontend**  
 - ⚡ **HTML** – Structuring the web pages.  
@@ -66,3 +68,18 @@ MokeSell aims to provide:
 - 🛒 **LocalStorage API** – Stores user session data & cart information.  
 - 💳 **Stripe API** – Handles secure payments.  
 - 🔥 **Firebase API** – Manages authentication & user sessions.  
+- 📦 **Firestore Database** – Stores listings & user transactions.  
+
+### **Additional Libraries & Tools**  
+- 🚀 **Lottie.js** – Smooth animations for UI enhancements.  
+- 📡 **Firebase Hosting** – Deploys the application for public access.  
+- 🏗 **Node.js & Firebase CLI** – Used for local development & deployment.  
+
+---
+
+## 🔗 Attribution & External Code  
+This project integrates various **third-party libraries** and services:  
+- **Google Firebase** – Authentication, Firestore, and Hosting.  
+- **Stripe API** – Secure payment transactions.  
+- **Lottie Animations** – UI enhancements for a smooth experience.  
+- **Open Source Images & Icons** – Various free-use assets for visuals.  
