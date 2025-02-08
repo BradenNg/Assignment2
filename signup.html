@@ -218,6 +218,114 @@
             transform: scale(0.95);
             background: #8D6E63;
         }
+
+        /* General Mobile Optimization */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 350px; /* Adjusted for better fit */
+    }
+
+    .signup-container {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/* Adjustments for Tablets (768px and below) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 300px; /* Reduce image size */
+    }
+
+    .signup-container h1 {
+        font-size: 28px; /* Slightly smaller heading */
+    }
+
+    .signup-container input, 
+    .signup-container select {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .signup-container button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Mobile-Friendly Layout (480px and below) */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .image-container {
+        height: 250px;
+    }
+
+    .signup-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .signup-container h1 {
+        font-size: 24px;
+    }
+
+    .signup-container input, 
+    .signup-container select {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .signup-container button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .return-home-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+/* Grid Adjustments for Small Screens */
+@media (max-width: 600px) {
+    .signup-container {
+        padding: 15px;
+    }
+
+    .signup-container input, 
+    .signup-container select {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .signup-container button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+
+        
     </style>
 </head>
 <body>

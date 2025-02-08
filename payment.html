@@ -207,6 +207,155 @@
                 transform: translateY(0);
             }
         }
+
+        /* 📌 For tablets (width up to 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .order-summary {
+        padding: 15px;
+    }
+
+    .order-summary h2 {
+        font-size: 20px;
+    }
+
+    .order-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .order-item img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 15px;
+    }
+
+    input, select, textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .pay-now-btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .return-btn {
+        font-size: 14px;
+        padding: 8px 18px;
+    }
+}
+
+/* 📌 For smaller tablets & large phones (width up to 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .order-summary {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .order-summary h2 {
+        font-size: 18px;
+    }
+
+    .order-item {
+        padding: 8px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-item img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    input, select, textarea {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .pay-now-btn {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .return-btn {
+        font-size: 13px;
+        padding: 7px 16px;
+    }
+}
+
+/* 📌 For mobile devices (width up to 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .order-summary h2 {
+        font-size: 16px;
+    }
+
+    .order-item {
+        padding: 6px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    input, select, textarea {
+        font-size: 12px;
+        padding: 7px;
+    }
+
+    .pay-now-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .return-btn {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+}
+
     </style>
 </head>
 <body>

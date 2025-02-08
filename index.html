@@ -5,231 +5,350 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MokeSell</title>
     <style>
-        body {
-        font-family: 'Inter', sans-serif;
-        }
+       /* ✅ General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ✅ Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+header .logo h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* ✅ Navigation */
+header nav {
+    display: flex;
+    gap: 30px;
+}
+
+header a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #FF8A65;
+}
+
+/* ✅ Buttons */
+.shop-now {
+    border: 2px solid #FF8A65;
+    color: #FF8A65;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.shop-now:hover {
+    background: #FF8A65;
+    color: white;
+}
+
+.login-btn {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* ✅ Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.video-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.video-slideshow video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.video-slideshow video.active {
+    opacity: 1;
+}
+
+/* ✅ Hero Text */
+.hero h1 {
+    font-size: 4em;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.hero h2 {
+    font-size: 2em;
+    color: #ffffff;
+}
+
+.hero p {
+    font-size: 1.5em;
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+/* ✅ Footer */
+footer {
+    background: #ffffff;
+    color: #000000;
+    padding: 20px 40px;
+    text-align: left;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 10px, 20px;
+}
+
+/* ✅ Footer Contact */
+.footer-contact h3 {
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    color: #FFD54F;
+    font-weight: 700;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1em;
+}
+
+.contact-details a {
+    color: #FF8A65;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: #FFD54F;
+}
+
+/* ✅ Footer Social Links */
+.footer-social h3 {
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    color: #FFD54F;
+    font-weight: 700;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links li a {
+    text-decoration: none;
+    color: #FF8A65;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.social-links li a:hover {
+    color: #FFD54F;
+}
+
+/* ✅ Footer Bottom */
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    padding-top: 10px;
+    font-weight: 500;
+}
+
+/* ✅ RESPONSIVENESS */
+
+/* 🔹 Tablets & Smaller Screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+    header {
+        padding: 15px 30px;
+    }
+
+    header nav {
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 3em;
+    }
+
+    .hero h2 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 1.3em;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 🔹 Large Phones & Small Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row; /* Keep elements in a row */
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .nav-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+    .shop-now, .login-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .hero {
+        height: 80vh;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero h2 {
+        font-size: 1.5em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    footer {
+        padding: 15px;
+    }
+}
+
+/* 🔹 Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .nav-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .shop-now, .login-btn {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero h2 {
+        font-size: 1.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+
         
-        html, body {
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header .logo h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #000;
-        }
-
-        header nav {
-            display: flex;
-            gap: 50px;
-        }
-
-        header a {
-            text-decoration: none;
-            color: #000;
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding-top: 20px;
-        }
-
-        header a:hover {
-            color: #FF8A65;
-        }
-
-        .shop-now {
-            border: 2px solid #FF8A65;
-            color: #FF8A65;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .shop-now:hover {
-            background: #FF8A65;
-            color: white;
-        }
-
-        .login-btn {
-            background-color: transparent;
-            border: 1px solid #000;
-            color: #000;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        /* Hover effect for Login button */
-        .login-btn:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
-        header a:hover {
-            color: #8D6E63;
-        }
-
-        .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .video-slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .video-slideshow video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .video-slideshow video.active {
-            opacity: 1;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            color: #ffffff;
-            font-weight: bold;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .hero h2 {
-            font-size: 2em;
-            color: #ffffff;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            color: #ffffff;
-            margin: 20px 0;
-        }
-
-        footer {
-            background: #ffffff; /* Warm brown background */
-            color: #000000; /* White text */
-            padding: 20px 40px;
-            text-align: left;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
-            width: 100%; /* Full width */
-        }
-
-        /* Footer content container */
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap; /* Responsive wrapping */
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            padding: 10px, 20px;
-        }
-
-        /* Contact Us Section */
-        .footer-contact h3 {
-            margin-bottom: 10px;
-            font-size: 1.8em;
-            color: #FFD54F; /* Accent color */
-            font-weight: 700;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Space between contact items */
-            font-size: 1em; /* Compact text size */
-        }
-
-        .contact-details p {
-            margin: 0;
-        }
-
-        .contact-details a {
-            color: #FF8A65; /* Accent color for links */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: #FFD54F; /* Hover effect */
-        }
-
-        /* Social Media Section */
-        .footer-social h3 {
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            color: #FFD54F;
-            font-weight: 700;
-        }
-
-        .social-links {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 15px; /* Space between links */
-        }
-
-        .social-links li a {
-            text-decoration: none;
-            color: #FF8A65;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .social-links li a:hover {
-            color: #FFD54F; /* Highlight social links on hover */
-        }
-
-        /* Footer bottom section */
-        .footer-bottom {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            border-top: 1px solid rgba(0, 0, 0, 0.2);
-            padding-top: 10px;
-            font-weight: 500;
-        }
-
+       
     </style>
 </head>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -239,9 +358,6 @@
             <h2>MokeSell</h2>
         </div>
         <nav>
-            <a href="#" id="home-link">
-                <div id="home-animation" style="width: 50px; height: 50px;"></div>
-            </a>
             <a href="index.html">Home</a>
             <a href="login.html">Sell</a>
             <a href="login.html">Chat</a>

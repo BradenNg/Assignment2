@@ -318,6 +318,164 @@
             padding-top: 10px;
             font-weight: 500;
         }
+
+        /* 📌 For tablets (width up to 1024px) */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 40px 15px;
+    }
+
+    .profile-header {
+        padding: 25px;
+    }
+
+    .profile-header h2 {
+        font-size: 22px;
+    }
+
+    .profile-header img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stat-box {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .section-container {
+        max-width: 90%;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .section-box {
+        padding: 15px;
+    }
+
+    .listing-item {
+        font-size: 14px;
+    }
+}
+
+/* 📌 For smaller tablets & large phones (width up to 768px) */
+@media (max-width: 768px) {
+    .profile-header {
+        padding: 20px;
+    }
+
+    .profile-header img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile-header h2 {
+        font-size: 20px;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-box {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .section-container {
+        max-width: 95%;
+    }
+
+    .section-title {
+        font-size: 17px;
+    }
+
+    .section-box {
+        padding: 12px;
+    }
+
+    .listing-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .view-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+
+/* 📌 For mobile devices (width up to 480px) */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .profile-header {
+        padding: 15px;
+    }
+
+    .profile-header img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-header h2 {
+        font-size: 18px;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-box {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .section-container {
+        max-width: 100%;
+    }
+
+    .section-title {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .section-box {
+        padding: 10px;
+    }
+
+    .listing-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .view-btn {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+}
+
     </style>
 </head>
 <body>

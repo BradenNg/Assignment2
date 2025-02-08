@@ -563,9 +563,195 @@
         font-size: 10px;
         padding: 4px 8px;
     }
+
+    /* ✅ Tablets & Smaller Screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    header nav {
+        gap: 20px;
+    }
+
+    .support-container {
+        max-width: 85%;
+        padding: 25px;
+    }
 }
 
+/* ✅ Small Tablets & Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 15px;
+    }
 
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .shop-now, .cart-icon {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .main-content {
+        padding-top: 60px;
+    }
+
+    .support-container {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .category-options {
+        flex-direction: column;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ✅ Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 8px 10px;
+    }
+
+    header .logo h2 {
+        font-size: 18px;
+    }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .nav-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .shop-now, .cart-icon {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    .main-content {
+        padding-top: 70px;
+    }
+
+    .support-container {
+        width: 100%;
+        max-width: 95%;
+        padding: 12px;
+    }
+
+    h1, h2 {
+        font-size: 1.4em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    .category-options {
+        flex-direction: column;
+    }
+
+    .file-upload {
+        width: 100%;
+        text-align: center;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+
+/* ✅ Adjustments for Navigation & Buttons */
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 15px;
+    }
+
+    header .logo h2 {
+        font-size: 22px;
+        margin-bottom: 0;
+        padding-bottom: 5px;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        padding-top: 0;
+    }
+
+    header nav a {
+        font-size: 14px;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .shop-now {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .cart-icon {
+        font-size: 16px;
+        padding: 6px;
+    }
+}
+
+/* ✅ Extra Small Screens (max-width: 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 8px 10px;
+    }
+
+    header .logo h2 {
+        font-size: 18px;
+    }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .nav-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .shop-now, .cart-icon {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+}
+
+}
 
     </style>
 </head>
