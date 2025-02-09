@@ -82,4 +82,5 @@ This project integrates various **third-party libraries** and services:
 - **Google Firebase** – Authentication, Firestore, and Hosting.  
 - **Stripe API** – Secure payment transactions.  
 - **Lottie Animations** – UI enhancements for a smooth experience.  
-- **Open Source Images & Icons** – Various free-use assets for visuals.  
+- **Pexels** – Various free-use videos/images for my shoe images.  
+- **Pixabay** = Used for background lava videos.
