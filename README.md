@@ -103,4 +103,4 @@ This project was developed by **Braden Ng** and **Coen Ng**. Below is a breakdow
 | **Firebase/Firestore Implementation** | Braden | Set-up API to Firebase for User Authentication and Listings |
  
 ## 🔗 **Figma Link**
-[👉 Click here to view the design]([YOUR_FIGMA_LINK_HERE](https://www.figma.com/design/0OJLmTV7fX8VJ731mV5Hvv/FED-Asg-2?node-id=0-1&t=g9C2OHOcX76POrKy-1))
+https://www.figma.com/design/0OJLmTV7fX8VJ731mV5Hvv/FED-Asg-2?node-id=0-1&t=g9C2OHOcX76POrKy-1
