@@ -6,89 +6,118 @@
     <title>Login | MokeSell</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
-    <script type="module" defer>
-        // Import Firebase SDKs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+    <script type="module">
+    // Import Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
 
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
-            authDomain: "mokesellofficial.firebaseapp.com",
-            projectId: "mokesellofficial",
-            storageBucket: "mokesellofficial.firebasestorage.app",
-            messagingSenderId: "614622657784",
-            appId: "1:614622657784:web:30fab8c771c01b47254f0d"
-        };
+    // Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
+        authDomain: "mokesellofficial.firebaseapp.com",
+        projectId: "mokesellofficial",
+        storageBucket: "mokesellofficial.firebasestorage.app",
+        messagingSenderId: "614622657784",
+        appId: "1:614622657784:web:30fab8c771c01b47254f0d"
+    };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-        // Handle login submission
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("login-form").addEventListener("submit", function (event) {
-                event.preventDefault(); // Prevent form from submitting normally
+    // ✅ Show Loading Screen
+    function showLoadingScreen() {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.visibility = "visible";
+        loadingScreen.style.opacity = "1";
 
-                // Get user input values
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-
-                // Ensure the user entered both fields
-                if (!email || !password) {
-                    alert("Please enter both email and password.");
-                    return;
-                }
-
-                // Authenticate user with Firebase
-                signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        console.log("User Logged In:", userCredential.user);
-                        alert("Login successful!");
-                        window.location.href = "shop.html"; // Redirect to shop page after successful login
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error.message);
-                        alert(error.message); // Show Firebase error message
-                    });
-            });
+        // ✅ Load Lottie animation
+        lottie.loadAnimation({
+            container: document.getElementById("lottie-animation"),
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "https://assets4.lottiefiles.com/packages/lf20_x62chJ.json" // Replace with a preferred animation
         });
+    }
 
-            const returnHomeBtn = document.getElementById("return-home-btn");
-        returnHomeBtn.addEventListener("click", () => {
-            returnHomeBtn.innerText = "Returning...";
-            setTimeout(() => {
-                window.location.href = "index.html"; // Redirect to home page
-            }, 1000);  // 2 seconds delay for effect
-        });
-        
-        document.addEventListener("DOMContentLoaded", () => {
-            // Image slideshow functionality
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.slide');
+    // ✅ Hide Loading Screen
+    function hideLoadingScreen() {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.opacity = "0";
+        setTimeout(() => {
+            loadingScreen.style.visibility = "hidden";
+        }, 500);
+    }
 
-            function showNextSlide() {
-                slides.forEach(slide => slide.classList.remove('active')); // Hide all images
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active'); // Show next image
+    // ✅ Handle login submission
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get user input values
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Ensure the user entered both fields
+            if (!email || !password) {
+                alert("Please enter both email and password.");
+                return;
             }
 
+            // ✅ Show loading screen before processing login
+            showLoadingScreen();
 
-            setInterval(showNextSlide, 2000); // Change image every 2 seconds
+            // ✅ Authenticate user with Firebase
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    console.log("User Logged In:", userCredential.user);
+                    setTimeout(() => {
+                        hideLoadingScreen(); // Hide loading before redirect
+                        window.location.href = "shop.html"; // Redirect to shop page
+                    }, 2000);
+                })
+                .catch((error) => {
+                    console.error("Error:", error.message);
+                    hideLoadingScreen(); // Hide loading if login fails
+                    alert(error.message);
+                });
+        });
+    });
 
-            // Load the Lottie animation
-            const animationContainer = document.getElementById("loading-animation");
-            lottie.loadAnimation({
-                container: animationContainer,  // Target the loading div
-                renderer: "svg",               // Use SVG rendering
-                loop: true,                     // Infinite loop
-                autoplay: true,                  // Start automatically
-                path: "1737521268031.json",  // Correct file path
-            })});
+    // ✅ Return to Home Button
+    const returnHomeBtn = document.getElementById("return-home-btn");
+    returnHomeBtn.addEventListener("click", () => {
+        returnHomeBtn.innerText = "Returning...";
+        setTimeout(() => {
+            window.location.href = "index.html"; // Redirect to home page
+        }, 1000);
+    });
 
-    
+    // ✅ Image slideshow functionality
+    document.addEventListener("DOMContentLoaded", () => {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showNextSlide() {
+            slides.forEach(slide => slide.classList.remove('active')); // Hide all images
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active'); // Show next image
+        }
+
+        setInterval(showNextSlide, 2000); // Change image every 2 seconds
+
+        // ✅ Load the Lottie animation
+        const animationContainer = document.getElementById("loading-animation");
+        lottie.loadAnimation({
+            container: animationContainer,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "1737521268031.json", // Correct file path for existing animation
+        });
+    });
     </script>
-
     <style>
         * {
             margin: 0;
@@ -263,120 +292,161 @@
             transform: scale(0.95);
             background: #8D6E63;
         }
-        
-/* 📌 For tablets (width up to 768px) */
-@media (max-width: 768px) {
-    /* 🟠 CENTER CONTAINER AND STACK ELEMENTS */
-    .container {
-        flex-direction: column;
-        width: 90%;
-        max-width: 600px;
-        padding: 30px;
-        align-items: center;
-    }
 
-    /* 🟠 IMAGE CONTAINER: Reduce size */
-    .image-container {
-        width: 100%;
-        height: 300px;
-        margin-top: 30px;
-    }
+        /* Frosted Glass Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Frosted glass effect */
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
 
-    .image-container img {
-        max-height: 100%;
-    }
+        /* Loading Container */
+        .loading-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-    /* 🟠 LOGIN FORM: Adjust width */
-    .login-container {
-        width: 100%;
-        max-width: 500px;
-        text-align: center;
-        padding: 20px;
-    }
+        #lottie-animation {
+            width: 150px;
+            height: 150px;
+        }
 
-    .login-container h1 {
-        font-size: 24px;
-    }
+        #loading-screen p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
 
-    .login-container p {
-        font-size: 14px;
-    }
+                
+        /* 📌 For tablets (width up to 768px) */
+        @media (max-width: 768px) {
+            /* 🟠 CENTER CONTAINER AND STACK ELEMENTS */
+            .container {
+                flex-direction: column;
+                width: 90%;
+                max-width: 600px;
+                padding: 30px;
+                align-items: center;
+            }
 
-    .login-container input {
-        font-size: 14px;
-        padding: 12px;
-    }
+            /* 🟠 IMAGE CONTAINER: Reduce size */
+            .image-container {
+                width: 100%;
+                height: 300px;
+                margin-top: 30px;
+            }
 
-    .login-container button,
-    .signup-btn {
-        font-size: 16px;
-        padding: 12px;
-    }
+            .image-container img {
+                max-height: 100%;
+            }
 
-    .back-home {
-        font-size: 14px;
-    }
-}
+            /* 🟠 LOGIN FORM: Adjust width */
+            .login-container {
+                width: 100%;
+                max-width: 500px;
+                text-align: center;
+                padding: 20px;
+            }
 
-/* 📌 For mobile devices (width up to 480px) */
-@media (max-width: 480px) {
-    /* 🟠 CENTER CONTENT */
-    .container {
-        width: 95%;
-        max-width: 400px;
-        padding: 20px;
-    }
+            .login-container h1 {
+                font-size: 24px;
+            }
 
-    /* 🟠 IMAGE CONTAINER: Reduce further */
-    .image-container {
-        width: 100%;
-        height: 250px;
-        margin-top: 20px;
-    }
+            .login-container p {
+                font-size: 14px;
+            }
 
-    .image-container img {
-        width: 100%;
-        height: 100%;
-    }
+            .login-container input {
+                font-size: 14px;
+                padding: 12px;
+            }
 
-    /* 🟠 LOGIN FORM: Adjust padding and font size */
-    .login-container {
-        width: 100%;
-        max-width: 400px;
-        padding: 15px;
-    }
+            .login-container button,
+            .signup-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
 
-    .login-container h1 {
-        font-size: 20px;
-    }
+            .back-home {
+                font-size: 14px;
+            }
+        }
 
-    .login-container p {
-        font-size: 13px;
-    }
+        /* 📌 For mobile devices (width up to 480px) */
+        @media (max-width: 480px) {
+            /* 🟠 CENTER CONTENT */
+            .container {
+                width: 95%;
+                max-width: 400px;
+                padding: 20px;
+            }
 
-    .login-container input {
-        font-size: 14px;
-        padding: 10px;
-    }
+            /* 🟠 IMAGE CONTAINER: Reduce further */
+            .image-container {
+                width: 100%;
+                height: 250px;
+                margin-top: 20px;
+            }
 
-    .login-container button,
-    .signup-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
+            .image-container img {
+                width: 100%;
+                height: 100%;
+            }
 
-    .back-home {
-        font-size: 12px;
-    }
+            /* 🟠 LOGIN FORM: Adjust padding and font size */
+            .login-container {
+                width: 100%;
+                max-width: 400px;
+                padding: 15px;
+            }
 
-    /* 🟠 ADJUST RETURN HOME BUTTON */
-    .return-home-btn {
-        top: 10px;
-        left: 10px;
-        padding: 8px 20px;
-        font-size: 14px;
-    }
-}
+            .login-container h1 {
+                font-size: 20px;
+            }
+
+            .login-container p {
+                font-size: 13px;
+            }
+
+            .login-container input {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .login-container button,
+            .signup-btn {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .back-home {
+                font-size: 12px;
+            }
+
+            /* 🟠 ADJUST RETURN HOME BUTTON */
+            .return-home-btn {
+                top: 10px;
+                left: 10px;
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -404,5 +474,13 @@
         </div>
     </div>
 
+    <!-- Loading Screen (Hidden by Default) -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div id="lottie-animation"></div>
+            <p>Logging you in...</p>
+        </div>
+    </div>
+    
 </body>
 </html>

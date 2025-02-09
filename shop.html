@@ -395,131 +395,127 @@
             height: 40px;
         }
 
-/* 📌 For mobile devices (width up to 480px) */
-@media (max-width: 480px) {
-    /* Center Header */
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
+        /* 📌 For mobile devices (width up to 480px) */
+        @media (max-width: 480px) {
+            /* Center Header */
+            header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
 
-    header .logo h2 {
-        font-size: 20px;
-    }
+            header .logo h2 {
+                font-size: 20px;
+            }
 
-    header nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
+            header nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
 
-    .nav-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
+            .nav-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
 
-    .shop-now, .cart-icon {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
+            .shop-now, .cart-icon {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
 
-    .shoes-container {
-        display: flex;
-        flex-direction: column; /* Stack items */
-        align-items: center; /* Center items horizontally */
-        justify-content: center; /* Center items vertically if needed */
-        width: 100%; /* Ensure it takes full width */
-        gap: 15px; /* Add spacing between items */
-    }
+            .shoes-container {
+                display: flex;
+                flex-direction: column; /* Stack items */
+                align-items: center; /* Center items horizontally */
+                justify-content: center; /* Center items vertically if needed */
+                width: 100%; /* Ensure it takes full width */
+                gap: 15px; /* Add spacing between items */
+            }
 
-    /* Ensure shoe cards do not stretch */
-    .shoe-card {
-        width: 90%; /* Keeps cards centered and prevents full width */
-        max-width: 350px; /* Prevents them from being too wide */
-        margin: 0 auto; /* Ensures horizontal centering */
-        text-align: center; /* Centers text inside */
-    }
+            /* Ensure shoe cards do not stretch */
+            .shoe-card {
+                width: 90%; /* Keeps cards centered and prevents full width */
+                max-width: 350px; /* Prevents them from being too wide */
+                margin: 0 auto; /* Ensures horizontal centering */
+                text-align: center; /* Centers text inside */
+            }
 
-    /* Make sure images are cropped properly */
-    .shoe-card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover; /* Ensures image fills the box */
-        object-position: center; /* Centers the cut */
-        border-radius: 8px;
-        display: block;
-        margin: 0 auto;
-    }
+            /* Make sure images are cropped properly */
+            .shoe-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover; /* Ensures image fills the box */
+                object-position: center; /* Centers the cut */
+                border-radius: 8px;
+                display: block;
+                margin: 0 auto;
+            }
 
-    /* Adjust Buy Now button */
-    .buy-now {
-        font-size: 14px;
-        padding: 10px 12px;
-    }
+            /* Adjust Buy Now button */
+            .buy-now {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
 
-    /* Ensure search bar container stacks inputs vertically */
-    .search-container {
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: center;
-        justify-content: center;
-        width: 90%; /* Reduce width for better spacing */
-        max-width: 100%;
-        gap: 8px; /* Reduce space between inputs */
-        padding: 12px;
-        border: 2px solid #FF8A65;
-        border-radius: 25px;
-        background: white;
-    }
+            /* Ensure search bar container stacks inputs vertically */
+            .search-container {
+                display: flex;
+                flex-direction: column; /* Stack items vertically */
+                align-items: center;
+                justify-content: center;
+                width: 90%; /* Reduce width for better spacing */
+                max-width: 100%;
+                gap: 8px; /* Reduce space between inputs */
+                padding: 12px;
+                border: 2px solid #FF8A65;
+                border-radius: 25px;
+                background: white;
+            }
 
-    /* Ensure all inputs & select fields are the same width */
-    .search-container select,
-    .search-container input {
-        width: 100%; /* Make each input take full width */
-        height: 45px; /* Uniform height for better usability */
-        border: none;
-        border-radius: 20px;
-        padding: 10px;
-        font-size: 16px;
-        background: #F5F5F5;
-        outline: none;
-        text-align: center;
-    }
+            /* Ensure all inputs & select fields are the same width */
+            .search-container select,
+            .search-container input {
+                width: 100%; /* Make each input take full width */
+                height: 45px; /* Uniform height for better usability */
+                border: none;
+                border-radius: 20px;
+                padding: 10px;
+                font-size: 16px;
+                background: #F5F5F5;
+                outline: none;
+                text-align: center;
+            }
 
-    /* Ensure placeholder text is centered */
-    .search-container input::placeholder {
-        text-align: center;
-        font-size: 14px;
-        color: #888;
-    }
+            /* Ensure placeholder text is centered */
+            .search-container input::placeholder {
+                text-align: center;
+                font-size: 14px;
+                color: #888;
+            }
 
-    /* Style the search button */
-    .search-container .search-btn {
-        width: 100%; /* Full width for consistency */
-        background: #FF8A65;
-        color: white;
-        border: none;
-        padding: 12px;
-        border-radius: 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        text-align: center;
-    }
+            /* Style the search button */
+            .search-container .search-btn {
+                width: 100%; /* Full width for consistency */
+                background: #FF8A65;
+                color: white;
+                border: none;
+                padding: 12px;
+                border-radius: 20px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                text-align: center;
+            }
 
-    .search-container .search-btn:hover {
-        background: #E57373;
-    }
-}
-
-
-
-
+            .search-container .search-btn:hover {
+                background: #E57373;
+            }
+        }
     </style>
 </head>
 <body>
@@ -710,226 +706,205 @@
                 <button class="buy-now">Buy Now</button>
             </div>
         </div>
+    </div>
 
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
+        <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
-    <script>
+        // ✅ Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
+            authDomain: "mokesellofficial.firebaseapp.com",
+            projectId: "mokesellofficial",
+            storageBucket: "mokesellofficial.appspot.com",
+            messagingSenderId: "614622657784",
+            appId: "1:614622657784:web:30fab8c771c01b47254f0d"
+        };
+
+        // ✅ Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        console.log("🔥 Firebase initialized!");
+
+        // ✅ Slideshow for "New In" Section
         document.addEventListener("DOMContentLoaded", function () {
-    let slides = document.querySelectorAll('.new-in-container img');
-    let currentSlide = 0;
+            let slides = document.querySelectorAll('.new-in-container img');
+            let currentSlide = 0;
 
-    if (slides.length > 0) {
-        slides[currentSlide].classList.add('active');
+            if (slides.length > 0) {
+                slides[currentSlide].classList.add('active');
 
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 2000); // Change every 2 seconds
-    }
-});
-
-
-        document.addEventListener("DOMContentLoaded", function () {
-        lottie.loadAnimation({
-            container: document.getElementById("location-icon"),
-            renderer: "svg",
-            loop: true,
-            autoplay: true,
-            path: "wired-outline-2697-logo-square-google-maps-hover-pinch.json"
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 2000);
+            }
         });
 
-        lottie.loadAnimation({
-            container: document.getElementById("price-icon"),
-            renderer: "svg",
-            loop: true,
-            autoplay: true,
-            path: "wired-outline-298-coins-hover-jump.json"
+        // ✅ Lottie Animations
+        document.addEventListener("DOMContentLoaded", function () {
+            lottie.loadAnimation({
+                container: document.getElementById("location-icon"),
+                renderer: "svg",
+                loop: true,
+                autoplay: true,
+                path: "wired-outline-2697-logo-square-google-maps-hover-pinch.json"
+            });
+
+            lottie.loadAnimation({
+                container: document.getElementById("price-icon"),
+                renderer: "svg",
+                loop: true,
+                autoplay: true,
+                path: "wired-outline-298-coins-hover-jump.json"
+            });
         });
-    });
 
-    function searchProducts() {
-    const category = document.getElementById('filter-category').value.toLowerCase();
-    const priceRange = document.getElementById('price-range').value;
-    const searchName = document.getElementById('search-name').value.toLowerCase();
-    const location = document.getElementById('location').value.toLowerCase();
+        // ✅ Search and Filtering
+        function searchProducts() {
+            const category = document.getElementById('filter-category').value.toLowerCase();
+            const priceRange = document.getElementById('price-range').value;
+            const searchName = document.getElementById('search-name').value.toLowerCase();
+            const location = document.getElementById('location').value.toLowerCase();
 
-    const allShoes = document.querySelectorAll('.shoe-card');
+            const allShoes = document.querySelectorAll('.shoe-card');
 
-    allShoes.forEach(shoe => {
-        const shoeCategory = shoe.getAttribute('data-category').toLowerCase();
-        const shoeName = shoe.querySelector('h3').innerText.toLowerCase();
-        const shoePrice = parseInt(shoe.getAttribute('data-price')) || 0;
-        const shoeLocation = shoe.getAttribute('data-location') ? shoe.getAttribute('data-location').toLowerCase() : "";
+            allShoes.forEach(shoe => {
+                const shoeCategory = shoe.getAttribute('data-category').toLowerCase();
+                const shoeName = shoe.querySelector('h3').innerText.toLowerCase();
+                const shoePrice = parseInt(shoe.getAttribute('data-price')) || 0;
+                const shoeLocation = shoe.getAttribute('data-location') ? shoe.getAttribute('data-location').toLowerCase() : "";
 
-        let matchesCategory = (category === "all" || shoeCategory === category);
-        let matchesName = searchName === "" || shoeName.includes(searchName);
-        
-        // Handle price range dropdown separately
-        let matchesPrice = true;
-        if (priceRange) {
-            const [rangeMin, rangeMax] = priceRange.split('-');
-            matchesPrice = shoePrice >= parseInt(rangeMin) && (rangeMax === "+" || shoePrice <= parseInt(rangeMax));
+                let matchesCategory = (category === "all" || shoeCategory === category);
+                let matchesName = searchName === "" || shoeName.includes(searchName);
+
+                let matchesPrice = true;
+                if (priceRange) {
+                    const [rangeMin, rangeMax] = priceRange.split('-');
+                    matchesPrice = shoePrice >= parseInt(rangeMin) && (rangeMax === "+" || shoePrice <= parseInt(rangeMax));
+                }
+
+                let matchesLocation = true;
+                if (shoeCategory === "second-hand" && location !== "") {
+                    matchesLocation = shoeLocation.includes(location);
+                }
+
+                if (matchesCategory && matchesName && matchesPrice && matchesLocation) {
+                    shoe.style.display = "block";
+                } else {
+                    shoe.style.display = "none";
+                }
+            });
         }
 
-        // Only filter by location if it's a second-hand shoe
-        let matchesLocation = true;  
-        if (shoeCategory === "second-hand" && location !== "") {
-            matchesLocation = shoeLocation.includes(location);
+        // ✅ "Buy Now" Button Functionality
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("buy-now")) {
+                event.stopPropagation();
+                const shoeCard = event.target.closest(".shoe-card");
+                const product = {
+                    name: shoeCard.querySelector('h3').innerText,
+                    price: parseFloat(shoeCard.querySelector('.price').innerText.replace('$', '')),
+                    image: shoeCard.querySelector('img').src,
+                    description: 'This is a great shoe with premium materials.'
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const existingItem = cart.find(item => item.name === product.name);
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                window.location.href = 'cart.html'; // ✅ Redirect straight to cart after buying
+            }
+        });
+
+        // ✅ Shoe Card Click Functionality (View Product Details)
+        document.addEventListener("click", function (event) {
+            if (event.target.closest(".shoe-card") && !event.target.classList.contains("buy-now")) {
+                const shoeCard = event.target.closest(".shoe-card");
+                const product = {
+                    name: shoeCard.querySelector('h3').innerText,
+                    price: parseFloat(shoeCard.querySelector('.price').innerText.replace('$', '')),
+                    image: shoeCard.querySelector('img').src,
+                    description: 'This is a great shoe with premium materials.'
+                };
+
+                localStorage.setItem('selectedProduct', JSON.stringify(product));
+                window.location.href = 'product.html'; // ✅ Redirect to product details
+            }
+        });
+
+        // ✅ Load Listings from Firestore and Append to Existing Second-Hand Shoes
+        async function loadListings() {
+            const listingsContainer = document.querySelector(".second-hand-shoes-container");
+
+            try {
+                const q = query(collection(db, "listings"), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                querySnapshot.forEach((doc) => {
+                    const listing = doc.data();
+                    const imageUrl = listing.images && listing.images.length > 0 ? listing.images[0] : "placeholder.jpg";
+
+                    const shoeCard = document.createElement("div");
+                    shoeCard.classList.add("shoe-card");
+                    shoeCard.setAttribute("data-category", "second-hand");
+                    shoeCard.setAttribute("data-price", listing.price);
+                    shoeCard.innerHTML = `
+                        <img src="${imageUrl}" alt="${listing.title}">
+                        <h3>${listing.title}</h3>
+                        <p class="seller">Condition: <span>${listing.condition}</span></p>
+                        <p class="price">$${listing.price}</p>
+                        <button class="buy-now">Buy Now</button>
+                    `;
+
+                    // ✅ Add event listener for "Buy Now"
+                    shoeCard.querySelector(".buy-now").addEventListener("click", () => {
+                        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        cart.push({
+                            name: listing.title,
+                            price: listing.price,
+                            image: imageUrl,
+                            quantity: 1,
+                        });
+
+                        localStorage.setItem("cart", JSON.stringify(cart));
+                        window.location.href = "cart.html"; // ✅ Redirect straight to cart after buying
+                    });
+
+                    // ✅ Add event listener for clicking the card (view details)
+                    shoeCard.addEventListener("click", function () {
+                        localStorage.setItem("selectedProduct", JSON.stringify(listing));
+                        window.location.href = "product.html";
+                    });
+
+                    listingsContainer.appendChild(shoeCard);
+                });
+
+            } catch (error) {
+                console.error("🔥 ERROR: Could not fetch listings from Firestore", error);
+            }
         }
 
-        // Show or hide shoe based on all conditions
-        if (matchesCategory && matchesName && matchesPrice && matchesLocation) {
-            shoe.style.display = "block";
-        } else {
-            shoe.style.display = "none";
-        }
-    });
-}
-
-
-
-
-    function filterProducts() {
-    const category = document.getElementById('category-filter').value;
-    const searchText = document.getElementById('search-input').value.toLowerCase();
-    const minPrice = document.getElementById('min-price').value;
-    const maxPrice = document.getElementById('max-price').value;
-    const location = document.getElementById('location-input').value.toLowerCase();
-
-    let products;
-
-    if (category === "new") {
-        products = document.querySelectorAll('.new-shoes-container .shoe-card');
-    } else if (category === "second-hand") {
-        products = document.querySelectorAll('.second-hand-shoes-container .shoe-card');
-    } else {
-        products = document.querySelectorAll('.shoe-card');
-    }
-
-    let found = false;
-
-    products.forEach(product => {
-        const name = product.querySelector('h3').innerText.toLowerCase();
-        const price = parseInt(product.getAttribute('data-price')) || 0;
-        const productLocation = product.getAttribute('data-location').toLowerCase();
-
-        const matchesSearch = name.includes(searchText) || searchText === "";
-        const matchesPrice = (minPrice === "" || price >= minPrice) && (maxPrice === "" || price <= maxPrice);
-        const matchesLocation = productLocation.includes(location) || location === "";
-
-        if (matchesSearch && matchesPrice && matchesLocation) {
-            product.style.display = "block";
-            found = true;
-        } else {
-            product.style.display = "none";
-        }
-    });
-
-    if (!found) {
-        alert("No matching products found.");
-    }
-}
-
-
-
-// Call function on page load
-document.addEventListener("DOMContentLoaded", () => {
-    loadSecondHandShoes();
-});
+        // ✅ Load Listings on Page Load
+        document.addEventListener("DOMContentLoaded", () => {
+            loadListings();
+        });
 
     </script>
-    <script>
-    // "Buy Now" Button Functionality
-document.querySelectorAll('.buy-now').forEach(button => {
-    button.addEventListener('click', function (event) {
-        event.stopPropagation(); // Prevent triggering the shoe-card click event
-
-        const shoeCard = button.closest('.shoe-card');
-        const product = {
-            name: shoeCard.querySelector('h3').innerText,
-            price: parseFloat(shoeCard.querySelector('.price').innerText.replace('$', '')),
-            image: shoeCard.querySelector('img').src,
-            description: 'This is a great shoe with premium materials.' // Add more dynamic description if needed
-        };
-
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const existingItem = cart.find(item => item.name === product.name);
-
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-        window.location.href = 'cart.html'; // Redirect to cart directly
-    });
-});
-
-// Shoe Card Click Functionality (View Product Details)
-document.querySelectorAll('.shoe-card').forEach(card => {
-    card.addEventListener('click', function () {
-        const product = {
-            name: card.querySelector('h3').innerText,
-            price: parseFloat(card.querySelector('.price').innerText.replace('$', '')),
-            image: card.querySelector('img').src,
-            description: 'This is a great shoe with premium materials.' // You can adjust as needed
-        };
-
-        localStorage.setItem('selectedProduct', JSON.stringify(product));
-        window.location.href = 'product.html'; // Redirect to product details page
-    });
-});
-
-// Firestore Reference
-const db = firebase.firestore();
-
-// Load Listings from Firestore
-async function loadListings() {
-    const listingsContainer = document.querySelector(".second-hand-shoes-container");
-    listingsContainer.innerHTML = '<p>Loading...</p>';
-
-    try {
-        const querySnapshot = await db.collection("listings").orderBy("createdAt", "desc").get();
-        listingsContainer.innerHTML = ""; // Clear existing items
-
-        querySnapshot.forEach((doc) => {
-            const listing = doc.data();
-            const shoeCard = `
-                <div class="shoe-card">
-                    <img src="${listing.images.length > 0 ? listing.images[0] : 'placeholder.jpg'}" alt="${listing.title}">
-                    <h3>${listing.title}</h3>
-                    <p class="seller">Condition: <span>${listing.condition}</span></p>
-                    <p class="price">$${listing.price}</p>
-                    <button class="buy-now">Buy Now</button>
-                </div>
-            `;
-            listingsContainer.innerHTML += shoeCard;
-        });
-    } catch (error) {
-        listingsContainer.innerHTML = '<p>Error loading listings.</p>';
-        console.error("Error fetching listings:", error);
-    }
-}
-
-// Call function on page load
-document.addEventListener("DOMContentLoaded", () => {
-    loadListings();
-});
 
 
-</script>
-
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js"></script>
-
-<!-- Your Firebase Config -->
-<script src="firebase-config.js"></script>
+        
 
 </body>
 </html>

@@ -6,7 +6,6 @@
     <title>Payment | MokeSell</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://js.stripe.com/v3/"></script>
-
     <style>
         /* General Styles */
         body {
@@ -30,7 +29,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             animation: fadeIn 0.5s ease-in-out;
-            margin-top: -90px;
+            margin-top: 20px;
         }
 
         /* Header */
@@ -194,9 +193,6 @@
             background: #8D6E63;
         }
 
-
-
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -208,134 +204,136 @@
             }
         }
 
- /* 📌 For tablets (width up to 768px) */
-@media (max-width: 768px) {
-    /* Ensure the container remains centered and adapts */
-    .container {
-        width: 95%;
-        max-width: 600px; /* Prevents excessive stretching */
-        padding: 20px;
-        margin-top: -50px;
-    }
+        /* 📌 For tablets (width up to 768px) */
+        @media (max-width: 768px) {
+            /* Ensure the container remains centered and adapts */
+            .container {
+                width: 95%;
+                max-width: 600px; /* Prevents excessive stretching */
+                padding: 20px;
+                margin-top: -50px;
+            }
 
-    /* Adjust order summary */
-    .order-summary {
-        padding: 15px;
-    }
+            /* Adjust order summary */
+            .order-summary {
+                padding: 15px;
+            }
 
-    .order-summary h2 {
-        font-size: 20px;
-    }
+            .order-summary h2 {
+                font-size: 20px;
+            }
 
-    /* Ensure order items stack properly */
-    .order-items-container {
-        gap: 10px;
-    }
+            /* Ensure order items stack properly */
+            .order-items-container {
+                gap: 10px;
+            }
 
-    .order-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+            .order-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
 
-    .order-item img {
-        margin-bottom: 10px;
-    }
+            .order-item img {
+                margin-bottom: 10px;
+            }
 
-    .total-price-box {
-        font-size: 16px;
-    }
+            .total-price-box {
+                font-size: 16px;
+            }
 
-    /* Adjust input fields */
-    .form-group {
-        margin-top: 15px;
-    }
+            /* Adjust input fields */
+            .form-group {
+                margin-top: 15px;
+            }
 
-    input, select, textarea {
-        font-size: 14px;
-        padding: 10px;
-    }
+            input, select, textarea {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-    /* Adjust Pay Now Button */
-    .pay-now-btn {
-        font-size: 16px;
-        padding: 12px;
-    }
-}
+            /* Adjust Pay Now Button */
+            .pay-now-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
 
-/* 📌 For mobile devices (width up to 480px) */
-@media (max-width: 480px) {
-    /* Ensure container remains compact */
-    .container {
-        width: 100%;
-        max-width: 400px;
-        padding: 15px;
-        margin-top: -40px;
-    }
+            
+        }
 
-    /* Adjust order summary */
-    .order-summary {
-        padding: 12px;
-    }
+        /* 📌 For mobile devices (width up to 480px) */
+        @media (max-width: 480px) {
+            /* Ensure container remains compact */
+            .container {
+                width: 100%;
+                max-width: 400px;
+                padding: 15px;
+                margin-top: 40px;
+            }
 
-    .order-summary h2 {
-        font-size: 18px;
-    }
+            /* Adjust order summary */
+            .order-summary {
+                padding: 12px;
+            }
 
-    /* Ensure order items stack */
-    .order-items-container {
-        gap: 8px;
-    }
+            .order-summary h2 {
+                font-size: 18px;
+            }
 
-    .order-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+            /* Ensure order items stack */
+            .order-items-container {
+                gap: 8px;
+            }
 
-    .order-item img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 8px;
-    }
+            .order-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
 
-    .order-details p {
-        font-size: 13px;
-    }
+            .order-item img {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 8px;
+            }
 
-    .total-price-box {
-        font-size: 14px;
-    }
+            .order-details p {
+                font-size: 13px;
+            }
 
-    /* Adjust input fields */
-    .form-group {
-        margin-top: 10px;
-    }
+            .total-price-box {
+                font-size: 14px;
+            }
 
-    input, select, textarea {
-        font-size: 14px;
-        padding: 10px;
-    }
+            /* Adjust input fields */
+            .form-group {
+                margin-top: 10px;
+            }
 
-    textarea {
-        height: 80px;
-    }
+            input, select, textarea {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-    /* Adjust Pay Now Button */
-    .pay-now-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
+            textarea {
+                height: 80px;
+            }
 
-    /* Adjust Return Button */
-    .return-btn {
-        top: 10px;
-        left: 10px;
-        padding: 8px 20px;
-        font-size: 14px;
-    }
-}
+            /* Adjust Pay Now Button */
+            .pay-now-btn {
+                font-size: 14px;
+                padding: 10px;
+            }
 
+            /* Adjust Return Button */
+            .return-btn {
+                top: 10px;
+                left: 10px;
+                padding: 8px 20px;
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -385,20 +383,26 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const orderItemsContainer = document.getElementById('order-items-container');
-            const totalPriceElement = document.getElementById('total-price');
-
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const orderItemsContainer = document.getElementById("order-items-container");
+            const totalPriceElement = document.getElementById("total-price");
+            const payNowBtn = document.getElementById("payNowBtn");
+    
+            if (!orderItemsContainer || !totalPriceElement || !payNowBtn) {
+                console.error("⚠️ Required elements are missing from the DOM.");
+                return;
+            }
+    
             let total = 0;
-
+    
             if (cart.length > 0) {
-                orderItemsContainer.innerHTML = ''; 
-
+                orderItemsContainer.innerHTML = "";
+    
                 cart.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.classList.add('order-item');
-
+                    const itemElement = document.createElement("div");
+                    itemElement.classList.add("order-item");
+    
                     itemElement.innerHTML = `
                         <img src="${item.image}" alt="${item.name}">
                         <div class="order-details">
@@ -407,67 +411,53 @@
                             <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
                         </div>
                     `;
-
+    
                     orderItemsContainer.appendChild(itemElement);
                     total += item.price * item.quantity;
                 });
-
+    
                 totalPriceElement.textContent = `$${total.toFixed(2)}`;
             } else {
                 orderItemsContainer.innerHTML = '<p>No items in your cart.</p>';
             }
-
-            document.getElementById('payNowBtn').addEventListener('click', function () {
+    
+            // ✅ Validate form before checkout
+            payNowBtn.addEventListener("click", function () {
                 if (cart.length === 0) {
-                    alert("Your cart is empty! Add items before proceeding.");
+                    alert("❌ Your cart is empty! Add items before proceeding.");
                     return;
                 }
-                alert('Payment successful! Thank you for your purchase.');
-                localStorage.removeItem('cart');
-                window.location.href = 'index.html'; 
+    
+                const requiredFields = [
+                    { id: "name", name: "Full Name" },
+                    { id: "contact", name: "Contact Number" },
+                    { id: "address", name: "Address" },
+                    { id: "paymentMethod", name: "Payment Method" }
+                ];
+    
+                let allFilled = true;
+    
+                requiredFields.forEach(field => {
+                    const input = document.getElementById(field.id);
+                    if (!input || input.value.trim().length === 0) {
+                        allFilled = false;
+                        input?.classList.add("input-error");
+                    } else {
+                        input?.classList.remove("input-error");
+                    }
+                    console.log(`DEBUG: ${field.name} = "${input ? input.value.trim() : 'Not Found'}"`);
+                });
+    
+                if (!allFilled) {
+                    alert("⚠️ Please fill out all required payment details before proceeding!");
+                    return;
+                }
+    
+                // ✅ If all fields are filled, redirect to Stripe payment link
+                alert("✅ Payment details confirmed! Redirecting to Stripe...");
+                window.location.href = "https://buy.stripe.com/test_bIYfZV9RZ1cVg6YfYY";
             });
         });
-
-        document.getElementById("return-btn").addEventListener("click", () => {
-            window.history.back(cart.html);
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-    const stripe = Stripe("your-publishable-key-here"); // 🔥 Replace with your Stripe **Publishable Key**
-    
-    document.getElementById("payNowBtn").addEventListener("click", async () => {
-        try {
-            // 1️⃣ Create a Checkout Session (Handled on Backend)
-            const response = await fetch("/create-checkout-session", { method: "POST" });
-            const session = await response.json();
-
-            // 2️⃣ Redirect to Stripe Checkout
-            const result = await stripe.redirectToCheckout({ sessionId: session.id });
-            if (result.error) {
-                alert(result.error.message);
-            }
-        } catch (error) {
-            console.error("❌ Error during Stripe checkout:", error);
-            alert("⚠️ Payment failed! Please try again.");
-        }
-    });
-});
-
-const stripeLinks = {
-        "Vintage Converse": "https://buy.stripe.com/test_abc123",
-        "Elegant Beige Heels": "https://buy.stripe.com/test_def456",
-        "Beach Flip-Flops": "https://buy.stripe.com/test_ghi789",
-        "Red Classic Converse": "https://buy.stripe.com/test_jkl101"
-    };
-
-    // Get the selected item (Retrieve from localStorage or URL parameters)
-    const selectedItem = localStorage.getItem("selectedItem"); // Assuming the item is stored in localStorage
-
-    document.getElementById("payNowBtn").addEventListener("click", function () {
-        window.location.href = "https://buy.stripe.com/test_bIYfZV9RZ1cVg6YfYY"; // Redirect to Stripe Checkout
-    });
-
-
     </script>
 </body>
 </html>

@@ -285,7 +285,6 @@
             font-weight: bold;
             cursor: pointer;
             padding: 10px 20px;
-            display: center;
         }
 
 
@@ -309,7 +308,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            padding: 10px, 20px;
+            padding: 10px 20px;
         }
 
         /* Contact Us Section */
@@ -377,195 +376,194 @@
             font-weight: 500;
         }
 
-  /* 📌 For tablets (width up to 768px) */
-@media (max-width: 768px) {
-    /* 🟠 HEADER ADJUSTMENTS */
-    header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
-        padding: 15px 20px;
-    }
+        /* 📌 For tablets (width up to 768px) */
+        @media (max-width: 768px) {
+            /* 🟠 HEADER ADJUSTMENTS */
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+                padding: 15px 20px;
+            }
 
-    header nav {
-        flex-wrap: wrap;
-        gap: 15px;
-        justify-content: center;
-    }
+            header nav {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+            }
 
-    .shop-now {
-        padding: 8px 15px;
-        font-size: 14px;
-    }
+            .shop-now {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
 
-    .cart-icon {
-        width: 35px;
-        height: 35px;
-    }
+            .cart-icon {
+                width: 35px;
+                height: 35px;
+            }
 
-    .cart-icon img {
-        width: 20px;
-        height: 20px;
-    }
+            .cart-icon img {
+                width: 20px;
+                height: 20px;
+            }
 
-    /* 🟠 SUPPORT FORM: Make it responsive */
-    .support-container {
-        width: 90%;
-        max-width: 600px; /* Prevents excessive stretching */
-        padding: 25px;
-        margin-top: 30px;
-    }
+            /* 🟠 SUPPORT FORM: Make it responsive */
+            .support-container {
+                width: 90%;
+                max-width: 600px; /* Prevents excessive stretching */
+                padding: 25px;
+                margin-top: 30px;
+            }
 
-    .support-container h1 {
-        font-size: 24px; /* Reduce heading size */
-    }
+            .support-container h1 {
+                font-size: 24px; /* Reduce heading size */
+            }
 
-    .support-container p {
-        font-size: 14px;
-    }
+            .support-container p {
+                font-size: 14px;
+            }
 
-    /* 🟠 CATEGORY BUTTONS */
-    .category-options {
-        flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-        gap: 10px;
-    }
+            /* 🟠 CATEGORY BUTTONS */
+            .category-options {
+                flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+                gap: 10px;
+            }
 
-    .category-btn {
-        padding: 12px;
-        font-size: 13px;
-    }
+            .category-btn {
+                padding: 12px;
+                font-size: 13px;
+            }
 
-    /* 🟠 FORM INPUTS */
-    input, textarea {
-        font-size: 14px;
-        padding: 12px;
-    }
+            /* 🟠 FORM INPUTS */
+            input, textarea {
+                font-size: 14px;
+                padding: 12px;
+            }
 
-    textarea {
-        min-height: 100px;
-    }
+            textarea {
+                min-height: 100px;
+            }
 
-    .char-counter {
-        font-size: 12px;
-    }
+            .char-counter {
+                font-size: 12px;
+            }
 
-    .send-btn {
-        font-size: 16px;
-        padding: 12px;
-    }
+            .send-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
 
-    /* 🟠 FILE UPLOAD */
-    .file-upload {
-        padding: 12px;
-    }
+            /* 🟠 FILE UPLOAD */
+            .file-upload {
+                padding: 12px;
+            }
 
-    .file-upload label {
-        font-size: 14px;
-    }
-}
+            .file-upload label {
+                font-size: 14px;
+            }
+        }
 
-/* 📌 For mobile devices (width up to 480px) */
-@media (max-width: 480px) {
-    /* 🟠 HEADER ADJUSTMENTS */
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
+        /* 📌 For mobile devices (width up to 480px) */
+        @media (max-width: 480px) {
+            /* 🟠 HEADER ADJUSTMENTS */
+            header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
 
-    header .logo h2 {
-        font-size: 20px;
-    }
+            header .logo h2 {
+                font-size: 20px;
+            }
 
-    header nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
+            header nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
 
-    .nav-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
+            .nav-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
 
-    .shop-now, .cart-icon {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
+            .shop-now, .cart-icon {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
 
-    /* 🟠 SUPPORT FORM */
-    .support-container {
-        width: 95%;
-        max-width: 400px;
-        padding: 20px;
-        margin-top: 20px;
-    }
+            /* 🟠 SUPPORT FORM */
+            .support-container {
+                width: 95%;
+                max-width: 400px;
+                padding: 20px;
+                margin-top: 20px;
+            }
 
-    .support-container h1 {
-        font-size: 20px; /* Reduce heading size */
-    }
+            .support-container h1 {
+                font-size: 20px; /* Reduce heading size */
+            }
 
-    .support-container p {
-        font-size: 13px;
-    }
+            .support-container p {
+                font-size: 13px;
+            }
 
-    /* 🟠 CATEGORY BUTTONS */
-    .category-options {
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 8px;
-    }
+            /* 🟠 CATEGORY BUTTONS */
+            .category-options {
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 8px;
+            }
 
-    .category-btn {
-        width: 100%;
-        padding: 10px;
-        font-size: 12px;
-    }
+            .category-btn {
+                width: 100%;
+                padding: 10px;
+                font-size: 12px;
+            }
 
-    /* 🟠 FORM INPUTS */
-    input, textarea {
-        font-size: 14px;
-        padding: 10px;
-    }
+            /* 🟠 FORM INPUTS */
+            input, textarea {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-    textarea {
-        min-height: 80px;
-    }
+            textarea {
+                min-height: 80px;
+            }
 
-    .char-counter {
-        font-size: 12px;
-    }
+            .char-counter {
+                font-size: 12px;
+            }
 
-    .send-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
+            .send-btn {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-    /* 🟠 FILE UPLOAD */
-    .file-upload {
-        padding: 10px;
-    }
+            /* 🟠 FILE UPLOAD */
+            .file-upload {
+                padding: 10px;
+            }
 
-    .file-upload label {
-        font-size: 12px;
-    }
+            .file-upload label {
+                font-size: 12px;
+            }
 
-    /* 🟠 FOOTER: Stack Items */
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
+            /* 🟠 FOOTER: Stack Items */
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
 
-    .footer-contact, .footer-social {
-        text-align: center;
-    }
-}
-
+            .footer-contact, .footer-social {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -632,7 +630,7 @@
                 <div class="file-upload">
                     <input type="file" id="file-upload" accept="image/*" onchange="previewFile(event)">
                     <label for="file-upload">📎 Attach Screenshot (optional)</label>
-                    <img id="image-preview" style="display: none; width: 80px; height: auto; margin-top: 10px; border-radius: 5px;">
+                    <img id="image-preview" src="images/placeholder.png" alt="Preview image" style="display: none; width: 80px; height: auto; margin-top: 10px; border-radius: 5px;">
                 </div>
                 
                 
@@ -673,8 +671,8 @@
         <div class="footer-bottom">
             <p>&copy; 2024 MokeSell. All rights reserved.</p>
         </div>
-    </div>
     </footer>
+    </div>
 
     <script>
         document.getElementById("support-form").addEventListener("submit", function(event) {
@@ -696,33 +694,32 @@
         document.getElementById("char-count").innerText = "0";
     });
 
-    // Character counter for description field
-    document.getElementById("description").addEventListener("input", function() {
-        document.getElementById("char-count").innerText = this.value.length;
-    });
-
-    // Handle Category Selection
-    document.querySelectorAll(".category-btn").forEach(button => {
-        button.addEventListener("click", () => {
-            document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
-            document.getElementById("category").value = button.dataset.category;
+        // Character counter for description field
+        document.getElementById("description").addEventListener("input", function() {
+            document.getElementById("char-count").innerText = this.value.length;
         });
-    });
 
-    function previewFile(event) {
-    const file = event.target.files[0]; // Get the uploaded file
-    if (file) {
-        const reader = new FileReader(); // Create a FileReader to read the image
-        reader.onload = function(e) {
-            const preview = document.getElementById("image-preview");
-            preview.src = e.target.result; // Set image source to uploaded file
-            preview.style.display = "block"; // Show the image
-        };
-        reader.readAsDataURL(file); // Convert file to base64 URL
+        // Handle Category Selection
+        document.querySelectorAll(".category-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                document.getElementById("category").value = button.dataset.category;
+            });
+        });
+
+        function previewFile(event) {
+        const file = event.target.files[0]; // Get the uploaded file
+        if (file) {
+            const reader = new FileReader(); // Create a FileReader to read the image
+            reader.onload = function(e) {
+                const preview = document.getElementById("image-preview");
+                preview.src = e.target.result; // Set image source to uploaded file
+                preview.style.display = "block"; // Show the image
+            };
+            reader.readAsDataURL(file); // Convert file to base64 URL
+        }
     }
-}
-
 
     </script>
 

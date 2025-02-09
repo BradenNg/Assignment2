@@ -7,78 +7,110 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Firebase SDKs -->
-    <script type="module" defer>
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+    <script type="module" >
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
 
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
-            authDomain: "mokesellofficial.firebaseapp.com",
-            projectId: "mokesellofficial",
-            storageBucket: "mokesellofficial.firebasestorage.app",
-            messagingSenderId: "614622657784",
-            appId: "1:614622657784:web:30fab8c771c01b47254f0d"
-        };
+    // ✅ Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCxywxFVDVipj_3L7uRYX_TjvPt28MDwbk",
+        authDomain: "mokesellofficial.firebaseapp.com",
+        projectId: "mokesellofficial",
+        storageBucket: "mokesellofficial.firebasestorage.app",
+        messagingSenderId: "614622657784",
+        appId: "1:614622657784:web:30fab8c771c01b47254f0d"
+    };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+    // ✅ Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-        // Handle signup form submission
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("signup-form").addEventListener("submit", function (event) {
-                event.preventDefault();
+    // ✅ Show Loading Screen with Confetti Animation
+    function showLoadingScreen() {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.visibility = "visible";
+        loadingScreen.style.opacity = "1";
 
-                // Get user input values
-                const name = document.getElementById("full-name").value.trim();
-                const email = document.getElementById("email").value.trim();
-                const password = document.getElementById("password").value.trim();
-
-                // Validate fields
-                if (name === "" || email === "" || password.length < 6) {
-                    alert("Please fill out all fields correctly. Password must be at least 6 characters.");
-                    return;
-                }
-
-                // Create user in Firebase Auth
-                createUserWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        console.log("User Registered:", userCredential.user);
-                        alert("Account created successfully!");
-                        window.location.href = "shop.html"; // Redirect to shop page after successful signup
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error.message);
-                        alert(error.message); // Show Firebase error message
-                    });
-            });
-
-            // Load country list from API
-            fetch("https://restcountries.com/v3.1/all")
-                .then(response => response.json())
-                .then(data => {
-                    const countrySelect = document.getElementById("country");
-                    data.sort((a, b) => a.name.common.localeCompare(b.name.common));
-                    data.forEach(country => {
-                        const option = document.createElement("option");
-                        option.value = country.name.common;
-                        option.textContent = country.name.common;
-                        countrySelect.appendChild(option);
-                    });
-                })
-                .catch(error => console.error("Error loading countries:", error));
-
-            // Return to home button functionality
-            const returnHomeBtn = document.getElementById("return-home-btn");
-            returnHomeBtn.addEventListener("click", () => {
-                returnHomeBtn.innerText = "Returning...";
-                setTimeout(() => {
-                    window.location.href = "index.html"; // Redirect to home page
-                }, 1000);
-            });
+        // ✅ Load Lottie Confetti Animation
+        lottie.loadAnimation({
+            container: document.getElementById("lottie-animation"),
+            renderer: "svg",
+            loop: false,
+            autoplay: true,
+            path: "https://assets4.lottiefiles.com/packages/lf20_x62chJ.json" // 🔥 Confetti animation (Ensure file is in correct folder)
         });
-    </script>
+    }
+
+    // ✅ Hide Loading Screen
+    function hideLoadingScreen() {
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.opacity = "0";
+        setTimeout(() => {
+            loadingScreen.style.visibility = "hidden";
+        }, 500);
+    }
+
+    // ✅ Handle Signup Form Submission
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("signup-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Get user input values
+            const name = document.getElementById("full-name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // ✅ Validate fields
+            if (name === "" || email === "" || password.length < 6) {
+                alert("Please fill out all fields correctly. Password must be at least 6 characters.");
+                return;
+            }
+
+            // ✅ Create user in Firebase Auth (Only proceed if new account is created)
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    console.log("User Registered:", userCredential.user);
+
+                    // ✅ Show confetti animation before redirect
+                    showLoadingScreen();
+
+                    setTimeout(() => {
+                        hideLoadingScreen();
+                        window.location.href = "shop.html"; // ✅ Redirect after animation
+                    }, 2500);
+                })
+                .catch((error) => {
+                    console.error("🔥 Signup Error:", error.message);
+                    alert(error.message); // ❌ Prevents proceeding if error occurs
+                });
+        });
+
+        // ✅ Load country list from API
+        fetch("https://restcountries.com/v3.1/all")
+            .then(response => response.json())
+            .then(data => {
+                const countrySelect = document.getElementById("country");
+                data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+                data.forEach(country => {
+                    const option = document.createElement("option");
+                    option.value = country.name.common;
+                    option.textContent = country.name.common;
+                    countrySelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error("⚠️ Error loading countries:", error));
+
+        // ✅ Return to home button functionality
+        const returnHomeBtn = document.getElementById("return-home-btn");
+        returnHomeBtn.addEventListener("click", () => {
+            returnHomeBtn.innerText = "Returning...";
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1000);
+        });
+    });
+</script>
 
     <style>
         :root {
@@ -219,6 +251,49 @@
             background: #8D6E63;
         }
 
+        /* ✅ Frosted Glass Loading Screen */
+        #loading-screen, #success-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Frosted glass effect */
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        /* ✅ Loading Container */
+        .loading-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #lottie-animation, #success-animation {
+            width: 150px;
+            height: 150px;
+        }
+
+        #loading-screen p, #success-screen p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+
+
+
 /* 📌 For tablets (width up to 768px) */
 @media (max-width: 768px) {
     /* Center content and make the container stack */
@@ -334,5 +409,12 @@
         </div>
     </div>
 
+    <!-- ✅ Loading Screen (Hidden by Default) -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div id="lottie-animation"></div>
+            <p>Signing you up...</p>
+        </div>
+    </div>
 </body>
 </html>

@@ -297,7 +297,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            padding: 10px, 20px;
+            padding: 10px 20px;
         }
 
         /* Contact Us Section */
@@ -364,101 +364,100 @@
             padding-top: 10px;
             font-weight: 500;
         }
-/* 📌 For tablets (width up to 1024px) */
-@media (max-width: 1024px) {
-    header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 30px;
-    }
+        /* 📌 For tablets (width up to 1024px) */
+        @media (max-width: 1024px) {
+            header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 30px;
+            }
 
-    header nav {
-        display: flex;
-        gap: 30px;
-    }
+            header nav {
+                display: flex;
+                gap: 30px;
+            }
 
-    .nav-buttons {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-}
+            .nav-buttons {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
 
-/* 📌 For smaller tablets & large phones (width up to 768px) */
-@media (max-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 20px;
-        height: auto;
-    }
+        /* 📌 For smaller tablets & large phones (width up to 768px) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 20px;
+                height: auto;
+            }
 
-    header .logo h2 {
-        font-size: 22px;
-    }
+            header .logo h2 {
+                font-size: 22px;
+            }
 
-    header nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
+            header nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
 
-    .nav-buttons {
-        display: flex;
-        gap: 10px;
-    }
-}
+            .nav-buttons {
+                display: flex;
+                gap: 10px;
+            }
+        }
 
-/* 📌 For mobile devices (width up to 480px) */
-@media (max-width: 480px) {
-    header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
+        /* 📌 For mobile devices (width up to 480px) */
+        @media (max-width: 480px) {
+            header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
 
-    header .logo h2 {
-        font-size: 20px;
-    }
+            header .logo h2 {
+                font-size: 20px;
+            }
 
-    header nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
+            header nav {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
 
-    .nav-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
+            .nav-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
 
-    .shop-now, .cart-icon {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
-    .message-input {
-        flex-direction: column; /* Stack buttons and input field */
-        align-items: center;
-    }
+            .shop-now, .cart-icon {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .message-input {
+                flex-direction: column; /* Stack buttons and input field */
+                align-items: center;
+            }
 
-    .message-input input {
-        width: 100%; /* Make input full width */
-    }
+            .message-input input {
+                width: 100%; /* Make input full width */
+            }
 
-    .message-input button {
-        width: 100%; /* Make buttons full width */
-        margin-top: 5px; /* Add spacing */
-    }
-}
-
+            .message-input button {
+                width: 100%; /* Make buttons full width */
+                margin-top: 5px; /* Add spacing */
+            }
+        }
     </style>
 </head>
 <body>
@@ -550,75 +549,71 @@
     <script>
         let activeChatUser = ""; // Store the currently active chat user
 
-function openChat(name, messages) {
-    document.querySelector(".chat-window").style.display = "none";
-    document.querySelector(".active-chat").style.display = "flex";
-    document.getElementById("chat-header").innerText = "Chat with " + name;
+        function openChat(name, messages) {
+            document.querySelector(".chat-window").style.display = "none";
+            document.querySelector(".active-chat").style.display = "flex";
+            document.getElementById("chat-header").innerText = "Chat with " + name;
 
-    const chatMessages = document.getElementById("chat-messages");
-    chatMessages.innerHTML = ""; // Clear previous messages
+            const chatMessages = document.getElementById("chat-messages");
+            chatMessages.innerHTML = ""; // Clear previous messages
 
-    activeChatUser = name; // Set active chat user
+            activeChatUser = name; // Set active chat user
 
-    messages.forEach((msg, index) => {
-        // Alternate messages (received/sent) for a natural chat look
-        const messageClass = index % 2 === 0 ? "received" : "sent";
-        chatMessages.innerHTML += `<div class="message ${messageClass}">${msg}</div>`;
-    });
+            messages.forEach((msg, index) => {
+                // Alternate messages (received/sent) for a natural chat look
+                const messageClass = index % 2 === 0 ? "received" : "sent";
+                chatMessages.innerHTML += `<div class="message ${messageClass}">${msg}</div>`;
+            });
 
-    chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
-}
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the latest message
+        }
 
-function sendMessage() {
-    const input = document.getElementById("message-input");
-    const chatMessages = document.getElementById("chat-messages");
+        function sendMessage() {
+            const input = document.getElementById("message-input");
+            const chatMessages = document.getElementById("chat-messages");
 
-    if (input.value.trim() !== "") {
-        chatMessages.innerHTML += `<div class="message sent">${input.value}</div>`;
-        input.value = "";
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
-    }
-}
+            if (input.value.trim() !== "") {
+                chatMessages.innerHTML += `<div class="message sent">${input.value}</div>`;
+                input.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+            }
+        }
 
-// Send message on Enter key press
-document.getElementById("message-input").addEventListener("keypress", function (event) {
-    if (event.key === "Enter") { 
-        event.preventDefault(); // Prevents new line in input
-        sendMessage();
-    }
-});
+        // Send message on Enter key press
+        document.getElementById("message-input").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") { 
+                event.preventDefault(); // Prevents new line in input
+                sendMessage();
+            }
+        });
 
-function sendOffer() {
-    if (!activeChatUser) {
-        alert("Select a chat before making an offer.");
-        return;
-    }
+        function sendOffer() {
+            if (!activeChatUser) {
+                alert("Select a chat before making an offer.");
+                return;
+            }
 
-    const offerPrice = prompt("Enter your counter-offer price:");
-    if (offerPrice && !isNaN(offerPrice)) {
-        const chatMessages = document.getElementById("chat-messages");
-        chatMessages.innerHTML += `<div class="message sent">Counter-offer: $${offerPrice}</div>`;
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
-    }
-}
+            const offerPrice = prompt("Enter your counter-offer price:");
+            if (offerPrice && !isNaN(offerPrice)) {
+                const chatMessages = document.getElementById("chat-messages");
+                chatMessages.innerHTML += `<div class="message sent">Counter-offer: $${offerPrice}</div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll
+            }
+        }
 
-function leaveReview() {
-    if (!activeChatUser) {
-        alert("Select a chat before leaving a review.");
-        return;
-    }
+        function leaveReview() {
+            if (!activeChatUser) {
+                alert("Select a chat before leaving a review.");
+                return;
+            }
 
-    const rating = prompt("Rate the seller (1-5 stars):");
-    if (rating >= 1 && rating <= 5) {
-        alert(`Thank you for your ${rating}-star rating for ${activeChatUser}!`);
-    } else {
-        alert("Invalid rating. Please enter a number between 1 and 5.");
-    }
-}
-
-
-
+            const rating = prompt("Rate the seller (1-5 stars):");
+            if (rating >= 1 && rating <= 5) {
+                alert(`Thank you for your ${rating}-star rating for ${activeChatUser}!`);
+            } else {
+                alert("Invalid rating. Please enter a number between 1 and 5.");
+            }
+        }
     </script>
-
 </body>
 </html>
