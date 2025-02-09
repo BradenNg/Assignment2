@@ -7,9 +7,7 @@
 - [User Audience and Purpose](#user-audience-and-purpose)  
 - [Features](#features)  
 - [Technologies Used](#technologies-used)  
-- [Installation and Setup](#installation-and-setup)  
-- [Attribution & External Code](#attribution--external-code)  
-- [License](#license)  
+- [Attribution & External Code](#attribution--external-code)   
 
 ---
 
