@@ -83,4 +83,4 @@ This project integrates various **third-party libraries** and services:
 - **Stripe API** – Secure payment transactions.  
 - **Lottie Animations** – UI enhancements for a smooth experience.  
 - **Pexels** – Various free-use videos/images for my shoe images.  
-- **Pixabay** = Used for background lava videos.
+- **Pixabay** - Used for background lava videos.
