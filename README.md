@@ -82,3 +82,23 @@ This project integrates various **third-party libraries** and services:
 - **Lottie Animations** – UI enhancements for a smooth experience.  
 - **Pexels** – Various free-use videos/images for my shoe images.  
 - **Pixabay** - Used for background lava videos.
+
+### 👥 **Team Contributions**
+This project was developed by **Braden Ng** and **Coen Ng**. Below is a breakdown of responsibilities:  
+
+| **Page/Feature**            | **Contributor(s)**         | **Description** |
+|-----------------------------|---------------------------|-----------------|
+| **Homepage (index.html)**   | Braden | Designed the homepage layout, hero section, and background videos. |
+| **Sell Page (sell.html)**   | Braden | Created the product listing form and listing management system. |
+| **Chat Page (chat.html)**   | Coen | Implemented real-time messaging between buyers and sellers. |
+| **Profile Page (profile.html)** | Coen | Built the user profile section with editable settings. |
+| **Support Page (support.html)** | Braden | Developed the support request form with category selection and file upload. |
+| **Shop Page (shop.html)**   | Braden | Displayed shoe listings, integrated filtering, and added the shopping cart feature. |
+| **Cart Page (cart.html)**   | Braden | Managed the shopping cart, order summary, and checkout process. |
+| **Login Page (login.html)** | Coen | Designed the user authentication system with Firebase login and registration. |
+| **Checkout Page (payment.html)** | Coen | Integrated Stripe API for secure transactions. |
+| **Order History (signup.html)** | Braden | Implemented past order tracking and receipt generation. |
+| **Brief description of Product (product.html)** | Coen | Created the product page to add to cart. |
+| **About Page (about.html)** | Coen | Provided company information, team details, and mission statement. |
+| **Firebase/Firestore Implementation** | Braden | Set-up API to Firebase for User Authentication and Listings |
+ 
