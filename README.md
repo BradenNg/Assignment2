@@ -97,7 +97,7 @@ This project was developed by **Braden Ng** and **Coen Ng**. Below is a breakdow
 | **Cart Page (cart.html)**   | Braden | Managed the shopping cart, order summary, and checkout process. |
 | **Login Page (login.html)** | Coen | Designed the user authentication system with Firebase login and registration. |
 | **Checkout Page (payment.html)** | Coen | Integrated Stripe API for secure transactions. |
-| **Order History (signup.html)** | Braden | Implemented past order tracking and receipt generation. |
+| **Sign-up Page (signup.html)** | Braden | Implemented account making feature |
 | **Brief description of Product (product.html)** | Coen | Created the product page to add to cart. |
 | **About Page (about.html)** | Coen | Provided company information, team details, and mission statement. |
 | **Firebase/Firestore Implementation** | Braden | Set-up API to Firebase for User Authentication and Listings |
